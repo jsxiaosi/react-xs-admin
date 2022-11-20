@@ -1,0 +1,11 @@
+.local
+.output.js
+.npmrc
+
+**/*.svg
+**/*.sh
+
+dist
+public
+node_modules
+dist_electron

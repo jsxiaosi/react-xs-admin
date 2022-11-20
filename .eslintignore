@@ -1,0 +1,17 @@
+.vscode
+.idea
+
+.husky
+*html
+*.md
+*.woff
+*.ttf
+*.sh
+
+bin
+dist
+docs
+public
+discard
+Dockerfile
+node_modules
