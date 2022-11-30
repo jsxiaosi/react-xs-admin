@@ -1,14 +1,28 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import type { LocaleType } from '@/locales';
+
+interface AppConfigMode {
+  collapsed: boolean;
+  locale: LocaleType;
+}
+
+interface appConfig {
+  appConfigMode: AppConfigMode;
+}
+
+const initialState: appConfig = {
+  appConfigMode: {
+    collapsed: false,
+    locale: 'zh-CN',
+  },
+};
 
 export const appSlice = createSlice({
   name: 'appConfig',
-  initialState: {
-    appConfigMode: {
-      collapsed: false,
-    },
-  },
+  initialState,
   reducers: {
-    setAppConfigMode: (state, action) => {
+    setAppConfigMode: (state, action: PayloadAction<AppConfigMode>) => {
       state.appConfigMode = action.payload;
     },
   },

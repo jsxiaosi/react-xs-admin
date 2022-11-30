@@ -1,14 +1,37 @@
 import { RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import './App.css';
+import { ConfigProvider } from 'antd';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/en';
+import zhCN from 'antd/locale/zh_CN';
+import enUS from 'antd/locale/en_US';
+import 'antd/dist/reset.css';
+import { IntlProvider } from 'react-intl';
+import { useMemo } from 'react';
 import router from './router';
-import store from './store';
+import { localeConfig } from './locales';
+import { useAppSelector } from './store/hooks';
 
 function App() {
+  const { locale } = useAppSelector((state) => state.app.appConfigMode);
+
+  const getLocale = useMemo(() => {
+    if (locale === 'en-US') {
+      dayjs.locale('en');
+      return enUS;
+    } else {
+      dayjs.locale('zh-cn');
+      return zhCN;
+    }
+  }, [locale]);
+
   return (
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <ConfigProvider locale={getLocale}>
+      <IntlProvider locale={locale} messages={localeConfig[locale]}>
+        <RouterProvider router={router} />
+      </IntlProvider>
+    </ConfigProvider>
   );
 }
 

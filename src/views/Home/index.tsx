@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import reactLogo from '@/assets/react.svg';
 import './index.less';
+import { useLocale } from '@/locales';
 
 const Home = () => {
   const [count, setCount] = useState(0);
+
+  const intl = useLocale();
 
   const render = () => {
     return (
@@ -17,6 +20,7 @@ const Home = () => {
               <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
           </div>
+          <div>{intl.formatMessage({ id: 'app.text' })}</div>
           <h1>Vite + React</h1>
           <div className="card">
             <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
