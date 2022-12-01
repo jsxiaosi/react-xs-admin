@@ -1,16 +1,13 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout } from 'antd';
-import { setAppConfigMode } from '@/store/modules/app';
-
 import './index.less';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import Locale from '@/components/Locale';
+import { useStoreApp } from '@/hooks/setting/useStoreApp';
 
 const { Header } = Layout;
 
 const Navbart = () => {
-  const dispatch = useAppDispatch();
-  const { collapsed, ...appConfigMode } = useAppSelector((state) => state.app.appConfigMode);
+  const { collapsed, setAppConfig } = useStoreApp();
 
   const render = () => {
     return (
@@ -19,7 +16,7 @@ const Navbart = () => {
           <div className="layout-header-left">
             <div
               onClick={() => {
-                dispatch(setAppConfigMode({ ...appConfigMode, collapsed: !collapsed }));
+                setAppConfig({ collapsed: !collapsed });
               }}
             >
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

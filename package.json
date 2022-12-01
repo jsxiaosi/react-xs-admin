@@ -17,6 +17,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@reduxjs/toolkit": "^1.9.0",
+    "ahooks": "^3.7.2",
     "antd": "^5.0.1",
     "dayjs": "^1.11.6",
     "localforage": "^1.10.0",

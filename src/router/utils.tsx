@@ -42,3 +42,26 @@ export function routeListToMenu(rtList: RouteList[], path?: React.Key): MenuItem
     return rtItem;
   });
 }
+
+// 通过path获取父级路径
+export function getParentPaths(routePath: string, routes: any[]) {
+  // 深度遍历查找
+  function dfs(routes: any[], key: string, parents: string[]) {
+    for (let i = 0; i < routes.length; i++) {
+      const item = routes[i];
+      // 找到key则返回父级key
+      if (item.key === key) return [item.key];
+      // children不存在或为空则不递归
+      if (!item.children || !item.children.length) continue;
+      // 往下查找时将当前key入栈
+      parents.push(item.key);
+
+      if (dfs(item.children, key, parents).length) return parents;
+      // 深度遍历查找未找到时当前path 出栈
+      parents.pop();
+    }
+    // 未找到时返回空数组
+    return [];
+  }
+  return dfs(routes, routePath, []);
+}

@@ -2,7 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { LocaleType } from '@/locales';
 
-interface AppConfigMode {
+export interface AppConfigMode {
   collapsed: boolean;
   locale: LocaleType;
 }

@@ -11,10 +11,10 @@ import { IntlProvider } from 'react-intl';
 import { useMemo } from 'react';
 import router from './router';
 import { localeConfig } from './locales';
-import { useAppSelector } from './store/hooks';
+import { useStoreApp } from './hooks/setting/useStoreApp';
 
 function App() {
-  const { locale } = useAppSelector((state) => state.app.appConfigMode);
+  const { locale } = useStoreApp();
 
   const getLocale = useMemo(() => {
     if (locale === 'en-US') {
