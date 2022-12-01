@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
@@ -14,7 +14,7 @@ import { localeConfig } from './locales';
 import { useStoreApp } from './hooks/setting/useStoreApp';
 
 function App() {
-  const { locale } = useStoreApp();
+  const { locale, themeMode } = useStoreApp();
 
   const getLocale = useMemo(() => {
     if (locale === 'en-US') {
@@ -27,7 +27,15 @@ function App() {
   }, [locale]);
 
   return (
-    <ConfigProvider locale={getLocale}>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#409eff',
+        },
+        algorithm: themeMode === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+      }}
+      locale={getLocale}
+    >
       <IntlProvider locale={locale} messages={localeConfig[locale]}>
         <RouterProvider router={router} />
       </IntlProvider>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from 'antd';
 import reactLogo from '@/assets/react.svg';
 import './index.less';
 import { useLocale } from '@/locales';
@@ -23,7 +24,9 @@ const Home = () => {
           <div>{intl.formatMessage({ id: 'app.text' })}</div>
           <h1>Vite + React</h1>
           <div className="card">
-            <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+            <Button type="primary" onClick={() => setCount((count) => count + 1)}>
+              count is {count}
+            </Button>
             <p>
               Edit <code>src/App.tsx</code> and save to test HMR
             </p>

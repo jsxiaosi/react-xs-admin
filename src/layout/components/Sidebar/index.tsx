@@ -1,5 +1,5 @@
 import type { MenuProps, SiderProps } from 'antd';
-import { Drawer, Layout, Menu, Image } from 'antd';
+import { theme, Drawer, Layout, Menu, Image } from 'antd';
 import { memo, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useResponsive } from 'ahooks';
@@ -16,6 +16,7 @@ const Sidebar = memo(() => {
   const { collapsed, setAppConfig } = useStoreApp();
   const [menuList, _setMenuList] = useState(routeListToMenu(routeList));
   const [openKeys, setOpenKeys] = useState<string[]>([]);
+  const thme = theme.useToken();
   const responsive = useResponsive();
   const navigate = useNavigate();
 
@@ -44,7 +45,9 @@ const Sidebar = memo(() => {
         <div className="logo">
           <Image width={38} src={logo} preview={false} />
         </div>
-        <div className="name">xiaosiAdmin</div>
+        <div className="name" style={{ color: thme.token.colorText }}>
+          xiaosiAdmin
+        </div>
       </div>
       <Menu
         mode="inline"
@@ -53,6 +56,7 @@ const Sidebar = memo(() => {
         selectedKeys={[pathname]}
         items={menuList as MenuProps['items']}
         onClick={(e) => navigate(e.key)}
+        style={{ border: 'none' }}
       />
     </>
   );
@@ -68,6 +72,7 @@ const Sidebar = memo(() => {
           theme="light"
           collapsed={collapsed}
           onBreakpoint={onBreakpoint}
+          style={{ borderRight: `1px solid ${thme.token.colorBorder}` }}
         >
           {menuRender}
         </Sider>

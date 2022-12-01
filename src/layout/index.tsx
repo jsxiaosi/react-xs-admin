@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Layout } from 'antd';
+import { Layout, theme } from 'antd';
 
 import './index.less';
 import { Outlet } from 'react-router-dom';
@@ -9,9 +9,11 @@ import Navbart from './components/Navbart';
 const { Footer, Content } = Layout;
 
 const LayoutApp: React.FC = () => {
+  const thme = theme.useToken();
+
   const render = () => {
     return (
-      <Layout className="layout">
+      <Layout className="layout" style={{ color: thme.token.colorText }}>
         <Sidebar />
         <Layout>
           <Navbart />

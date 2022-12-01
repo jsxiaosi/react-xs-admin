@@ -5,6 +5,7 @@ import type { LocaleType } from '@/locales';
 export interface AppConfigMode {
   collapsed: boolean;
   locale: LocaleType;
+  themeMode: 'dark' | 'light';
 }
 
 interface appConfig {
@@ -15,6 +16,7 @@ const initialState: appConfig = {
   appConfigMode: {
     collapsed: false,
     locale: 'zh-CN',
+    themeMode: 'light',
   },
 };
 
