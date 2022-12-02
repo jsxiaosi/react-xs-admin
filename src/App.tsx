@@ -14,7 +14,7 @@ import { localeConfig } from './locales';
 import { useStoreApp } from './hooks/setting/useStoreApp';
 
 function App() {
-  const { locale, themeMode } = useStoreApp();
+  const { locale, color, themeMode } = useStoreApp();
 
   const getLocale = useMemo(() => {
     if (locale === 'en-US') {
@@ -30,7 +30,7 @@ function App() {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#409eff',
+          colorPrimary: color || '#409eff',
         },
         algorithm: themeMode === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
       }}

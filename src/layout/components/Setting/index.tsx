@@ -1,6 +1,7 @@
 import { SettingOutlined } from '@ant-design/icons';
 import { Divider, Drawer, theme, Tooltip } from 'antd';
 import { memo, useState } from 'react';
+import ThemeSettings from './ThemeSettings';
 import { useLocale } from '@/locales';
 import './index.less';
 import type { AppConfigMode } from '@/store/modules/app';
@@ -41,7 +42,7 @@ const Setting = memo(() => {
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
       >
-        <div className="setting">
+        <div className="setting" style={{ color: thme.token.colorText }}>
           <Divider>{intl.formatMessage({ id: 'layout.setting.layoutSettings' })}</Divider>
           <div className="sidebar_seting">
             {sidebarSeting.map((i) => {
@@ -66,6 +67,9 @@ const Setting = memo(() => {
               );
             })}
           </div>
+          <Divider>{intl.formatMessage({ id: 'layout.setting.themeSettings' })}</Divider>
+
+          <ThemeSettings />
         </div>
       </Drawer>
     </>
