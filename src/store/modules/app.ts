@@ -6,6 +6,7 @@ export interface AppConfigMode {
   collapsed: boolean;
   locale: LocaleType;
   themeMode: 'dark' | 'light';
+  sidebarMode: 'vertical' | 'horizontal' | 'blend';
 }
 
 interface appConfig {
@@ -17,6 +18,7 @@ const initialState: appConfig = {
     collapsed: false,
     locale: 'zh-CN',
     themeMode: 'light',
+    sidebarMode: 'vertical',
   },
 };
 

@@ -3,7 +3,7 @@ import { Layout, theme } from 'antd';
 
 import './index.less';
 import { Outlet } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
+import SidebarInline from './components/Sidebar/SidebarInline';
 import Navbart from './components/Navbart';
 
 const { Footer, Content } = Layout;
@@ -14,7 +14,7 @@ const LayoutApp: React.FC = () => {
   const render = () => {
     return (
       <Layout className="layout" style={{ color: thme.token.colorText }}>
-        <Sidebar />
+        <SidebarInline />
         <Layout>
           <Navbart />
           <Content>
