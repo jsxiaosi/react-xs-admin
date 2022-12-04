@@ -4,6 +4,7 @@ import modules from './modules';
 import { handleRouteList } from './utils';
 import Layout from '@/layout';
 const ErrorPage403 = lazy(() => import('@/views/error/403'));
+const Login = lazy(() => import('@/views/Login'));
 
 export default createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export default createBrowserRouter([
       },
       ...handleRouteList(modules),
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ]);
 // export default createBrowserRouter([

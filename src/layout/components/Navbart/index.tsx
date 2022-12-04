@@ -6,7 +6,7 @@ import { useResponsive } from 'ahooks';
 import Setting from '../Setting';
 import NavSidebar from '../Sidebar/NavSidebar';
 import AppLogo from '../AppLogo';
-import Locale from '@/components/Locale';
+import AppLocale from '@/components/AppLocale';
 import { useStoreApp } from '@/hooks/setting/useStoreApp';
 import AppTheme from '@/components/AppTheme';
 
@@ -49,7 +49,7 @@ const Navbart = memo(() => {
 
           <div className="layout-header-right">
             <AppTheme />
-            <Locale />
+            <AppLocale />
             <Setting />
           </div>
         </div>

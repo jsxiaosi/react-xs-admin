@@ -25,7 +25,7 @@ const Locale = memo(() => {
       placement="bottom"
       trigger={['click']}
     >
-      <span>
+      <span style={{ fontSize: '1em' }}>
         <SvgIcon name="locales" />
       </span>
     </Dropdown>
