@@ -20,7 +20,6 @@ const Login = memo(() => {
   const navigate = useNavigate();
 
   const onLogin = async (): Promise<void> => {
-    console.log('??????');
     const res = await getUserInfo(user, pwd);
     if (res.code === 1) {
       setStorage<UseInfoType>('userInfo', res.data);

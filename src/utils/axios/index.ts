@@ -2,11 +2,9 @@ import { isString } from 'lodash-es';
 import { defineMessages } from 'react-intl';
 import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 import { iAxios } from './iAxios';
-// import { checkStatus } from './axiosStatus';
+import { checkStatus } from './axiosStatus';
 import { errorData } from './errorConfig';
-// import { useMessage } from '@/hooks/web/useMessage';
-
-// const { createErrorModal, createErrorMsg } = useMessage();
+import { createErrorModal, createErrorMsg } from '@/hooks/web/useMessage';
 
 /**
  * @description:一下所有拦截器请根据自身使用场景更改
@@ -34,9 +32,9 @@ const interceptor: AxiosInterceptor = {
           }),
         );
         if (errorMessageMode === 'modal') {
-          // createErrorModal(data.message);
+          createErrorModal(data.message);
         } else if (errorMessageMode === 'message') {
-          // createErrorMsg(data.message);
+          createErrorMsg(data.message);
         }
         return errorData(res);
       } else {
@@ -102,9 +100,9 @@ const interceptor: AxiosInterceptor = {
    * @description: 响应拦截器错误处理
    */
   responseInterceptorsCatch: (error: any) => {
-    // const { response, message, config } = error || {};
-    // const errorMessageMode = config.requestOptions.errorMessageMode || 'none';
-    // checkStatus(response ? response.status : 404, message, errorMessageMode);
+    const { response, message, config } = error || {};
+    const errorMessageMode = config.requestOptions.errorMessageMode || 'none';
+    checkStatus(response ? response.status : 404, message, errorMessageMode);
     return error;
   },
 };

@@ -10,13 +10,14 @@ import 'antd/dist/reset.css';
 import { IntlProvider } from 'react-intl';
 import { useMemo } from 'react';
 import router from './router';
-import { localeConfig } from './locales';
+import { localeConfig, setIntl } from './locales';
 import { useStoreApp } from './hooks/setting/useStoreApp';
 
 function App() {
   const { locale, color, themeMode } = useStoreApp();
 
   const getLocale = useMemo(() => {
+    setIntl(locale);
     if (locale === 'en-US') {
       dayjs.locale('en');
       return enUS;
