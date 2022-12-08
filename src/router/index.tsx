@@ -1,22 +1,25 @@
 import { lazy } from 'react';
-import { createBrowserRouter, redirect } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import modules from './modules';
 import { handleRouteList } from './utils';
 import Layout from '@/layout';
+import Authority from '@/layout/Authority';
 const ErrorPage403 = lazy(() => import('@/views/error/403'));
 const Login = lazy(() => import('@/views/Login'));
 
 export default createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <Authority>
+        <Layout />
+      </Authority>
+    ),
     errorElement: <ErrorPage403 />,
     children: [
       {
-        index: true,
-        loader() {
-          return redirect('/home');
-        },
+        path: '',
+        element: <Navigate to="home" />,
       },
       ...handleRouteList(modules),
     ],

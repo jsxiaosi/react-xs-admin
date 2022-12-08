@@ -8,7 +8,7 @@ import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
 import 'antd/dist/reset.css';
 import { IntlProvider } from 'react-intl';
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import router from './router';
 import { localeConfig, setIntl } from './locales';
 import { useStoreApp } from './hooks/setting/useStoreApp';
@@ -38,7 +38,9 @@ function App() {
       locale={getLocale}
     >
       <IntlProvider locale={locale} messages={localeConfig[locale]}>
-        <RouterProvider router={router} />
+        <Suspense>
+          <RouterProvider router={router} />
+        </Suspense>
       </IntlProvider>
     </ConfigProvider>
   );
