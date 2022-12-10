@@ -4,9 +4,9 @@ import { memo, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useResponsive } from 'ahooks';
 import AppLogo from '../../AppLogo';
-import routeList from '@/router/modules/index';
 import './index.less';
-import { findRouteByPath, getParentPaths, routeListToMenu } from '@/router/utils';
+import { useMenuList } from '../hooks/useMenuList';
+import { findRouteByPath, getParentPaths } from '@/router/utils';
 import { useStoreApp } from '@/hooks/setting/useStoreApp';
 
 const { Sider } = Layout;
@@ -14,11 +14,11 @@ const { Sider } = Layout;
 const Sidebar = memo(() => {
   const { pathname } = useLocation();
   const { collapsed, sidebarMode, setAppConfig } = useStoreApp();
-  const [menuList, _setMenuList] = useState(routeListToMenu(routeList));
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const thme = theme.useToken();
   const responsive = useResponsive();
   const navigate = useNavigate();
+  const { menuList } = useMenuList();
 
   useEffect(() => {
     if (!collapsed) {
@@ -26,7 +26,7 @@ const Sidebar = memo(() => {
     } else {
       setOpenKeys([]);
     }
-  }, [collapsed]);
+  }, [collapsed, pathname]);
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     setOpenKeys(keys);
@@ -55,7 +55,7 @@ const Sidebar = memo(() => {
     }
   }, [sidebarMode, pathname]);
 
-  const menuRender = (
+  const MenuRender = (
     <>
       <AppLogo />
       <Menu
@@ -85,7 +85,7 @@ const Sidebar = memo(() => {
               onBreakpoint={onBreakpoint}
               style={{ borderRight: `1px solid ${thme.token.colorBorder}` }}
             >
-              {menuRender}
+              {MenuRender}
             </Sider>
           ) : (
             <Drawer
@@ -97,7 +97,7 @@ const Sidebar = memo(() => {
               onClose={() => setAppConfig({ collapsed: !collapsed })}
               open={!collapsed}
             >
-              <div className="sidebar">{menuRender}</div>
+              <div className="sidebar">{MenuRender}</div>
             </Drawer>
           )}
         </>

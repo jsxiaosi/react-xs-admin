@@ -10,6 +10,7 @@ import { addClass, removeClass } from '@/utils/operate';
 import type { UseInfoType } from '@/server/useInfo';
 import { getUserInfo } from '@/server/useInfo';
 import { setStorage } from '@/utils/storage';
+import { initAsyncRoute } from '@/router/utils';
 
 const Login = memo(() => {
   const thme = theme.useToken();
@@ -22,8 +23,9 @@ const Login = memo(() => {
   const onLogin = async (): Promise<void> => {
     const res = await getUserInfo(user, pwd);
     if (res.code === 1) {
+      await initAsyncRoute(res.data.power);
       setStorage<UseInfoType>('userInfo', res.data);
-      navigate('/');
+      navigate('/home');
     }
   };
 

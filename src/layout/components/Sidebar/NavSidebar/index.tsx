@@ -2,17 +2,16 @@ import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { memo, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getParentPaths, routeListToMenu } from '@/router/utils';
-import routeList from '@/router/modules/index';
+import { useMenuList } from '../hooks/useMenuList';
+import { getParentPaths } from '@/router/utils';
 import { useStoreApp } from '@/hooks/setting/useStoreApp';
 
 const NavSidebar = memo(() => {
-  const [menuList, _setMenuList] = useState(routeListToMenu(routeList));
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const { sidebarMode } = useStoreApp();
-
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { menuList } = useMenuList();
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     setOpenKeys(keys);

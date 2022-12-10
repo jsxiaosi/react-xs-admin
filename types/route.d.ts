@@ -8,6 +8,7 @@ export type MenuItem = {
   icon?: React.ReactNode;
   children?: MenuItem[];
   type?: 'group';
+  whiteList?: boolean;
 };
 
 export type RouteList = Omit<RouteObject, 'children'> & {

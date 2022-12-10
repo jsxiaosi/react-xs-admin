@@ -5,8 +5,9 @@ import type { RouteList } from '#/route';
 const Home = lazy(() => import('@/views/Home'));
 const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
 const Menu1_2 = lazy(() => import('@/views/Nested/Menu1/Menu1-2'));
+const UseList = lazy(() => import('@/views/Power/UseList'));
 
-const routeList: RouteList[] = [
+const defaultRoute: RouteList[] = [
   {
     path: '/home',
     id: 'Home',
@@ -41,6 +42,20 @@ const routeList: RouteList[] = [
       },
     ],
   },
+  {
+    path: '/power',
+    id: 'Power',
+    redirect: '/Power/use_list',
+    meta: { label: '嵌套页面', icon: <HomeOutlined /> },
+    children: [
+      {
+        path: 'use_list',
+        id: 'UseList',
+        element: <UseList />,
+        meta: { label: 'uselist' },
+      },
+    ],
+  },
 ];
 
-export default routeList;
+export default defaultRoute;

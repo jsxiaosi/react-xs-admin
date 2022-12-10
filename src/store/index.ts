@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import appReducer from './modules/app';
+import routeReducer from './modules/route';
 
 const store = configureStore({
   reducer: {
     app: appReducer,
+    route: routeReducer,
   },
 });
 

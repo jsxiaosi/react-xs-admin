@@ -6,12 +6,12 @@ import store from './store';
 import './index.css';
 import 'virtual:svg-icons-register';
 
+const routeDOM = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 const RootRender = (
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(RootRender);
+routeDOM.render(RootRender);
