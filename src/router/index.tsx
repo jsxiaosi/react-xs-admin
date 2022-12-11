@@ -6,6 +6,13 @@ import Authority from '@/layout/Authority';
 const ErrorPage403 = lazy(() => import('@/views/core/error/403'));
 const Login = lazy(() => import('@/views/Login'));
 
+export const errorPage = [
+  {
+    path: '*',
+    element: <ErrorPage403 />,
+  },
+];
+
 export const baseRouter: RouteObject[] = [
   {
     path: '/',
@@ -15,12 +22,7 @@ export const baseRouter: RouteObject[] = [
       </Authority>
     ),
     errorElement: <ErrorPage403 />,
-    children: [
-      {
-        path: '*',
-        element: <ErrorPage403 />,
-      },
-    ],
+    children: [...errorPage],
   },
   {
     path: '/login',

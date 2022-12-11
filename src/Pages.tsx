@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import { Navigate, useRoutes } from 'react-router-dom';
 import { useState, useEffect, memo } from 'react';
-import { baseRouter } from './router';
+import { baseRouter, errorPage } from './router';
 import { useAppSelector } from './store/hooks';
 import { handlePowerRoute, handleRouteList } from './router/utils';
 
@@ -18,7 +18,7 @@ const Pages = memo(() => {
         element: <Navigate to={routerList[0].path || ''} />,
       });
     }
-    return routerList;
+    return [...routerList, ...errorPage];
   };
 
   // 更新路由列表
@@ -27,12 +27,14 @@ const Pages = memo(() => {
       baseRouter.map((i) => {
         const routeItem = i;
         if (routeItem.path === '/') {
-          routeItem.children?.push(...handleRedirect());
+          routeItem.children = handleRedirect();
         }
         return routeItem;
       }),
     );
   }, [asyncRouter]);
+
+  console.log('route', route);
 
   const routeElemt = useRoutes(route);
 

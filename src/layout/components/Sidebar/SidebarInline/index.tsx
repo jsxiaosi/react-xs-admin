@@ -53,7 +53,7 @@ const Sidebar = memo(() => {
     } else {
       return menuList;
     }
-  }, [sidebarMode, pathname]);
+  }, [sidebarMode, pathname, menuList]);
 
   const MenuRender = (
     <>
