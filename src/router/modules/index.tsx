@@ -1,6 +1,7 @@
 import { HomeOutlined } from '@ant-design/icons';
 import { lazy } from 'react';
-import type { RouteList } from '#/route';
+import type { RouteList } from '@/router/route';
+import { FormattedMessage } from '@/locales';
 
 const Home = lazy(() => import('@/views/Home'));
 const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
@@ -12,13 +13,13 @@ const defaultRoute: RouteList[] = [
     path: '/home',
     id: 'Home',
     element: <Home />,
-    meta: { label: '首页', icon: <HomeOutlined /> },
+    meta: { label: FormattedMessage({ id: 'layout.memu.home' }), icon: <HomeOutlined /> },
   },
   {
     path: '/nested',
     id: 'Nested',
     redirect: '/nested/menu1',
-    meta: { label: '嵌套页面', icon: <HomeOutlined /> },
+    meta: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <HomeOutlined /> },
     children: [
       {
         path: 'menu1',

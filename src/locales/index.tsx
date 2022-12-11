@@ -10,10 +10,10 @@ export const localeConfig = {
 
 export type LocaleType = keyof typeof localeConfig;
 
-type Id = keyof typeof zh_CN;
+export type LocaleId = keyof typeof zh_CN;
 
 interface Props extends MessageDescriptor {
-  id: Id;
+  id: LocaleId;
 }
 
 export const FormattedMessage: React.FC<Props> = (props) => {
@@ -66,7 +66,7 @@ export const getIntl = (locale?: LocaleType, changeIntl?: boolean) => {
   });
 };
 
-export const getIntlFormatMessage = (id: Id) => {
+export const getIntlText = (id: LocaleId) => {
   return getIntl().formatMessage({ id });
 };
 

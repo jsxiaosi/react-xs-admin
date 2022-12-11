@@ -34,8 +34,6 @@ const Pages = memo(() => {
     );
   }, [asyncRouter]);
 
-  console.log('route', route);
-
   const routeElemt = useRoutes(route);
 
   return <>{routeElemt}</>;

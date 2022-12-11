@@ -3,7 +3,7 @@ import { Navigate, createBrowserRouter, redirect } from 'react-router-dom';
 import type { Key } from 'react';
 import { cloneDeep } from 'lodash-es';
 import defaultRoute from './modules';
-import type { MenuItem, RouteList } from '#/route';
+import type { MenuItem, RouteList } from '@/router/route';
 import type { RouteDataItemType } from '@/server/route';
 import { getRouteApi } from '@/server/route';
 import { setStoreAsyncRouter } from '@/store/modules/route';

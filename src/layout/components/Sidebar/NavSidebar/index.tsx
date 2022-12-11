@@ -20,7 +20,6 @@ const NavSidebar = memo(() => {
   const selectOpenKey = useMemo(() => {
     if (sidebarMode === 'blend') {
       const routeKey = getParentPaths(pathname, menuList);
-      console.log(pathname, menuList);
       return [routeKey[0]];
     } else {
       return [pathname];
@@ -40,7 +39,7 @@ const NavSidebar = memo(() => {
     } else {
       return menuList;
     }
-  }, [sidebarMode]);
+  }, [sidebarMode, menuList]);
 
   return (
     <Menu
