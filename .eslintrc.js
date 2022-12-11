@@ -46,5 +46,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/self-closing-comp': 1,
     'react/jsx-key': 1,
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
 };

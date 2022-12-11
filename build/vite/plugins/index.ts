@@ -8,7 +8,14 @@ import { configSvgPlugin } from './svg';
 export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   const vitePlugins: PluginOption[] = [];
 
-  vitePlugins.push(react());
+  vitePlugins.push(
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
+  );
 
   vitePlugins.push(configSvgPlugin());
 

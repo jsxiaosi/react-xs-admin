@@ -1,7 +1,10 @@
 import { SettingOutlined } from '@ant-design/icons';
 import { Divider, Drawer, theme, Tooltip } from 'antd';
 import { memo, useState } from 'react';
+import classNames from 'classnames';
+
 import ThemeSettings from './ThemeSettings';
+import { getSidebarMode } from './style';
 import { useLocale } from '@/locales';
 import './index.less';
 import type { AppConfigMode } from '@/store/modules/app';
@@ -44,24 +47,18 @@ const Setting = memo(() => {
       >
         <div className="setting" style={{ color: thme.token.colorText }}>
           <Divider>{intl.formatMessage({ id: 'layout.setting.layoutSettings' })}</Divider>
-          <div className="sidebar_seting">
+          <div className="sidebar_seting" css={getSidebarMode(thme.token)}>
             {sidebarSeting.map((i) => {
               return (
                 <Tooltip placement="bottom" title={i.label} key={i.value}>
                   <div
-                    className="sidebar_mode cursor"
-                    style={{
-                      border:
-                        sidebarMode === i.value ? `2px solid ${thme.token.colorPrimary}` : 'none',
-                    }}
+                    className={classNames('cursor', 'sidebar_mode', {
+                      'sidebar_mode-select': sidebarMode === i.value,
+                    })}
                     onClick={() => setAppConfig({ sidebarMode: i.value })}
                   >
-                    <div
-                      style={{ background: i.value === 'blend' ? '' : thme.token.colorPrimary }}
-                    />
-                    <div
-                      style={{ background: i.value === 'blend' ? thme.token.colorPrimary : '' }}
-                    />
+                    <div />
+                    <div />
                   </div>
                 </Tooltip>
               );
