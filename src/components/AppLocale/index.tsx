@@ -3,10 +3,12 @@ import { Dropdown } from 'antd';
 import { memo, useMemo } from 'react';
 import SvgIcon from '../SvgIcon';
 import type { LocaleType } from '@/locales';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppLocale } from '@/store/modules/app';
 
 const Locale = memo(() => {
-  const { locale, setAppConfig } = useStoreApp();
+  const dispatch = useAppDispatch();
+  const locale = useAppSelector((state) => state.app.locale);
 
   const menuItems: MenuProps['items'] = useMemo(() => {
     return [
@@ -16,7 +18,7 @@ const Locale = memo(() => {
   }, [locale]);
 
   const menuClick: MenuProps['onClick'] = (info) => {
-    setAppConfig({ locale: info.key as LocaleType });
+    dispatch(setAppLocale(info.key as LocaleType));
   };
 
   return (

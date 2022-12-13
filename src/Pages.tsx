@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router-dom';
-import { Navigate, useRoutes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { useState, useEffect, memo } from 'react';
 import { baseRouter, errorPage } from './router';
 import { useAppSelector } from './store/hooks';
@@ -34,9 +34,13 @@ const Pages = memo(() => {
     );
   }, [asyncRouter]);
 
-  const routeElemt = useRoutes(route);
+  const routeElemt = createBrowserRouter(route);
 
-  return <>{routeElemt}</>;
+  return <RouterProvider router={routeElemt} />;
+
+  // const routeElemt = useRoutes(route);
+
+  // return <>{routeElemt}</>;
 });
 
 export default Pages;

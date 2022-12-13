@@ -29,7 +29,7 @@ const power = [
 
 const adminRoute = [
   {
-    path: '/Power',
+    path: '/power',
     id: 'Power',
     children: [
       {

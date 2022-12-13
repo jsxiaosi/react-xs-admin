@@ -4,11 +4,12 @@ import { memo, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMenuList } from '../hooks/useMenuList';
 import { getParentPaths } from '@/router/utils';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
+import { useAppSelector } from '@/store/hooks';
 
 const NavSidebar = memo(() => {
   const [openKeys, setOpenKeys] = useState<string[]>([]);
-  const { sidebarMode } = useStoreApp();
+  const sidebarMode = useAppSelector((state) => state.app.sidebarMode);
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { menuList } = useMenuList();

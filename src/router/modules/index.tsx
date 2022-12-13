@@ -46,7 +46,7 @@ const defaultRoute: RouteList[] = [
   {
     path: '/power',
     id: 'Power',
-    redirect: '/Power/use_list',
+    redirect: '/power/use_list',
     meta: { label: '嵌套页面', icon: <HomeOutlined /> },
     children: [
       {

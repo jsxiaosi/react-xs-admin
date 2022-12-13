@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider, Spin, theme } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -9,8 +8,8 @@ import 'antd/dist/reset.css';
 import { IntlProvider } from 'react-intl';
 import { Suspense, useEffect, useMemo } from 'react';
 
+import { shallowEqual } from 'react-redux';
 import { localeConfig, setIntl } from './locales';
-import { useStoreApp } from './hooks/setting/useStoreApp';
 import Pages from './Pages';
 import { useAppSelector } from './store/hooks';
 import { getStorage } from './utils/storage';
@@ -18,7 +17,14 @@ import type { UseInfoType } from './server/useInfo';
 import { initAsyncRoute } from './router/utils';
 
 function App() {
-  const { locale, color, themeMode } = useStoreApp();
+  const { locale, color, themeMode } = useAppSelector(
+    (state) => ({
+      locale: state.app.locale,
+      color: state.app.color,
+      themeMode: state.app.themeMode,
+    }),
+    shallowEqual,
+  );
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
   const userInfo = getStorage<UseInfoType>('userInfo');
 
@@ -60,11 +66,11 @@ function App() {
         {loading ? (
           <Spin size="large" />
         ) : (
-          <BrowserRouter>
-            <Suspense fallback={<Spin size="large" />}>
-              <Pages />
-            </Suspense>
-          </BrowserRouter>
+          // <BrowserRouter>
+          <Suspense fallback={<Spin size="large" />}>
+            <Pages />
+          </Suspense>
+          // </BrowserRouter>
         )}
       </IntlProvider>
     </ConfigProvider>

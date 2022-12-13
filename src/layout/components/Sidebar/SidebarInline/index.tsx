@@ -3,17 +3,26 @@ import { theme, Drawer, Layout, Menu } from 'antd';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useResponsive } from 'ahooks';
+import { shallowEqual } from 'react-redux';
 import AppLogo from '../../AppLogo';
 import './index.less';
 import { useMenuList } from '../hooks/useMenuList';
 import { findRouteByPath, getParentPaths } from '@/router/utils';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppCollapsed } from '@/store/modules/app';
 
 const { Sider } = Layout;
 
 const Sidebar = memo(() => {
   const { pathname } = useLocation();
-  const { collapsed, sidebarMode, setAppConfig } = useStoreApp();
+  const dispatch = useAppDispatch();
+  const { collapsed, sidebarMode } = useAppSelector(
+    (state) => ({
+      collapsed: state.app.collapsed,
+      sidebarMode: state.app.sidebarMode,
+    }),
+    shallowEqual,
+  );
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const thme = theme.useToken();
   const responsive = useResponsive();
@@ -36,7 +45,7 @@ const Sidebar = memo(() => {
     let collapsedValue = collapsed;
     if (broken) collapsedValue = true;
     else collapsedValue = false;
-    setAppConfig({ collapsed: collapsedValue });
+    dispatch(setAppCollapsed(collapsedValue));
   };
 
   const menuItems = useMemo(() => {
@@ -94,7 +103,7 @@ const Sidebar = memo(() => {
               destroyOnClose={false}
               bodyStyle={{ padding: 0, height: '100%' }}
               closable={false}
-              onClose={() => setAppConfig({ collapsed: !collapsed })}
+              onClose={() => dispatch(setAppCollapsed(!collapsed))}
               open={!collapsed}
             >
               <div className="sidebar">{MenuRender}</div>

@@ -1,10 +1,12 @@
 import { memo } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
 import './index.less';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppColor } from '@/store/modules/app';
 
 const ThemeSettings = memo(() => {
-  const { color, setAppConfig } = useStoreApp();
+  const dispatch = useAppDispatch();
+  const color = useAppSelector((state) => state.app.color);
 
   const colorList = ['#722ed1', '#eb2f96', '#52c41a', '#13c2c2', '#fadb14', '#fa541c', '#f5222d'];
 
@@ -18,7 +20,7 @@ const ThemeSettings = memo(() => {
               style={{ backgroundColor: i }}
               key={i}
               onClick={() => {
-                setAppConfig({ color: i });
+                dispatch(setAppColor(i));
               }}
             >
               {color === i && <CheckOutlined />}

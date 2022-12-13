@@ -3,17 +3,26 @@ import { Layout, theme } from 'antd';
 import './index.less';
 import { memo } from 'react';
 import { useResponsive } from 'ahooks';
+import { shallowEqual } from 'react-redux';
 import Setting from '../Setting';
 import NavSidebar from '../Sidebar/NavSidebar';
 import AppLogo from '../AppLogo';
 import AppLocale from '@/components/AppLocale';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
 import AppTheme from '@/components/AppTheme';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppCollapsed } from '@/store/modules/app';
 
 const { Header } = Layout;
 
 const Navbart = memo(() => {
-  const { collapsed, sidebarMode, setAppConfig } = useStoreApp();
+  const dispatch = useAppDispatch();
+  const { collapsed, sidebarMode } = useAppSelector(
+    (state) => ({
+      collapsed: state.app.collapsed,
+      sidebarMode: state.app.sidebarMode,
+    }),
+    shallowEqual,
+  );
   const thme = theme.useToken();
   const responsive = useResponsive();
 
@@ -34,7 +43,7 @@ const Navbart = memo(() => {
                 <div
                   className="layout-header-collapsed"
                   onClick={() => {
-                    setAppConfig({ collapsed: !collapsed });
+                    dispatch(setAppCollapsed(!collapsed));
                   }}
                 >
                   {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}

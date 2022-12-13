@@ -8,11 +8,13 @@ import { getSidebarMode } from './style';
 import { useLocale } from '@/locales';
 import './index.less';
 import type { AppConfigMode } from '@/store/modules/app';
-import { useStoreApp } from '@/hooks/setting/useStoreApp';
+import { setAppSidebarMode } from '@/store/modules/app';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 const Setting = memo(() => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const { sidebarMode, setAppConfig } = useStoreApp();
+  const dispatch = useAppDispatch();
+  const sidebarMode = useAppSelector((state) => state.app.sidebarMode);
 
   const thme = theme.useToken();
 
@@ -55,7 +57,7 @@ const Setting = memo(() => {
                     className={classNames('cursor', 'sidebar_mode', {
                       'sidebar_mode-select': sidebarMode === i.value,
                     })}
-                    onClick={() => setAppConfig({ sidebarMode: i.value })}
+                    onClick={() => dispatch(setAppSidebarMode(i.value))}
                   >
                     <div />
                     <div />
