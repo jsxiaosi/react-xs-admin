@@ -4,6 +4,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '@/layout';
 import Authority from '@/layout/Authority';
 const ErrorPage403 = lazy(() => import('@/views/core/error/403'));
+const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
+
 const Login = lazy(() => import('@/views/Login'));
 
 export const errorPage = [
@@ -21,7 +23,7 @@ export const baseRouter: RouteObject[] = [
         <Layout />
       </Authority>
     ),
-    errorElement: <ErrorPage403 />,
+    errorElement: <ErrorElement pageType="Layout" />,
     children: [...errorPage],
   },
   {

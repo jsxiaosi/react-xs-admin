@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import { Navigate, createBrowserRouter, redirect } from 'react-router-dom';
 import type { Key } from 'react';
+import { lazy } from 'react';
 import { cloneDeep } from 'lodash-es';
 import defaultRoute from './modules';
 import type { MenuItem, RouteList } from '@/router/route';
@@ -8,6 +9,7 @@ import type { RouteDataItemType } from '@/server/route';
 import { getRouteApi } from '@/server/route';
 import { setStoreAsyncRouter } from '@/store/modules/route';
 import store from '@/store';
+const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
 
 // import { HomeOutlined } from '@ant-design/icons';
 
@@ -51,6 +53,10 @@ export function handleRouteList(list: RouteList[]): RouteObject[] {
       id: i.id,
       element: i.element,
     };
+
+    if (i.element) {
+      item.errorElement = <ErrorElement pageType="Page" />;
+    }
 
     if (i.children) {
       item.children = handleRouteList(i.children);

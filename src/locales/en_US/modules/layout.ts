@@ -12,4 +12,5 @@ export default {
   'layout.error.403': 'Sorry, you are not authorized to access this page.',
   'layout.error.404': 'Sorry, the page you visited does not exist.',
   'layout.error.500': 'Sorry, something went wrong.',
+  'layout.error.element.content': 'The content you page has the following error:',
 };
