@@ -1,4 +1,4 @@
-import { HomeOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import { lazy } from 'react';
 import type { RouteList } from '@/router/route';
 import { FormattedMessage } from '@/locales';
@@ -19,13 +19,13 @@ const defaultRoute: RouteList[] = [
     path: '/nested',
     id: 'Nested',
     redirect: '/nested/menu1',
-    meta: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <HomeOutlined /> },
+    meta: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <AppstoreOutlined /> },
     children: [
       {
         path: 'menu1',
         id: 'Menu1',
         redirect: '/nested/menu1/menu1-1',
-        meta: { label: 'menu-1', icon: <HomeOutlined /> },
+        meta: { label: 'menu-1' },
         children: [
           {
             path: 'menu1-1',
@@ -47,13 +47,13 @@ const defaultRoute: RouteList[] = [
     path: '/power',
     id: 'Power',
     redirect: '/power/use_list',
-    meta: { label: '嵌套页面', icon: <HomeOutlined /> },
+    meta: { label: '系统管理', icon: <UserSwitchOutlined /> },
     children: [
       {
         path: 'use_list',
         id: 'UseList',
         element: <UseList />,
-        meta: { label: 'uselist' },
+        meta: { label: '权限切换' },
       },
     ],
   },

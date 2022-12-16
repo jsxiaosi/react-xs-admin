@@ -9,4 +9,15 @@ body {
 :root {
   width: 100%;
   height: 100%;
+  transition: background 0.3s, width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cursor {
+  cursor: pointer;
 }
