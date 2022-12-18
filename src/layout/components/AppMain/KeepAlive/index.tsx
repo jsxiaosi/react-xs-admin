@@ -6,7 +6,6 @@ import { useAppSelector } from '@/store/hooks';
 import LayoutSpin from '@/components/LayoutSpin';
 
 interface Props extends ComponentReactElement {
-  include?: Array<string>;
   maxLen?: number;
 }
 export const KeepAlive = memo(({ maxLen = 10 }: Props) => {

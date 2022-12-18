@@ -6,7 +6,11 @@ import { findRouteByPath, routeListToMenu } from '@/router/utils';
 import { setStoreMultiTabs } from '@/store/modules/route';
 import defaultRoute from '@/router/modules';
 
-const TabsPage = memo(() => {
+interface Props {
+  maxLen?: number;
+}
+
+const TabsPage = memo((_props: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -67,6 +71,7 @@ const TabsPage = memo(() => {
   return (
     <Tabs
       hideAdd
+      size="small"
       activeKey={location.pathname}
       type={tabsItem.length > 1 ? 'editable-card' : 'card'}
       onChange={(key) => navigate(key)}

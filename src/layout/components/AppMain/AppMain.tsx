@@ -10,12 +10,13 @@ const { Content } = Layout;
 
 const AppMain = memo(() => {
   const isKeepAlive = true;
+  const maxLen = 10;
   return (
     <Content css={getAppMainStyle()}>
-      <TabsPage />
+      <TabsPage maxLen={maxLen} />
       <div className="main-content">
         {isKeepAlive ? (
-          <KeepAlive />
+          <KeepAlive maxLen={maxLen} />
         ) : (
           <Suspense fallback={<LayoutSpin />}>
             <Outlet />
