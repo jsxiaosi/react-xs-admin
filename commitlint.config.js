@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const scopes = fs.readdirSync(path.resolve(__dirname, 'src'));
+const scopes = fs.readdirSync(path.resolve(__dirname, 'src')).map((i) => i.toLowerCase());
 
 const gitStatus = execSync('git status --porcelain || true').toString().trim().split('\n');
 

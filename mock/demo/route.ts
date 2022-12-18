@@ -43,7 +43,7 @@ const adminRoute = [
 export default [
   {
     url: '/mock_api/getRoute',
-    timeout: 3000,
+    timeout: 0,
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
       const { name } = body;
