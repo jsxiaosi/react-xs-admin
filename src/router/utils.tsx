@@ -5,8 +5,8 @@ import { lazy } from 'react';
 import { cloneDeep } from 'lodash-es';
 import defaultRoute from './modules';
 import type { MenuItem, RouteList } from '@/router/route';
-import type { RouteDataItemType } from '@/server/route';
 import { getRouteApi } from '@/server/route';
+import type { AsyncRouteType } from '@/store/modules/route';
 import { setStoreAsyncRouter } from '@/store/modules/route';
 import store from '@/store';
 const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
@@ -22,7 +22,7 @@ export async function initAsyncRoute(power: string) {
 }
 
 export function handlePowerRoute(
-  dataRouter: RouteDataItemType[],
+  dataRouter: AsyncRouteType[],
   routerList: RouteList[] = defaultRoute,
 ) {
   const newRouteList: RouteList[] = [];
@@ -137,4 +137,57 @@ export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null 
     }
     return null;
   }
+}
+
+// 拼接路径 伪path resolve
+function pathResolve(...paths: string[]) {
+  let resolvePath = '';
+  let isAbsolutePath = false;
+  for (let i = paths.length - 1; i > -1; i--) {
+    const path = paths[i];
+    if (isAbsolutePath) {
+      break;
+    }
+    if (!path) {
+      continue;
+    }
+    resolvePath = path + '/' + resolvePath;
+    isAbsolutePath = path.charCodeAt(0) === 47;
+  }
+  if (/^\/+$/.test(resolvePath)) {
+    resolvePath = resolvePath.replace(/(\/+)/, '/');
+  } else {
+    resolvePath = resolvePath
+      .replace(/(?!^)\w+\/+\.{2}\//g, '')
+      .replace(/(?!^)\.\//g, '')
+      .replace(/\/+$/, '');
+  }
+  return resolvePath;
+}
+
+// 设置完整路由path,
+export function setUpRoutePath(routeList: AsyncRouteType[], pathName = '') {
+  for (const node of routeList) {
+    if (pathName) {
+      node.path = pathResolve(pathName, node.path || '');
+    }
+    if (node.children && node.children.length) {
+      setUpRoutePath(node.children, node.path);
+    }
+  }
+  return routeList;
+}
+
+// 扁平路由
+export function formatFlatteningRoutes(routesList: AsyncRouteType[]) {
+  if (routesList.length === 0) return routesList;
+  let hierarchyList = routesList;
+  for (let i = 0; i < hierarchyList.length; i++) {
+    if (hierarchyList[i].children) {
+      hierarchyList = hierarchyList
+        .slice(0, i + 1)
+        .concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
+    }
+  }
+  return hierarchyList;
 }

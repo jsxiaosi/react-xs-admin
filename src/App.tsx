@@ -1,4 +1,4 @@
-import { ConfigProvider, Spin, theme } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
@@ -15,6 +15,7 @@ import { useAppSelector } from './store/hooks';
 import { getStorage } from './utils/storage';
 import type { UseInfoType } from './server/useInfo';
 import { initAsyncRoute } from './router/utils';
+import LayoutSpin from './components/LayoutSpin';
 
 function App() {
   const { locale, color, themeMode } = useAppSelector(
@@ -64,10 +65,10 @@ function App() {
     >
       <IntlProvider locale={locale} messages={localeConfig[locale]}>
         {loading ? (
-          <Spin size="large" />
+          <LayoutSpin />
         ) : (
           // <BrowserRouter>
-          <Suspense fallback={<Spin size="large" />}>
+          <Suspense fallback={<LayoutSpin />}>
             <Pages />
           </Suspense>
           // </BrowserRouter>

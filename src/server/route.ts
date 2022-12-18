@@ -1,3 +1,4 @@
+import type { AsyncRouteType } from '@/store/modules/route';
 import { deffHttp } from '@/utils/axios';
 
 enum Api {
@@ -8,11 +9,5 @@ interface Param {
   name: string;
 }
 
-export interface RouteDataItemType {
-  path: string;
-  id: string;
-  children: RouteDataItemType[];
-}
-
 export const getRouteApi = (data: Param) =>
-  deffHttp.post<RouteDataItemType[]>({ url: Api.ROUTE_LIST, data });
+  deffHttp.post<AsyncRouteType[]>({ url: Api.ROUTE_LIST, data });
