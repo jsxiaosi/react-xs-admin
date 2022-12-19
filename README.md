@@ -19,9 +19,9 @@
 
 ## 预览
 
-<img src="https://www.jsxiaosi.com/image/react-xs-admin1.png" width="830px">
+<img src="https://www.jsxiaosi.com/image/react-xs-admin1.png" width="100%">
 
-<img src="https://www.jsxiaosi.com/image/react-xs-admin2.png" width="830px">
+<img src="https://www.jsxiaosi.com/image/react-xs-admin2.png" width="100%">
 
 ## 准备
 
