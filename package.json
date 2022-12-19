@@ -1,6 +1,6 @@
 {
   "name": "react-xs-admin",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "lint:prettier": "prettier --write .",
     "lint:pretty": "pretty-quick --staged",
     "lint:staged": "lint-staged",
+    "log": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "tsc": "tsc --noEmit --skipLibCheck",
     "cz": "czg",
     "prepare": "husky install"
@@ -47,6 +48,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "conventional-changelog-cli": "^2.2.2",
     "crypto-js": "^4.1.1",
     "czg": "^1.3.12",
     "eslint": "^8.0.1",
