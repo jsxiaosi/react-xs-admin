@@ -8,11 +8,11 @@
 
 ## Brief Introduction
 
-The out of the box background template developed based on mainstream technologies such as `React18`,`And Design`,`Vite`, and the built-in internationalization, routing permission control and other solutions can meet the needs of most enterprise management systems!
+The out of the box background template developed based on mainstream technologies such as `React18`,`And Design`,`Vite4`, and the built-in internationalization, routing permission control and other solutions can meet the needs of most enterprise management systems!
 
 ## Characteristic
 
-- **The latest technology stack**: Developed using front-end cutting-edge technologies such as React18/Vite3
+- **The latest technology stack**: Developed using front-end cutting-edge technologies such as React18/Vite4
 
 - **Theme**: configurable theme
 
