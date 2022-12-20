@@ -1205,6 +1205,9 @@ packages:
     engines: { node: '>=6.9.0' }
     peerDependencies:
       '@babel/core': ^7.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
     dependencies:
       '@babel/compat-data': 7.20.1
       '@babel/core': 7.20.5
@@ -1363,6 +1366,9 @@ packages:
     engines: { node: '>=6.9.0' }
     peerDependencies:
       '@babel/core': ^7.0.0-0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
     dependencies:
       '@babel/helper-plugin-utils': 7.20.2
 
@@ -1374,6 +1380,9 @@ packages:
     engines: { node: '>=6.9.0' }
     peerDependencies:
       '@babel/core': ^7.0.0-0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
     dependencies:
       '@babel/core': 7.20.5
       '@babel/helper-plugin-utils': 7.20.2
@@ -1387,6 +1396,9 @@ packages:
     engines: { node: '>=6.9.0' }
     peerDependencies:
       '@babel/core': ^7.0.0-0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
     dependencies:
       '@babel/core': 7.20.5
       '@babel/helper-plugin-utils': 7.20.2
@@ -1710,6 +1722,9 @@ packages:
       }
     peerDependencies:
       '@babel/core': ^7.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
     dependencies:
       '@babel/helper-module-imports': 7.18.6
       '@babel/plugin-syntax-jsx': 7.18.6
@@ -11100,6 +11115,9 @@ packages:
     engines: { node: '>= 10.0.0' }
     peerDependencies:
       rollup: ^2.42.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
     dependencies:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/3.1.0
       '@types/resolve': registry.npmmirror.com/@types/resolve/1.17.1
@@ -11121,6 +11139,9 @@ packages:
     engines: { node: '>= 8.0.0' }
     peerDependencies:
       rollup: ^1.20.0||^2.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
     dependencies:
       '@types/estree': registry.npmmirror.com/@types/estree/0.0.39
       estree-walker: registry.npmmirror.com/estree-walker/1.0.1

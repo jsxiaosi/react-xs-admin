@@ -2,6 +2,7 @@
   "name": "react-xs-admin",
   "version": "0.0.1",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -62,6 +63,14 @@
     "vite": "^4.0.2",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "rollup",
+        "@babel/core"
+      ]
+    }
   },
   "config": {
     "commitizen": {
