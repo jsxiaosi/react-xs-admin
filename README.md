@@ -4,7 +4,7 @@
 </a>
 </div>
 
-**English** | [中文](./README.md)
+**English** | [中文](./README.CH.md)
 
 ## Brief Introduction
 
