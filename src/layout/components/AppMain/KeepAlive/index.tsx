@@ -11,7 +11,7 @@ interface Props extends ComponentReactElement {
 export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
   const ele = useOutlet();
   const location = useLocation();
-  const activeName = location.pathname;
+  const activeName = location.pathname + location.search;
   const multiTabs = useAppSelector((state) => state.route.multiTabs);
   const levelAsyncRouter = useAppSelector((state) => state.route.levelAsyncRouter);
 

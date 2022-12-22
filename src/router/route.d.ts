@@ -10,10 +10,12 @@ export type MenuItem = {
   children?: MenuItem[];
   type?: 'group';
   whiteList?: boolean;
+  hideSidebar?: boolean;
 };
 
 export type RouteList = Omit<RouteObject, 'children'> & {
   redirect?: string;
   children?: RouteList[];
+  alwaysShow?: boolean;
   meta: MenuItem;
 };

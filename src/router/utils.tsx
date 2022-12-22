@@ -80,20 +80,34 @@ export function createRouterList(routeList: RouteObject[]) {
 }
 
 export function routeListToMenu(rtList: RouteList[], path?: React.Key): MenuItem[] {
-  return rtList.map((i: RouteList) => {
+  const menuList: MenuItem[] = [];
+  rtList.forEach((i: RouteList) => {
+    const item = i;
+    if (item.meta.hideSidebar) return;
+
+    if (item.alwaysShow) {
+      if (item.children && item.children[0]) {
+        menuList.push(routeListToMenu([item.children[0]], item.path)[0]);
+        return;
+      }
+    }
+
     let rtItem: MenuItem = {
-      key: i.path,
+      key: item.path,
       label: '',
     };
-    if (path) rtItem.key = `${path}/${i.path}`;
-    if (i.meta) {
-      rtItem = { ...rtItem, label: i.meta.label, icon: i.meta.icon };
+    if (path) rtItem.key = `${path}/${item.path}`;
+
+    rtItem = { ...rtItem, label: item.meta.label, icon: item.meta.icon };
+
+    if (item.children) {
+      rtItem.children = routeListToMenu(item.children, rtItem.key);
     }
-    if (i.children) {
-      rtItem.children = routeListToMenu(i.children, rtItem.key);
-    }
-    return rtItem;
+
+    menuList.push(rtItem);
   });
+
+  return menuList;
 }
 
 // 通过path获取父级路径

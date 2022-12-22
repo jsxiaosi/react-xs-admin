@@ -9,7 +9,7 @@ export interface AsyncRouteType {
 }
 
 export interface MultiTabsType {
-  // label: React.ReactNode;
+  label?: string;
   key: string;
 }
 
@@ -33,8 +33,25 @@ export const routeSlice = createSlice({
       state.asyncRouter = action.payload;
       state.levelAsyncRouter = formatFlatteningRoutes(setUpRoutePath(action.payload));
     },
-    setStoreMultiTabs: (state, action: PayloadAction<MultiTabsType[]>) => {
-      state.multiTabs = action.payload;
+    setStoreMultiTabs: (
+      state,
+      action: PayloadAction<{ type: 'add' | 'delete' | 'update'; tabs: MultiTabsType }>,
+    ) => {
+      const { type, tabs } = action.payload;
+      const tabIndex = state.multiTabs.findIndex((i) => i.key === tabs.key);
+      switch (type) {
+        case 'add':
+          if (tabIndex === -1) state.multiTabs.push(tabs);
+          break;
+        case 'delete':
+          if (tabIndex !== -1) state.multiTabs.splice(tabIndex, 1);
+          break;
+        case 'update':
+          if (tabIndex !== -1) state.multiTabs[tabIndex] = tabs;
+          break;
+        default:
+          break;
+      }
     },
   },
 });

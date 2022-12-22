@@ -1,5 +1,5 @@
-// import react from '@vitejs/plugin-react';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
+// import react from '@vitejs/plugin-react-swc';
 import type { ConfigEnv, PluginOption } from 'vite';
 import { configMockPlugin } from './mock';
 
@@ -12,9 +12,9 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(
     react({
       jsxImportSource: '@emotion/react',
-      // babel: {
-      //   plugins: ['@emotion/babel-plugin'],
-      // },
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
     }),
   );
 

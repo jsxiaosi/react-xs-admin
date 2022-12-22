@@ -20,32 +20,24 @@ const TabsPage = memo((_props: Props) => {
 
   const tabsItem = useMemo(() => {
     return multiTabs.map((i) => {
-      const routeBy = findRouteByPath(i.key, menuList);
+      let routeBy = null;
+      if (!i.label) routeBy = findRouteByPath(i.key, menuList);
       return {
         key: i.key,
-        label: routeBy?.label,
+        label: i.label || routeBy?.label,
       };
     });
   }, [multiTabs]);
 
   const handleTabsList = (pathName: string, type: 'add' | 'delete') => {
-    const oldKeyAliveList = [...multiTabs];
-
-    const tabIndex = oldKeyAliveList.findIndex((i) => i.key === pathName);
-    switch (type) {
-      case 'add':
-        if (tabIndex === -1) {
-          oldKeyAliveList.push({ key: pathName });
-        }
-        break;
-      case 'delete':
-        if (tabIndex !== -1) oldKeyAliveList.splice(tabIndex, 1);
-        break;
-      default:
-        break;
-    }
-
-    dispatch(setStoreMultiTabs(oldKeyAliveList));
+    dispatch(
+      setStoreMultiTabs({
+        type,
+        tabs: {
+          key: pathName,
+        },
+      }),
+    );
   };
 
   const onEdit = (
@@ -65,14 +57,14 @@ const TabsPage = memo((_props: Props) => {
       if (asyncRouter.length) navigate(asyncRouter[0].path);
       return;
     }
-    handleTabsList(location.pathname, 'add');
+    handleTabsList(location.pathname + location.search, 'add');
   }, [location.pathname]);
 
   return (
     <Tabs
       hideAdd
       size="small"
-      activeKey={location.pathname}
+      activeKey={location.pathname + location.search}
       type={tabsItem.length > 1 ? 'editable-card' : 'card'}
       onChange={(key) => navigate(key)}
       onEdit={onEdit}
