@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import ThemeSettings from './ThemeSettings';
 import { getSidebarMode } from './style';
 import { useLocale } from '@/locales';
-import './index.less';
 import type { AppConfigMode } from '@/store/modules/app';
 import { setAppSidebarMode } from '@/store/modules/app';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -47,9 +46,9 @@ const Setting = memo(() => {
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
       >
-        <div className="setting" style={{ color: thme.token.colorText }}>
+        <div className="setting" css={getSidebarMode(thme.token)}>
           <Divider>{intl.formatMessage({ id: 'layout.setting.layoutSettings' })}</Divider>
-          <div className="sidebar_seting" css={getSidebarMode(thme.token)}>
+          <div className="sidebar_seting">
             {sidebarSeting.map((i) => {
               return (
                 <Tooltip placement="bottom" title={i.label} key={i.value}>

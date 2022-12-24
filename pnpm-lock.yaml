@@ -6,6 +6,7 @@ specifiers:
   '@ant-design/icons': ^4.8.0
   '@emotion/babel-plugin': ^11.10.5
   '@emotion/react': ^11.10.5
+  '@emotion/styled': ^11.10.5
   '@jsxiaosi/commitlint-config': ^0.0.13
   '@jsxiaosi/eslint-config-prettier': ^0.0.13
   '@jsxiaosi/eslint-config-react': ^0.0.13
@@ -40,6 +41,7 @@ specifiers:
   react-intl: ^6.2.5
   react-redux: ^8.0.5
   react-router-dom: ^6.5.0
+  redux-persist: ^6.0.0
   sort-by: ^1.2.0
   typescript: ^4.9.4
   vite: ^4.0.2
@@ -51,6 +53,7 @@ dependencies:
   '@ant-design/colors': registry.npmmirror.com/@ant-design/colors/6.0.0
   '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
   '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
+  '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   ahooks: 3.7.3_react@18.2.0
   antd: 5.0.7_biqbaboplfbrettd7655fr4n2y
@@ -67,6 +70,7 @@ dependencies:
   react-intl: 6.2.5_o77wnou4wwnegu5woljtklrzru
   react-redux: registry.npmmirror.com/react-redux/8.0.5_yqqa5ithnjtlkxisuaub7c4kpa
   react-router-dom: 6.5.0_biqbaboplfbrettd7655fr4n2y
+  redux-persist: 6.0.0_react@18.2.0
   sort-by: registry.npmmirror.com/sort-by/1.2.0
 
 devDependencies:
@@ -1765,6 +1769,15 @@ packages:
         integrity: sha512-14FtKiHhy2QoPIzdTcvh//8OyBlknNs2nXRwIhG904opCby3l+9Xaf/wuPvICBF0rc1ZCNBd3nKe9cd2mecVkQ==,
       }
 
+  /@emotion/is-prop-valid/1.2.0:
+    resolution:
+      {
+        integrity: sha512-3aDpDprjM0AwaxGE09bOPkNxHpBd+kA6jty3RnaEXdweX1DF1U3VQpPYb0g1IStAuK7SVQ1cy+bNBBKp4W3Fjg==,
+      }
+    dependencies:
+      '@emotion/memoize': 0.8.0
+    dev: false
+
   /@emotion/memoize/0.8.0:
     resolution:
       {
@@ -1815,6 +1828,33 @@ packages:
       {
         integrity: sha512-zxRBwl93sHMsOj4zs+OslQKg/uhF38MB+OMKoCrVuS0nyTkqnau+BM3WGEoOptg9Oz45T/aIGs1qbVAsEFo3nA==,
       }
+    dev: false
+
+  /@emotion/styled/11.10.5_qvatmowesywn4ye42qoh247szu:
+    resolution:
+      {
+        integrity: sha512-8EP6dD7dMkdku2foLoruPCNkRevzdcBaY6q0l0OsbyJK+x8D9HWjX27ARiSIKNF634hY9Zdoedh8bJCiva8yZw==,
+      }
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@emotion/react': ^11.0.0-rc.0
+      '@types/react': '*'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.1
+      '@emotion/babel-plugin': 11.10.5
+      '@emotion/is-prop-valid': 1.2.0
+      '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
+      '@emotion/serialize': 1.1.1
+      '@emotion/use-insertion-effect-with-fallbacks': 1.0.0_react@18.2.0
+      '@emotion/utils': 1.2.0
+      '@types/react': 18.0.26
+      react: registry.npmmirror.com/react/18.2.0
     dev: false
 
   /@emotion/unitless/0.7.5:
@@ -9396,6 +9436,21 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
+  /redux-persist/6.0.0_react@18.2.0:
+    resolution:
+      {
+        integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==,
+      }
+    peerDependencies:
+      react: '>=16'
+      redux: '>4.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+    dev: false
+
   /redux-thunk/2.4.2_redux@4.2.0:
     resolution:
       {
@@ -14020,7 +14075,7 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.1
+      '@babel/runtime': 7.20.1
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-is: registry.npmmirror.com/react-is/16.13.1

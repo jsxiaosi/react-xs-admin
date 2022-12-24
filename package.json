@@ -21,6 +21,7 @@
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons": "^4.8.0",
     "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.9.1",
     "ahooks": "^3.7.3",
     "antd": "^5.0.7",
@@ -37,6 +38,7 @@
     "react-intl": "^6.2.5",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.5.0",
+    "redux-persist": "^6.0.0",
     "sort-by": "^1.2.0"
   },
   "devDependencies": {

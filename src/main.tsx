@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
-import store from './store';
+import store, { persistor } from './store';
 import './index.css';
 import 'virtual:svg-icons-register';
 
@@ -10,7 +11,9 @@ const routeDOM = ReactDOM.createRoot(document.getElementById('root') as HTMLElem
 
 const RootRender = (
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
 );
 

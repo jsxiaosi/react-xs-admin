@@ -13,20 +13,12 @@ export interface AppConfigMode {
   color: string;
 }
 
-const defaultAppConfig: AppConfigMode = {
+const initialState: AppConfigMode = {
   collapsed: false,
   locale: 'zh-CN',
   themeMode: 'light',
   sidebarMode: 'vertical',
   color: '#409eff',
-};
-
-const localAppConfig = localStorage.getItem('appConfig');
-
-const initialState: AppConfigMode = localAppConfig ? JSON.parse(localAppConfig) : defaultAppConfig;
-
-const setStoreage = (data: AppConfigMode) => {
-  localStorage.setItem('appConfig', JSON.stringify(data));
 };
 
 export const appSlice = createSlice({
@@ -35,23 +27,18 @@ export const appSlice = createSlice({
   reducers: {
     setAppCollapsed: (state, action: PayloadAction<boolean>) => {
       state.collapsed = action.payload;
-      setStoreage(state);
     },
     setAppLocale: (state, action: PayloadAction<LocaleType>) => {
       state.locale = action.payload;
-      setStoreage(state);
     },
     setAppThemeMode: (state, action: PayloadAction<ThemeMode>) => {
       state.themeMode = action.payload;
-      setStoreage(state);
     },
     setAppSidebarMode: (state, action: PayloadAction<SidebarMode>) => {
       state.sidebarMode = action.payload;
-      setStoreage(state);
     },
     setAppColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
-      setStoreage(state);
     },
   },
 });
