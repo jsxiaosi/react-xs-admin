@@ -55,7 +55,6 @@ const defaultRoute: RouteList[] = [
     path: '/power',
     id: 'Power',
     redirect: '/power/use_list',
-    alwaysShow: true,
     meta: { label: '系统管理', icon: <UserSwitchOutlined /> },
     children: [
       {
@@ -69,10 +68,16 @@ const defaultRoute: RouteList[] = [
   {
     path: '/details-page',
     id: 'DetailsPage',
+    redirect: '/details-page/index',
     alwaysShow: false,
-    element: <DetailsPage />,
-    meta: { label: '详情页', icon: <DatabaseOutlined />, whiteList: true },
+    meta: { label: '详情页', whiteList: true },
     children: [
+      {
+        path: 'index',
+        id: 'INDEX',
+        element: <DetailsPage />,
+        meta: { label: '详情页', icon: <DatabaseOutlined /> },
+      },
       {
         path: 'details-info',
         id: 'DetailsInfo',
