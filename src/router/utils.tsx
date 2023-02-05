@@ -85,7 +85,7 @@ export function routeListToMenu(rtList: RouteList[], path?: React.Key): MenuItem
     const item = i;
     if (item.meta.hideSidebar) return;
 
-    if (item.alwaysShow) {
+    if (!item.alwaysShow && item.alwaysShow !== undefined && !item.element) {
       if (item.children && item.children[0]) {
         menuList.push(routeListToMenu([item.children[0]], item.path)[0]);
         return;
@@ -100,7 +100,7 @@ export function routeListToMenu(rtList: RouteList[], path?: React.Key): MenuItem
 
     rtItem = { ...rtItem, label: item.meta.label, icon: item.meta.icon };
 
-    if (item.children) {
+    if (item.children && !item.element) {
       rtItem.children = routeListToMenu(item.children, rtItem.key);
     }
 
