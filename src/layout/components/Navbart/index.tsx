@@ -7,6 +7,7 @@ import { shallowEqual } from 'react-redux';
 import Setting from '../Setting';
 import NavSidebar from '../Sidebar/NavSidebar';
 import AppLogo from '../AppLogo';
+import AppAccount from '../AppAccount';
 import AppLocale from '@/components/AppLocale';
 import AppTheme from '@/components/AppTheme';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -59,6 +60,7 @@ const Navbart = memo(() => {
           <div className="layout-header-right">
             <AppTheme />
             <AppLocale />
+            <AppAccount />
             <Setting />
           </div>
         </div>
