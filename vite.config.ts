@@ -1,6 +1,8 @@
 import type { ConfigEnv, UserConfig } from 'vite';
 import { createViteResolve } from './build/vite/resolve';
 import { createVitePlugins } from './build/vite/plugins';
+import { createViteBuild } from './build/vite/build';
+import { createViteServer } from './build/vite/server';
 
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv): UserConfig => {
@@ -13,8 +15,9 @@ export default (configEnv: ConfigEnv): UserConfig => {
     resolve: createViteResolve(__dirname),
     // 插件配置
     plugins: createVitePlugins(isBuild, configEnv),
-    server: {
-      host: true,
-    },
+    // 打包配置
+    build: createViteBuild(),
+    // 服务配置
+    server: createViteServer(),
   };
 };
