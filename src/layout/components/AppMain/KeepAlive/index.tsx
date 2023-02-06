@@ -1,7 +1,7 @@
 import type { RefObject, ReactNode } from 'react';
 import React, { Suspense, memo, useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useLocation, useOutlet } from 'react-router-dom';
+import { useLocation, useMatches, useOutlet } from 'react-router-dom';
 import { useAppSelector } from '@/store/hooks';
 import LayoutSpin from '@/components/LayoutSpin';
 
@@ -11,9 +11,9 @@ interface Props extends ComponentReactElement {
 export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
   const ele = useOutlet();
   const location = useLocation();
+  const matches = useMatches();
   const activeName = location.pathname + location.search;
   const multiTabs = useAppSelector((state) => state.route.multiTabs);
-  const levelAsyncRouter = useAppSelector((state) => state.route.levelAsyncRouter);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [cacheReactNodes, setCacheReactNodes] = useState<Array<{ name: string; ele?: ReactNode }>>(
@@ -25,7 +25,6 @@ export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
       return;
     }
     const include = multiTabs.map((i) => i.key);
-    const levelRouter = levelAsyncRouter.map((i) => i.path);
     setCacheReactNodes((reactNodes) => {
       // 缓存超过上限的
       if (reactNodes.length >= maxLen) {
@@ -40,20 +39,19 @@ export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
         });
       } else {
         // 权限判断
-        const nodeParom = reactNodes
-          .filter((i) => !levelRouter.includes(i.name))
-          .map((i) => i.name);
-        const reactIndex = reactNodes.findIndex((res) => nodeParom.includes(res.name));
-        if (reactIndex !== -1) reactNodes[reactIndex].ele = ele;
+        const activeRoute = matches.find((i) => i.pathname === activeName);
+        if (!activeRoute?.id || /([0-9]-[0-9])/.test(activeRoute?.id)) {
+          const reactIndex = reactNodes.findIndex((res) => res.name === activeRoute?.pathname);
+          if (reactIndex !== -1) reactNodes[reactIndex].ele = ele;
+        }
       }
-
       // 缓存路由列表和标签页列表同步
       if (include) {
         return reactNodes.filter((i) => include.includes(i.name));
       }
       return reactNodes;
     });
-  }, [activeName, maxLen, multiTabs, levelAsyncRouter]);
+  }, [activeName, maxLen, multiTabs]);
 
   return (
     <>
