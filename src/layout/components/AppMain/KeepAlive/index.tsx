@@ -51,7 +51,7 @@ export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
       }
       return reactNodes;
     });
-  }, [activeName, maxLen, multiTabs]);
+  }, [activeName, maxLen, multiTabs, matches]);
 
   return (
     <>
