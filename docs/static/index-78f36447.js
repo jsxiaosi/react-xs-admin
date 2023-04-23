@@ -1,5 +1,5 @@
-import { J as o, I as s, H as n, L as i } from './index-346cef81.js';
-import { u as m } from './useInfoPageTabs-1727638c.js';
+import { J as o, I as s, H as n, L as i } from './index-1894e972.js';
+import { u as m } from './useInfoPageTabs-8c29c97a.js';
 const h = () => {
   const l = o(),
     { handleTabs: d } = m(),

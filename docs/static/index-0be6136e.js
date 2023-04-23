@@ -1,5 +1,5 @@
-import { e as a, ap as m, I as o, ao as n } from './index-346cef81.js';
-import { u } from './useInfoPageTabs-1727638c.js';
+import { e as a, ap as m, I as o, ao as n } from './index-1894e972.js';
+import { u } from './useInfoPageTabs-8c29c97a.js';
 const c = a.memo(() => {
   const [e, t] = a.useState(),
     s = m(),

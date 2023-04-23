@@ -1,4 +1,4 @@
-import { aq as r, ar as o } from './index-346cef81.js';
+import { aq as r, ar as o } from './index-1894e972.js';
 const p = () => {
   const e = r();
   return {
