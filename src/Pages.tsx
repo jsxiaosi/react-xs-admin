@@ -37,7 +37,7 @@ const Pages = memo(() => {
     setRoute(mapBaseRouter(baseRouter, asyncRouter));
   }, [asyncRouter]);
 
-  const routeElemt = createBrowserRouter(route);
+  const routeElemt = createBrowserRouter(route, { basename: '/react-xs-admin' });
 
   return <RouterProvider router={routeElemt} />;
 
