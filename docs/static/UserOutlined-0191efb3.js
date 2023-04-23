@@ -1,4 +1,4 @@
-import { e as t, A as c, q as e } from './index-49e9f0b2.js';
+import { e as t, A as c, q as e } from './index-88b30955.js';
 var n = {
   icon: {
     tag: 'svg',
