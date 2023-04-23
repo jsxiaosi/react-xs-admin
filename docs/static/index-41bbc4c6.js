@@ -43881,29 +43881,29 @@ function Lae(e) {
 }
 const Fae = f.lazy(() =>
     to(
-      () => import('./index-b23c62a4.js'),
-      ['static/index-b23c62a4.js', 'static/UserOutlined-38ada0cf.js', 'static/index-a65d1cae.css'],
+      () => import('./index-879cd40b.js'),
+      ['static/index-879cd40b.js', 'static/UserOutlined-b4c2a9cd.js', 'static/index-a65d1cae.css'],
     ),
   ),
-  zae = f.lazy(() => to(() => import('./index-adcfca52.js'), [])),
-  Bae = f.lazy(() => to(() => import('./index-7df97e68.js'), [])),
-  jae = f.lazy(() => to(() => import('./index-a04f82bd.js'), [])),
+  zae = f.lazy(() => to(() => import('./index-78a330b1.js'), [])),
+  Bae = f.lazy(() => to(() => import('./index-275d3a03.js'), [])),
+  jae = f.lazy(() => to(() => import('./index-729691df.js'), [])),
   Hae = f.lazy(() =>
     to(
-      () => import('./index-c3eb8e62.js'),
-      ['static/index-c3eb8e62.js', 'static/useInfoPageTabs-edc9f2c7.js'],
+      () => import('./index-564f4eac.js'),
+      ['static/index-564f4eac.js', 'static/useInfoPageTabs-26f4b3e0.js'],
     ),
   ),
   Uae = f.lazy(() =>
     to(
-      () => import('./index-69dc283f.js'),
-      ['static/index-69dc283f.js', 'static/useInfoPageTabs-edc9f2c7.js'],
+      () => import('./index-196b4026.js'),
+      ['static/index-196b4026.js', 'static/useInfoPageTabs-26f4b3e0.js'],
     ),
   ),
   Vae = f.lazy(() =>
     to(
-      () => import('./index-c76c4d8d.js'),
-      ['static/index-c76c4d8d.js', 'static/useInfoPageTabs-edc9f2c7.js'],
+      () => import('./index-f0156dc5.js'),
+      ['static/index-f0156dc5.js', 'static/useInfoPageTabs-26f4b3e0.js'],
     ),
   ),
   BT = [
@@ -45722,6 +45722,7 @@ function cle(e) {
         timeout: 10 * 1e3,
         interceptor: ule,
         headers: { 'Content-Type': 'application/json' },
+        baseURL: 'react-xs-admin',
         requestOptions: { withToken: !0, errorMessageMode: 'message' },
       },
       e || {},
@@ -47808,8 +47809,8 @@ const Mue = {
   Bue = wue(e2),
   jue = f.lazy(() =>
     to(
-      () => import('./ErrorElement-e81ed72b.js'),
-      ['static/ErrorElement-e81ed72b.js', 'static/index-6b0760b1.js'],
+      () => import('./ErrorElement-be4c04c0.js'),
+      ['static/ErrorElement-be4c04c0.js', 'static/index-421f478d.js'],
     ),
   );
 function Hue(e) {
@@ -52537,18 +52538,18 @@ const xfe = () => {
   },
   Mfe = ({ children: e }) => (TR('userInfo') ? te(fa, { children: e }) : te(Ex, { to: '/login' })),
   Ife = f.lazy(() =>
-    to(() => import('./403-e6d09082.js'), ['static/403-e6d09082.js', 'static/index-6b0760b1.js']),
+    to(() => import('./403-0d0f4617.js'), ['static/403-0d0f4617.js', 'static/index-421f478d.js']),
   ),
   Nfe = f.lazy(() =>
     to(
-      () => import('./ErrorElement-e81ed72b.js'),
-      ['static/ErrorElement-e81ed72b.js', 'static/index-6b0760b1.js'],
+      () => import('./ErrorElement-be4c04c0.js'),
+      ['static/ErrorElement-be4c04c0.js', 'static/index-421f478d.js'],
     ),
   ),
   Afe = f.lazy(() =>
     to(
-      () => import('./index-cd2d2b8b.js'),
-      ['static/index-cd2d2b8b.js', 'static/UserOutlined-38ada0cf.js', 'static/index-9dcb6a66.css'],
+      () => import('./index-3f1e38bc.js'),
+      ['static/index-3f1e38bc.js', 'static/UserOutlined-b4c2a9cd.js', 'static/index-9dcb6a66.css'],
     ),
   ),
   MR = [{ path: '*', element: te(Ife, {}) }],

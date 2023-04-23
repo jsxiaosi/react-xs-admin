@@ -17,7 +17,7 @@ var a = (o, i, s) =>
       n = (t) => (t.done ? c(t.value) : Promise.resolve(t.value).then(u, p));
     n((s = s.apply(o, i)).next());
   });
-import { H as y, L as l, W as m } from './index-47a84d62.js';
+import { H as y, L as l, W as m } from './index-41bbc4c6.js';
 const f = () =>
   y(l, {
     type: 'primary',
