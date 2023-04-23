@@ -116,7 +116,6 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
       // (拦截器)数据处理方式
       interceptor,
       headers: { 'Content-Type': 'application/json' },
-      baseURL: 'react-xs-admin',
       // 配置项（需要在拦截器中做的处理），下面的选项都可以在独立的接口请求中覆盖
       requestOptions: {
         withToken: true,
