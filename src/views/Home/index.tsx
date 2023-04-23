@@ -55,7 +55,7 @@ const Home = memo(() => {
                   </div>
                   <Progress
                     percent={value(i.online, i.total)}
-                    strokeWidth={17}
+                    // size={[200, 17]}
                     strokeColor={thme.token.colorPrimary}
                   />
                 </div>

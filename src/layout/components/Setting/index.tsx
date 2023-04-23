@@ -56,7 +56,12 @@ const Setting = memo(() => {
                     className={classNames('cursor', 'sidebar_mode', {
                       'sidebar_mode-select': sidebarMode === i.value,
                     })}
-                    onClick={() => dispatch(setAppSidebarMode(i.value))}
+                    onClick={() => {
+                      console.time('time');
+                      dispatch(setAppSidebarMode(i.value));
+                      console.log(i.value, sidebarMode);
+                      console.timeEnd('time');
+                    }}
                   >
                     <div />
                     <div />
