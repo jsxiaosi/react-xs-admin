@@ -1,7 +1,7 @@
 import type { RefObject, ReactNode } from 'react';
 import React, { Suspense, memo, useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useLocation, useMatches, useOutlet } from 'react-router-dom';
+import { useLocation, useMatches, useOutlet, useParams } from 'react-router-dom';
 import { useAppSelector } from '@/store/hooks';
 import LayoutSpin from '@/components/LayoutSpin';
 
@@ -11,6 +11,7 @@ interface Props extends ComponentReactElement {
 export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
   const ele = useOutlet();
   const location = useLocation();
+  const params = useParams();
   const matches = useMatches();
   const activeName = location.pathname + location.search;
   const multiTabs = useAppSelector((state) => state.route.multiTabs);
@@ -26,9 +27,23 @@ export const KeepAlive = memo(({ maxLen = 10 }: Props) => {
     }
     const include = multiTabs.map((i) => i.key);
     setCacheReactNodes((reactNodes) => {
+      reactNodes = reactNodes.filter((i) => !i.name.startsWith('/refresh'));
+
+      if (location.pathname.startsWith('/refresh')) {
+        const reactIndex = reactNodes.findIndex(
+          (res) => res.name === `/${params['*']}${location.search}`,
+        );
+        if (reactIndex !== -1) reactNodes.splice(reactIndex, 1);
+        reactNodes.push({
+          name: activeName,
+          ele: ele,
+        });
+        return reactNodes;
+      }
+
       // 缓存超过上限的
       if (reactNodes.length >= maxLen) {
-        reactNodes = reactNodes.slice(0, 1);
+        reactNodes.splice(0, 1);
       }
       // 添加
       const reactNode = reactNodes.find((res) => res.name === activeName);

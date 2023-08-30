@@ -1,10 +1,13 @@
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useInfoPageTabs } from './hooks/useInfoPageTabs';
+import { useRefresh } from '@/hooks/web/useRefresh';
 
 const DateilsPage = () => {
   const navigate = useNavigate();
   const { handleTabs } = useInfoPageTabs();
+  const { refresh } = useRefresh();
   const qureyChange = (pateType: 'qurey' | 'params', i: number) => {
     let path = `/details-page/details-info?id=${i}`;
     if (pateType === 'params') {
@@ -13,8 +16,19 @@ const DateilsPage = () => {
     handleTabs(pateType, 'add', i);
     navigate(path);
   };
+
+  useEffect(() => {
+    console.log('加载了吗？');
+  }, []);
+
+  const refse = () => {
+    console.log('refse');
+    refresh();
+  };
+
   return (
     <div>
+      <Button onClick={refse}>刷新</Button>
       <div>
         {[1, 2, 3, 4, 5].map((i) => {
           return (

@@ -1,10 +1,15 @@
-import { Tabs } from 'antd';
+import type { TabsProps } from 'antd';
+import { Tabs, theme } from 'antd';
 import { memo, useEffect, useMemo } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useNavigate, useLocation, useMatch } from 'react-router-dom';
+import { CaretDownFilled, ReloadOutlined } from '@ant-design/icons';
+import { getTabsStyle } from './style';
+import TabsItemLabel from './components/TabsItemLabel';
+import { useTabsChange } from './hooks/useTabsChange';
+import { useAppSelector } from '@/store/hooks';
 import { findRouteByPath, routeListToMenu } from '@/router/utils';
-import { setStoreMultiTabs } from '@/store/modules/route';
-import defaultRoute from '@/router/modules';
+import { defaultRoute } from '@/router/modules';
+import { useRefresh } from '@/hooks/web/useRefresh';
 
 interface Props {
   maxLen?: number;
@@ -13,10 +18,14 @@ interface Props {
 const TabsPage = memo((_props: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const mark = useMatch(location.pathname);
   const menuList = routeListToMenu(defaultRoute);
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
   const multiTabs = useAppSelector((state) => state.route.multiTabs);
+  const { addRouteTabs, removeTab } = useTabsChange();
+  const { refresh } = useRefresh();
+
+  const thme = theme.useToken();
 
   const tabsItem = useMemo(() => {
     return multiTabs.map((i) => {
@@ -24,31 +33,18 @@ const TabsPage = memo((_props: Props) => {
       if (!i.label) routeBy = findRouteByPath(i.key, menuList);
       return {
         key: i.key,
-        label: i.label || routeBy?.label,
+        label: (
+          <TabsItemLabel pathKey={i.key}>
+            <div className="tabs-tab-label">{i.label || routeBy?.label}</div>
+          </TabsItemLabel>
+        ),
       };
     });
   }, [multiTabs]);
 
-  const handleTabsList = (pathName: string, type: 'add' | 'delete') => {
-    dispatch(
-      setStoreMultiTabs({
-        type,
-        tabs: {
-          key: pathName,
-        },
-      }),
-    );
-  };
-
-  const onEdit = (
-    targetKey: React.MouseEvent | React.KeyboardEvent | string,
-    action: 'add' | 'remove',
-  ) => {
+  const onEdit: TabsProps['onEdit'] = (targetKey, action) => {
     if (action === 'remove') {
-      const muIndex = multiTabs.findIndex((i) => i.key === targetKey);
-      if (muIndex === multiTabs.length - 1) navigate(multiTabs[muIndex - 1].key);
-      else navigate(multiTabs[multiTabs.length - 1].key);
-      handleTabsList(targetKey as string, 'delete');
+      removeTab(targetKey as string);
     }
   };
 
@@ -57,17 +53,38 @@ const TabsPage = memo((_props: Props) => {
       if (asyncRouter.length) navigate(asyncRouter[0].path);
       return;
     }
-    handleTabsList(location.pathname + location.search, 'add');
-  }, [location.pathname]);
+
+    const findRoute = findRouteByPath(location.pathname, menuList);
+    if (findRoute && !findRoute.hideTabs) {
+      addRouteTabs();
+    }
+  }, [location.pathname, mark]);
 
   return (
     <Tabs
+      css={getTabsStyle(thme.token)}
       hideAdd
       size="small"
       activeKey={location.pathname + location.search}
       type={tabsItem.length > 1 ? 'editable-card' : 'card'}
       onChange={(key) => navigate(key)}
       onEdit={onEdit}
+      tabBarExtraContent={{
+        right: (
+          <div className="tabs-right-content">
+            <div className="right-down-fukked" onClick={() => refresh()}>
+              <ReloadOutlined />
+            </div>
+            <TabsItemLabel
+              eventType="click"
+              pathKey={location.pathname + location.search}
+              className="right-down-fukked"
+            >
+              <CaretDownFilled />
+            </TabsItemLabel>
+          </div>
+        ),
+      }}
       tabBarStyle={{
         margin: 0,
       }}

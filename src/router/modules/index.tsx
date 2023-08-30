@@ -5,8 +5,12 @@ import {
   UserSwitchOutlined,
 } from '@ant-design/icons';
 import { lazy } from 'react';
+import type { RouteObject } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import type { RouteList } from '@/router/route';
 import { FormattedMessage } from '@/locales';
+import Layout from '@/layout';
+import Authority from '@/layout/Authority';
 
 const Home = lazy(() => import('@/views/Home'));
 const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
@@ -16,7 +20,7 @@ const DetailsPage = lazy(() => import('@/views/DetailsPage'));
 const DetailsInfo = lazy(() => import('@/views/DetailsPage/DetailsInfo'));
 const DetailsParams = lazy(() => import('@/views/DetailsPage/DetailsParams'));
 
-const defaultRoute: RouteList[] = [
+export const defaultRoute: RouteList[] = [
   {
     path: '/home',
     id: 'Home',
@@ -94,4 +98,39 @@ const defaultRoute: RouteList[] = [
   },
 ];
 
-export default defaultRoute;
+const ErrorPage403 = lazy(() => import('@/views/core/error/403'));
+const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
+const Refresh = lazy(() => import('@/views/core/Refresh'));
+
+const Login = lazy(() => import('@/views/Login'));
+
+export const whiteList = [
+  {
+    path: '*',
+    element: <ErrorPage403 />,
+  },
+  {
+    path: '/refresh/*',
+    element: <Refresh />,
+    meta: { label: '', hideSidebar: true, whiteList: true },
+  },
+];
+
+export const baseRouter: RouteObject[] = [
+  {
+    path: '/',
+    element: (
+      <Authority>
+        <Layout />
+      </Authority>
+    ),
+    errorElement: <ErrorElement pageType="Layout" />,
+    children: [...whiteList],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+];
+
+export const browserRouter = createBrowserRouter(baseRouter);
