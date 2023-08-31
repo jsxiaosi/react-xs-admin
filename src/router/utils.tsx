@@ -14,9 +14,10 @@ const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
 // import { HomeOutlined } from '@ant-design/icons';
 
 export async function initAsyncRoute(power: string) {
+  store.dispatch(setStoreAsyncRouter([]));
+
   const res = await getRouteApi({ name: power });
   if (res.data.length) {
-    console.log(res.data);
     store.dispatch(setStoreAsyncRouter(res.data));
   }
   return '';
