@@ -15,7 +15,9 @@ import Authority from '@/layout/Authority';
 const Home = lazy(() => import('@/views/Home'));
 const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
 const Menu1_2 = lazy(() => import('@/views/Nested/Menu1/Menu1-2'));
-const UseList = lazy(() => import('@/views/Power/UseList'));
+const Permissions = lazy(() => import('@/views/Power/Permissions'));
+const TestPermissionsA = lazy(() => import('@/views/Power/test-permissions-a'));
+const TestPermissionsB = lazy(() => import('@/views/Power/test-permissions-b'));
 const DetailsPage = lazy(() => import('@/views/DetailsPage'));
 const DetailsInfo = lazy(() => import('@/views/DetailsPage/DetailsInfo'));
 const DetailsParams = lazy(() => import('@/views/DetailsPage/DetailsParams'));
@@ -58,14 +60,26 @@ export const defaultRoute: RouteList[] = [
   {
     path: '/power',
     id: 'Power',
-    redirect: '/power/use_list',
+    redirect: '/power/permissions',
     meta: { label: '系统管理', icon: <UserSwitchOutlined /> },
     children: [
       {
-        path: 'use_list',
-        id: 'UseList',
-        element: <UseList />,
+        path: 'permissions',
+        id: 'Permissions',
+        element: <Permissions />,
         meta: { label: '权限切换' },
+      },
+      {
+        path: 'test-permissions-a',
+        id: 'TestPermissionsA',
+        element: <TestPermissionsA />,
+        meta: { label: 'Admin权限测试页面' },
+      },
+      {
+        path: 'test-permissions-b',
+        id: 'TestPermissionsB',
+        element: <TestPermissionsB />,
+        meta: { label: 'Test权限测试页面' },
       },
     ],
   },

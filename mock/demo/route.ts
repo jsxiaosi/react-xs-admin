@@ -33,8 +33,29 @@ const adminRoute = [
     id: 'Power',
     children: [
       {
-        path: 'use_list',
-        id: 'UseList',
+        path: 'permissions',
+        id: 'Permissions',
+      },
+      {
+        path: 'test-permissions-a',
+        id: 'TestPermissionsA',
+      },
+    ],
+  },
+];
+
+const testRoute = [
+  {
+    path: '/power',
+    id: 'Power',
+    children: [
+      {
+        path: 'permissions',
+        id: 'Permissions',
+      },
+      {
+        path: 'test-permissions-b',
+        id: 'TestPermissionsB',
       },
     ],
   },
@@ -55,7 +76,7 @@ export default [
         };
       } else if (name == 'test') {
         return {
-          data: [...power],
+          data: [...power, ...testRoute],
           code: 1,
           message: 'ok',
         };

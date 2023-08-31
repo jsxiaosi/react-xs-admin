@@ -11,8 +11,6 @@ import { Suspense, useEffect, useMemo } from 'react';
 import { shallowEqual } from 'react-redux';
 import { localeConfig, setIntl } from './locales';
 import { useAppSelector } from './store/hooks';
-import { getStorage } from './utils/storage';
-import type { UseInfoType } from './server/useInfo';
 import { initAsyncRoute } from './router/utils';
 import LayoutSpin from './components/LayoutSpin';
 import RouteView from './router';
@@ -26,8 +24,8 @@ function App() {
     }),
     shallowEqual,
   );
+  const { userInfo } = useAppSelector((state) => state.userInfo);
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
-  const userInfo = getStorage<UseInfoType>('userInfo');
 
   const getLocale = useMemo(() => {
     setIntl(locale);

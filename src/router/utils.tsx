@@ -16,6 +16,7 @@ const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
 export async function initAsyncRoute(power: string) {
   const res = await getRouteApi({ name: power });
   if (res.data.length) {
+    console.log(res.data);
     store.dispatch(setStoreAsyncRouter(res.data));
   }
   return '';

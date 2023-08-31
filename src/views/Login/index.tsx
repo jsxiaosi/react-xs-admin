@@ -7,10 +7,10 @@ import './index.less';
 import AppTheme from '@/components/AppTheme';
 import AppLocale from '@/components/AppLocale';
 import { addClass, removeClass } from '@/utils/operate';
-import type { UseInfoType } from '@/server/useInfo';
 import { getUserInfo } from '@/server/useInfo';
-import { setStorage } from '@/utils/storage';
 import { initAsyncRoute } from '@/router/utils';
+import { useAppDispatch } from '@/store/hooks';
+import { setUserInfo } from '@/store/modules/userInfo';
 
 const Login = memo(() => {
   const thme = theme.useToken();
@@ -18,13 +18,15 @@ const Login = memo(() => {
   const [user, setUser] = useState<string>('');
   const [pwd, setPwd] = useState<string>('');
 
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   const onLogin = async (): Promise<void> => {
     const res = await getUserInfo(user, pwd);
     if (res.code === 1) {
       await initAsyncRoute(res.data.power);
-      setStorage<UseInfoType>('userInfo', res.data);
+      dispatch(setUserInfo(res.data));
       navigate('/home');
     }
   };

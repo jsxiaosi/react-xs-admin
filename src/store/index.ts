@@ -13,17 +13,19 @@ import storage from 'redux-persist/lib/storage';
 // import thunk from 'redux-thunk';
 import appReducer from './modules/app';
 import routeReducer from './modules/route';
+import userInfoReducer from './modules/userInfo';
 
 const reducers = combineReducers({
   app: appReducer,
   route: routeReducer,
+  userInfo: userInfoReducer,
 });
 
 const persistConfig = {
   key: 'react-xs',
   storage,
   // 白名单
-  whitelist: ['app', 'route'],
+  whitelist: ['app', 'route', 'userInfo'],
   // 黑名单
   blacklist: [],
 };
