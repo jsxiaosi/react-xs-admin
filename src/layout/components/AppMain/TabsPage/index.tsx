@@ -10,6 +10,7 @@ import { useAppSelector } from '@/store/hooks';
 import { findRouteByPath, routeListToMenu } from '@/router/utils';
 import { defaultRoute } from '@/router/modules';
 import { useRefresh } from '@/hooks/web/useRefresh';
+import { FormattedMessage } from '@/locales';
 
 interface Props {
   maxLen?: number;
@@ -35,7 +36,10 @@ const TabsPage = memo((_props: Props) => {
         key: i.key,
         label: (
           <TabsItemLabel pathKey={i.key}>
-            <div className="tabs-tab-label">{i.label || routeBy?.label}</div>
+            <div className="tabs-tab-label">
+              {i.localeLabel ? FormattedMessage({ id: i.localeLabel }) : ''}
+              {i.label || routeBy?.label}
+            </div>
           </TabsItemLabel>
         ),
       };

@@ -1,0 +1,16 @@
+{
+  "layout.setting.title": "Setting",
+  "layout.setting.layoutSettings": "Layout Settings",
+  "layout.setting.themeSettings": "Theme Settings",
+  "layout.memu.home": "Home",
+  "layout.memu.nesting": "Nesting",
+  "layout.memu.permissions": "Permissions",
+  "layout.memu.permissionsPage": "Permissions Toggle",
+  "layout.memu.testPermissionsPage1": "Admin Permissions",
+  "layout.memu.testPermissionsPage2": "Test Permissions",
+  "layout.memu.detailsPage": "DetailsPage",
+  "layout.error.403": "Sorry, you are not authorized to access this page.",
+  "layout.error.404": "Sorry, the page you visited does not exist.",
+  "layout.error.500": "Sorry, something went wrong.",
+  "layout.error.element.content": "The content you page has the following error:"
+}

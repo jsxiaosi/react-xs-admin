@@ -61,25 +61,28 @@ export const defaultRoute: RouteList[] = [
     path: '/power',
     id: 'Power',
     redirect: '/power/permissions',
-    meta: { label: '系统管理', icon: <UserSwitchOutlined /> },
+    meta: {
+      label: FormattedMessage({ id: 'layout.memu.permissions' }),
+      icon: <UserSwitchOutlined />,
+    },
     children: [
       {
         path: 'permissions',
         id: 'Permissions',
         element: <Permissions />,
-        meta: { label: '权限切换' },
+        meta: { label: FormattedMessage({ id: 'layout.memu.permissionsPage' }) },
       },
       {
         path: 'test-permissions-a',
         id: 'TestPermissionsA',
         element: <TestPermissionsA />,
-        meta: { label: 'Admin权限测试页面' },
+        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage1' }) },
       },
       {
         path: 'test-permissions-b',
         id: 'TestPermissionsB',
         element: <TestPermissionsB />,
-        meta: { label: 'Test权限测试页面' },
+        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage2' }) },
       },
     ],
   },
@@ -88,13 +91,16 @@ export const defaultRoute: RouteList[] = [
     id: 'DetailsPage',
     redirect: '/details-page/index',
     alwaysShow: false,
-    meta: { label: '详情页', whiteList: true },
+    meta: { label: FormattedMessage({ id: 'layout.memu.detailsPage' }), whiteList: true },
     children: [
       {
         path: 'index',
         id: 'INDEX',
         element: <DetailsPage />,
-        meta: { label: '详情页', icon: <DatabaseOutlined /> },
+        meta: {
+          label: FormattedMessage({ id: 'layout.memu.detailsPage' }),
+          icon: <DatabaseOutlined />,
+        },
       },
       {
         path: 'details-info',

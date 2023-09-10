@@ -1,17 +1,23 @@
 import { memo, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useInfoPageTabs } from '../hooks/useInfoPageTabs';
+import { useLocale } from '@/locales';
 
 const DatailsInfo = memo(() => {
   const [id, setId] = useState<string>();
   const [searchParams] = useSearchParams();
   const { handleTabs } = useInfoPageTabs();
+  const intl = useLocale();
 
   useEffect(() => {
     setId(searchParams.get('id') || '');
     handleTabs('qurey', 'update', Number(searchParams.get('id')));
   }, []);
-  return <>详情页-{id}</>;
+  return (
+    <>
+      {intl.formatMessage({ id: 'layout.memu.detailsPage' })}-{id}
+    </>
+  );
 });
 
 export default DatailsInfo;

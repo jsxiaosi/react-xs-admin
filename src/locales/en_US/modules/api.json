@@ -1,0 +1,14 @@
+{
+  "api.errorTip": "Error Tip",
+  "api.errMsg401": "The user does not have permission!",
+  "api.errMsg403": "The user is authorized, but access is forbidden!",
+  "api.errMsg404": "Network request error, the resource was not found!",
+  "api.errMsg405": "Network request error, request method not allowed!",
+  "api.errMsg408": "Network request timed out!",
+  "api.errMsg500": "Server error, please contact the administrator!",
+  "api.errMsg501": "The network is not implemented!",
+  "api.errMsg502": "Network Error!",
+  "api.errMsg503": "The service is unavailable, the server is temporarily overloaded or maintained!",
+  "api.errMsg504": "Network timeout!",
+  "api.errMsg505": "The http version does not support the request!"
+}
