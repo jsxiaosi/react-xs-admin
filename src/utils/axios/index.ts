@@ -1,5 +1,4 @@
 import { isString } from 'lodash-es';
-import { defineMessages } from 'react-intl';
 import type { AxiosInterceptor, CreateAxiosOptions } from './axiosConfig';
 import { iAxios } from './iAxios';
 import { checkStatus } from './axiosStatus';
@@ -22,15 +21,6 @@ const interceptor: AxiosInterceptor = {
     const { errorMessageMode } = options;
     if (data) {
       if (data.code === -1) {
-        console.log(
-          defineMessages({
-            foo: {
-              id: 'app.text',
-              defaultMessage: 'foo',
-              description: 'bar',
-            },
-          }),
-        );
         if (errorMessageMode === 'modal') {
           createErrorModal(data.message);
         } else if (errorMessageMode === 'message') {

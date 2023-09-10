@@ -14,7 +14,6 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo: (state, action: PayloadAction<UseInfoType>) => {
-      console.log(action.payload);
       state.userInfo = action.payload;
       state.power = action.payload.power;
     },

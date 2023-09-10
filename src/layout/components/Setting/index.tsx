@@ -57,10 +57,7 @@ const Setting = memo(() => {
                       'sidebar_mode-select': sidebarMode === i.value,
                     })}
                     onClick={() => {
-                      console.time('time');
                       dispatch(setAppSidebarMode(i.value));
-                      console.log(i.value, sidebarMode);
-                      console.timeEnd('time');
                     }}
                   >
                     <div />
