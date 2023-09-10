@@ -24,7 +24,7 @@ function App() {
     }),
     shallowEqual,
   );
-  const { userInfo } = useAppSelector((state) => state.userInfo);
+  const { userInfo } = useAppSelector((state) => state.user);
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
 
   const getLocale = useMemo(() => {

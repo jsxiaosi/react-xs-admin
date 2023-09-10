@@ -1,5 +1,5 @@
 import { Button, theme } from 'antd';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import SvgIcon from '@/components/SvgIcon';
@@ -9,11 +9,12 @@ import AppLocale from '@/components/AppLocale';
 import { addClass, removeClass } from '@/utils/operate';
 import { getUserInfo } from '@/server/useInfo';
 import { initAsyncRoute } from '@/router/utils';
-import { useAppDispatch } from '@/store/hooks';
-import { setUserInfo } from '@/store/modules/userInfo';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setUserInfo } from '@/store/modules/user';
 
 const Login = memo(() => {
   const thme = theme.useToken();
+  const userStore = useAppSelector((state) => state.user);
 
   const [user, setUser] = useState<string>('');
   const [pwd, setPwd] = useState<string>('');
@@ -27,9 +28,14 @@ const Login = memo(() => {
     if (res.code === 1) {
       await initAsyncRoute(res.data.power);
       dispatch(setUserInfo(res.data));
-      navigate('/home');
     }
   };
+
+  useEffect(() => {
+    if (userStore.power) {
+      navigate('/home');
+    }
+  }, [userStore]);
 
   function onUserFocus() {
     addClass(document.querySelector('.user'), 'focus');

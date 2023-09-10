@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { getAccountStyle } from './style';
 import avatar from '@/assets/avatar.png';
 import { removeStorage } from '@/utils/storage';
+import { setSignOut } from '@/store/modules/user';
+import { useAppDispatch } from '@/store/hooks';
 
 const AppAccount = () => {
   const { AccountDiv } = getAccountStyle();
+
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
@@ -19,6 +23,8 @@ const AppAccount = () => {
 
   const memuChange: MenuProps['onClick'] = (_e) => {
     removeStorage('userInfo');
+    dispatch(setSignOut());
+
     navigate('/login');
   };
 

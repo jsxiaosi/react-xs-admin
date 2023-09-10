@@ -6,9 +6,9 @@ interface AuthorityType {
 }
 
 const Authority = ({ children }: AuthorityType) => {
-  const userInfo = useAppSelector((state) => state.userInfo);
+  const user = useAppSelector((state) => state.user);
 
-  if (!userInfo) return <Navigate to="/login" />;
+  if (!user?.power) return <Navigate to="/login" />;
 
   return <>{children}</>;
 };
