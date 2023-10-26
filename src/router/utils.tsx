@@ -3,12 +3,16 @@ import { Navigate, createBrowserRouter, redirect } from 'react-router-dom';
 import type { Key } from 'react';
 import { lazy } from 'react';
 import { cloneDeep } from 'lodash-es';
+import { Typography } from 'antd';
 import { defaultRoute } from './modules';
 import type { MenuItem, RouteList } from '@/router/route';
 import { getRouteApi } from '@/server/route';
 import type { AsyncRouteType } from '@/store/modules/route';
 import { setStoreAsyncRouter } from '@/store/modules/route';
 import store from '@/store';
+
+const { Text } = Typography;
+
 const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
 
 // import { HomeOutlined } from '@ant-design/icons';
@@ -100,7 +104,11 @@ export function routeListToMenu(rtList: RouteList[], path?: React.Key): MenuItem
     };
     if (path) rtItem.key = `${path}/${item.path}`;
 
-    rtItem = { ...rtItem, label: item.meta.label, icon: item.meta.icon };
+    rtItem = {
+      ...rtItem,
+      label: <Text ellipsis={{ tooltip: item.meta.label }}>{item.meta.label}</Text>,
+      icon: item.meta.icon,
+    };
 
     if (item.children && !item.element) {
       rtItem.children = routeListToMenu(item.children, rtItem.key);
