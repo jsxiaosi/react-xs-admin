@@ -1,5 +1,5 @@
 import type { MenuProps } from 'antd';
-import { Dropdown } from 'antd';
+import { Dropdown, Image } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { getAccountStyle } from './style';
 import avatar from '@/assets/avatar.png';
@@ -38,7 +38,7 @@ const AppAccount = () => {
         placement="bottom"
         arrow
       >
-        <img src={avatar} className="wave" />
+        <Image src={avatar} className="wave" preview={false} />
       </Dropdown>
     </AccountDiv>
   );

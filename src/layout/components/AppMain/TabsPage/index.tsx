@@ -7,10 +7,11 @@ import { getTabsStyle } from './style';
 import TabsItemLabel from './components/TabsItemLabel';
 import { useTabsChange } from './hooks/useTabsChange';
 import { useAppSelector } from '@/store/hooks';
-import { findRouteByPath, routeListToMenu } from '@/router/utils';
+import { findRouteByPath } from '@/router/utils';
 import { defaultRoute } from '@/router/modules';
 import { useRefresh } from '@/hooks/web/useRefresh';
 import { FormattedMessage } from '@/locales';
+import { useRouteList } from '@/hooks/useRouteList';
 
 interface Props {
   maxLen?: number;
@@ -20,6 +21,7 @@ const TabsPage = memo((_props: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const mark = useMatch(location.pathname);
+  const { routeListToMenu } = useRouteList();
   const menuList = routeListToMenu(defaultRoute);
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
   const multiTabs = useAppSelector((state) => state.route.multiTabs);
