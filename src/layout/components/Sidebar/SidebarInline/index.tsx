@@ -101,7 +101,7 @@ const Sidebar = memo(() => {
               width={210}
               placement="left"
               destroyOnClose={false}
-              bodyStyle={{ padding: 0, height: '100%' }}
+              styles={{ body: { padding: 0, height: '100%' } }}
               closable={false}
               onClose={() => dispatch(setAppCollapsed(!collapsed))}
               open={!collapsed}

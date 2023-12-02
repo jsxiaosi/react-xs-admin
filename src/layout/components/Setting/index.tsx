@@ -41,7 +41,7 @@ const Setting = memo(() => {
         width={300}
         title={intl.formatMessage({ id: 'layout.setting.title' })}
         placement="right"
-        bodyStyle={{ padding: 0, height: '100%' }}
+        styles={{ body: { padding: 0, height: '100%' } }}
         closable={false}
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
