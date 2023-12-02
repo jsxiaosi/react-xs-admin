@@ -9,7 +9,7 @@ import LayoutSpin from '@/components/LayoutSpin';
 const { Content } = Layout;
 
 const AppMain = memo(() => {
-  const isKeepAlive = true;
+  const isKeepAlive = import.meta.env.VITE_KEY_ALIVE === 'TRUE';
   const maxLen = 10;
   return (
     <Content css={getAppMainStyle()}>

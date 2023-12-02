@@ -6,7 +6,7 @@ import { configMockPlugin } from './mock';
 // svg配置
 import { configSvgPlugin } from './svg';
 
-export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
+export function createVitePlugins(_isBuild = false, _configEnv: ConfigEnv) {
   const vitePlugins: PluginOption[] = [];
 
   vitePlugins.push(
@@ -20,7 +20,7 @@ export function createVitePlugins(isBuild = false, _configEnv: ConfigEnv) {
 
   vitePlugins.push(configSvgPlugin());
 
-  vitePlugins.push(configMockPlugin(isBuild));
+  vitePlugins.push(configMockPlugin());
 
   return vitePlugins;
 }
