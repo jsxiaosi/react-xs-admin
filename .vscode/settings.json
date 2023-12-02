@@ -1,4 +1,7 @@
 {
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "i18n-ally.localesPaths": ["src/locales"],
   "i18n-ally.namespace": false,
   "i18n-ally.sortKeys": true,
