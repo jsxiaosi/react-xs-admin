@@ -1,4 +1,4 @@
-import type { MockMethod, Recordable } from 'vite-plugin-mock';
+import { defineFakeRoute } from 'vite-plugin-fake-server/client';
 
 const userInfo = {
   name: '爱喝蜂蜜绿的小斯斯',
@@ -22,7 +22,7 @@ const userInfo2 = {
   power: 'test',
 };
 
-export default [
+export default defineFakeRoute([
   {
     url: '/mock_api/login',
     timeout: 1000,
@@ -68,7 +68,7 @@ export default [
       return userInfo;
     },
   },
-] as MockMethod[];
+]);
 
 function genID(length: number) {
   return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
