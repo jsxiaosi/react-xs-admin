@@ -1,0 +1,9 @@
+{
+  "login.button": "登录",
+  "login.forgotPassword": "忘记密码",
+  "login.password": "密码：admin123",
+  "login.passwordRules": "请输入您的密码！",
+  "login.rememberPassword": "记住密码",
+  "login.userNameRules": "请输入您的用户名！",
+  "login.username": "用户名：admin"
+}
