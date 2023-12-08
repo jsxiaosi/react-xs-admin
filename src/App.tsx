@@ -63,7 +63,7 @@ function App() {
     >
       <IntlProvider locale={locale} messages={localeConfig[locale]}>
         {loading ? (
-          <LayoutSpin />
+          <LayoutSpin position="fixed" />
         ) : (
           // <BrowserRouter>
           <Suspense fallback={<LayoutSpin />}>

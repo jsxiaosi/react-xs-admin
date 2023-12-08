@@ -11,21 +11,18 @@ const { Footer } = Layout;
 const LayoutApp: React.FC = () => {
   const thme = theme.useToken();
 
-  const render = () => {
-    return (
-      <Layout className="layout" style={{ color: thme.token.colorText }}>
-        <SidebarInline />
-        <Layout>
-          <Navbart />
-          <AppMain />
-          <Footer style={{ textAlign: 'center', padding: 14 }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
+  return (
+    <div className="layout flex" style={{ color: thme.token.colorText }}>
+      <SidebarInline />
+      <Layout>
+        <Navbart />
+        <AppMain />
+        <Footer style={{ textAlign: 'center', padding: 14 }}>
+          Ant Design ©2018 Created by Ant UED
+        </Footer>
       </Layout>
-    );
-  };
-  return render();
+    </div>
+  );
 };
 
 export default LayoutApp;

@@ -64,7 +64,7 @@ const testRoute = [
 export default defineFakeRoute([
   {
     url: '/mock_api/getRoute',
-    timeout: 0,
+    timeout: 500,
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
       const { name } = body;
