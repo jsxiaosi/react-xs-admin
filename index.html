@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
   </head>
+
   <body>
     <div id="root">
       <style>
@@ -133,6 +134,7 @@
             opacity: 0;
           }
         }
+
         @media (prefers-color-scheme: dark) {
           html,
           body {
@@ -154,6 +156,19 @@
         <div></div>
       </div>
     </div>
+    <script>
+      const appConfigMode = localStorage.getItem('persist:react-xs');
+      if (appConfigMode) {
+        const { app } = JSON.parse(appConfigMode);
+        if (app) {
+          const { color } = JSON.parse(app);
+          if (color) {
+            const loading = document.getElementById('html_loding');
+            loading.style.color = color;
+          }
+        }
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

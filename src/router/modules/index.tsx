@@ -6,7 +6,6 @@ import {
 } from '@ant-design/icons';
 import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
-import { createBrowserRouter } from 'react-router-dom';
 import type { RouteList } from '@/router/route';
 import { FormattedMessage } from '@/locales';
 import Layout from '@/layout';
@@ -152,5 +151,3 @@ export const baseRouter: RouteObject[] = [
     element: <Login />,
   },
 ];
-
-export const browserRouter = createBrowserRouter(baseRouter);

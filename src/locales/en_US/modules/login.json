@@ -1,13 +1,9 @@
 {
-  "layout": {
-    "login": {
-      "username": "UserName：admin"
-    }
-  },
   "login.button": "Login",
   "login.forgotPassword": "Forgot password",
   "login.password": "Password：admin123",
   "login.passwordRules": "Please input your Password!",
   "login.rememberPassword": "Remember password",
-  "login.userNameRules": "Please input your Username!"
+  "login.userNameRules": "Please input your Username!",
+  "login.username": "UserName：admin"
 }
