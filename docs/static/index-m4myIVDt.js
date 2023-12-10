@@ -1,16 +1,16 @@
 import {
-  e,
+  r as e,
   A as v,
-  q as m,
-  g,
-  m as D,
-  C as W,
-  a as p,
-  M as A,
-  p as j,
-  N as z,
-} from './index-a97f8a94.js';
-var $ = {
+  _ as g,
+  g as D,
+  m as W,
+  C as A,
+  d as p,
+  D as j,
+  z,
+  af as $,
+} from './index-76VpSOXG.js';
+var S = {
   icon: {
     tag: 'svg',
     attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -26,13 +26,12 @@ var $ = {
   name: 'warning',
   theme: 'filled',
 };
-const x = $;
-var k = function (l, a) {
-  return e.createElement(v, m(m({}, l), {}, { ref: a, icon: x }));
+const x = S;
+var H = function (l, a) {
+  return e.createElement(v, g({}, l, { ref: a, icon: x }));
 };
-k.displayName = 'WarningFilled';
-const S = e.forwardRef(k),
-  I = () =>
+const I = e.forwardRef(H),
+  N = () =>
     e.createElement(
       'svg',
       { width: '252', height: '294' },
@@ -92,7 +91,7 @@ const S = e.forwardRef(k),
         }),
         e.createElement('path', {
           d: 'M174.823 30.03c0-16.281 13.198-29.48 29.48-29.48 16.28 0 29.48 13.199 29.48 29.48 0 16.28-13.2 29.48-29.48 29.48-16.282 0-29.48-13.2-29.48-29.48',
-          fill: '#1890FF',
+          fill: '#1677ff',
         }),
         e.createElement('path', {
           d: 'M205.952 38.387c.5.5.785 1.142.785 1.928s-.286 1.465-.785 1.964c-.572.5-1.214.75-2 .75-.785 0-1.429-.285-1.929-.785-.572-.5-.82-1.143-.82-1.929s.248-1.428.82-1.928c.5-.5 1.144-.75 1.93-.75.785 0 1.462.25 1.999.75m4.285-19.463c1.428 1.249 2.143 2.963 2.143 5.142 0 1.712-.427 3.13-1.219 4.25-.067.096-.137.18-.218.265-.416.429-1.41 1.346-2.956 2.699a5.07 5.07 0 0 0-1.428 1.75 5.207 5.207 0 0 0-.536 2.357v.5h-4.107v-.5c0-1.357.215-2.536.714-3.5.464-.964 1.857-2.464 4.178-4.536l.43-.5c.643-.785.964-1.643.964-2.535 0-1.18-.358-2.108-1-2.785-.678-.68-1.643-1.001-2.858-1.001-1.536 0-2.642.464-3.357 1.43-.37.5-.621 1.135-.76 1.904a1.999 1.999 0 0 1-1.971 1.63h-.004c-1.277 0-2.257-1.183-1.98-2.43.337-1.518 1.02-2.78 2.073-3.784 1.536-1.5 3.607-2.25 6.25-2.25 2.32 0 4.214.607 5.642 1.894',
@@ -323,8 +322,8 @@ const S = e.forwardRef(k),
         }),
       ),
     ),
-  H = I,
-  N = () =>
+  R = N,
+  b = () =>
     e.createElement(
       'svg',
       { width: '254', height: '294' },
@@ -662,8 +661,88 @@ const S = e.forwardRef(k),
         }),
       ),
     ),
-  R = N,
-  b = () =>
+  y = b,
+  V = (t) => {
+    const {
+      componentCls: l,
+      lineHeightHeading3: a,
+      iconCls: r,
+      padding: n,
+      paddingXL: s,
+      paddingXS: d,
+      paddingLG: o,
+      marginXS: M,
+      lineHeight: m,
+    } = t;
+    return {
+      [l]: { padding: `${o * 2}px ${s}px`, '&-rtl': { direction: 'rtl' } },
+      [`${l} ${l}-image`]: { width: t.imageWidth, height: t.imageHeight, margin: 'auto' },
+      [`${l} ${l}-icon`]: {
+        marginBottom: o,
+        textAlign: 'center',
+        [`& > ${r}`]: { fontSize: t.iconFontSize },
+      },
+      [`${l} ${l}-title`]: {
+        color: t.colorTextHeading,
+        fontSize: t.titleFontSize,
+        lineHeight: a,
+        marginBlock: M,
+        textAlign: 'center',
+      },
+      [`${l} ${l}-subtitle`]: {
+        color: t.colorTextDescription,
+        fontSize: t.subtitleFontSize,
+        lineHeight: m,
+        textAlign: 'center',
+      },
+      [`${l} ${l}-content`]: {
+        marginTop: o,
+        padding: `${o}px ${n * 2.5}px`,
+        backgroundColor: t.colorFillAlter,
+      },
+      [`${l} ${l}-extra`]: {
+        margin: t.extraMargin,
+        textAlign: 'center',
+        '& > *': { marginInlineEnd: d, '&:last-child': { marginInlineEnd: 0 } },
+      },
+    };
+  },
+  w = (t) => {
+    const { componentCls: l, iconCls: a } = t;
+    return {
+      [`${l}-success ${l}-icon > ${a}`]: { color: t.resultSuccessIconColor },
+      [`${l}-error ${l}-icon > ${a}`]: { color: t.resultErrorIconColor },
+      [`${l}-info ${l}-icon > ${a}`]: { color: t.resultInfoIconColor },
+      [`${l}-warning ${l}-icon > ${a}`]: { color: t.resultWarningIconColor },
+    };
+  },
+  T = (t) => [V(t), w(t)],
+  _ = (t) => T(t),
+  G = D(
+    'Result',
+    (t) => {
+      const l = t.colorInfo,
+        a = t.colorError,
+        r = t.colorSuccess,
+        n = t.colorWarning,
+        s = W(t, {
+          resultInfoIconColor: l,
+          resultErrorIconColor: a,
+          resultSuccessIconColor: r,
+          resultWarningIconColor: n,
+          imageWidth: 250,
+          imageHeight: 295,
+        });
+      return [_(s)];
+    },
+    (t) => ({
+      titleFontSize: t.fontSizeHeading3,
+      subtitleFontSize: t.fontSize,
+      iconFontSize: t.fontSizeHeading3 * 3,
+      extraMargin: `${t.paddingLG}px 0 0 0`,
+    }),
+  ),
+  P = () =>
     e.createElement(
       'svg',
       { width: '251', height: '294' },
@@ -942,101 +1021,21 @@ const S = e.forwardRef(k),
         }),
       ),
     ),
-  V = b,
-  w = (t) => {
-    const {
-      componentCls: l,
-      lineHeightHeading3: a,
-      iconCls: r,
-      padding: n,
-      paddingXL: o,
-      paddingXS: i,
-      paddingLG: c,
-      marginXS: d,
-      lineHeight: h,
-    } = t;
-    return {
-      [l]: { padding: `${c * 2}px ${o}px`, '&-rtl': { direction: 'rtl' } },
-      [`${l} ${l}-image`]: { width: t.imageWidth, height: t.imageHeight, margin: 'auto' },
-      [`${l} ${l}-icon`]: {
-        marginBottom: c,
-        textAlign: 'center',
-        [`& > ${r}`]: { fontSize: t.resultIconFontSize },
-      },
-      [`${l} ${l}-title`]: {
-        color: t.colorTextHeading,
-        fontSize: t.resultTitleFontSize,
-        lineHeight: a,
-        marginBlock: d,
-        textAlign: 'center',
-      },
-      [`${l} ${l}-subtitle`]: {
-        color: t.colorTextDescription,
-        fontSize: t.resultSubtitleFontSize,
-        lineHeight: h,
-        textAlign: 'center',
-      },
-      [`${l} ${l}-content`]: {
-        marginTop: c,
-        padding: `${c}px ${n * 2.5}px`,
-        backgroundColor: t.colorFillAlter,
-      },
-      [`${l} ${l}-extra`]: {
-        margin: t.resultExtraMargin,
-        textAlign: 'center',
-        '& > *': { marginInlineEnd: i, '&:last-child': { marginInlineEnd: 0 } },
-      },
-    };
-  },
-  y = (t) => {
-    const { componentCls: l, iconCls: a } = t;
-    return {
-      [`${l}-success ${l}-icon > ${a}`]: { color: t.resultSuccessIconColor },
-      [`${l}-error ${l}-icon > ${a}`]: { color: t.resultErrorIconColor },
-      [`${l}-info ${l}-icon > ${a}`]: { color: t.resultInfoIconColor },
-      [`${l}-warning ${l}-icon > ${a}`]: { color: t.resultWarningIconColor },
-    };
-  },
-  T = (t) => [w(t), y(t)],
-  _ = (t) => T(t),
-  G = g(
-    'Result',
-    (t) => {
-      const { paddingLG: l, fontSizeHeading3: a } = t,
-        r = t.fontSize,
-        n = `${l}px 0 0 0`,
-        o = t.colorInfo,
-        i = t.colorError,
-        c = t.colorSuccess,
-        d = t.colorWarning,
-        h = D(t, {
-          resultTitleFontSize: a,
-          resultSubtitleFontSize: r,
-          resultIconFontSize: a * 3,
-          resultExtraMargin: n,
-          resultInfoIconColor: o,
-          resultErrorIconColor: i,
-          resultSuccessIconColor: c,
-          resultWarningIconColor: d,
-        });
-      return [_(h)];
-    },
-    { imageWidth: 250, imageHeight: 295 },
-  ),
-  P = { success: A, error: j, info: z, warning: S },
-  M = { 404: H, 500: R, 403: V },
-  X = Object.keys(M),
+  O = P,
+  X = { success: j, error: z, info: $, warning: I },
+  h = { 404: R, 500: y, 403: O },
+  U = Object.keys(h),
   q = (t) => {
     let { prefixCls: l, icon: a, status: r } = t;
     const n = p(`${l}-icon`);
-    if (X.includes(`${r}`)) {
-      const i = M[r];
-      return e.createElement('div', { className: `${n} ${l}-image` }, e.createElement(i, null));
+    if (U.includes(`${r}`)) {
+      const d = h[r];
+      return e.createElement('div', { className: `${n} ${l}-image` }, e.createElement(d, null));
     }
-    const o = e.createElement(P[r]);
-    return a === null || a === !1 ? null : e.createElement('div', { className: n }, a || o);
+    const s = e.createElement(X[r]);
+    return a === null || a === !1 ? null : e.createElement('div', { className: n }, a || s);
   },
-  O = (t) => {
+  J = (t) => {
     let { prefixCls: l, extra: a } = t;
     return a ? e.createElement('div', { className: `${l}-extra` }, a) : null;
   },
@@ -1046,31 +1045,40 @@ const S = e.forwardRef(k),
       className: a,
       rootClassName: r,
       subTitle: n,
-      title: o,
-      style: i,
-      children: c,
-      status: d = 'info',
-      icon: h,
-      extra: F,
+      title: s,
+      style: d,
+      children: o,
+      status: M = 'info',
+      icon: m,
+      extra: k,
     } = t;
-    const { getPrefixCls: u, direction: f } = e.useContext(W),
-      s = u('result', l),
-      [L, B] = G(s),
-      C = p(s, `${s}-${d}`, a, r, { [`${s}-rtl`]: f === 'rtl' }, B);
-    return L(
+    const { getPrefixCls: F, direction: u, result: i } = e.useContext(A),
+      c = F('result', l),
+      [f, L] = G(c),
+      B = p(
+        c,
+        `${c}-${M}`,
+        a,
+        i == null ? void 0 : i.className,
+        r,
+        { [`${c}-rtl`]: u === 'rtl' },
+        L,
+      ),
+      C = Object.assign(Object.assign({}, i == null ? void 0 : i.style), d);
+    return f(
       e.createElement(
         'div',
-        { className: C, style: i },
-        e.createElement(q, { prefixCls: s, status: d, icon: h }),
-        e.createElement('div', { className: `${s}-title` }, o),
-        n && e.createElement('div', { className: `${s}-subtitle` }, n),
-        e.createElement(O, { prefixCls: s, extra: F }),
-        c && e.createElement('div', { className: `${s}-content` }, c),
+        { className: B, style: C },
+        e.createElement(q, { prefixCls: c, status: M, icon: m }),
+        e.createElement('div', { className: `${c}-title` }, s),
+        n && e.createElement('div', { className: `${c}-subtitle` }, n),
+        e.createElement(J, { prefixCls: c, extra: k }),
+        o && e.createElement('div', { className: `${c}-content` }, o),
       ),
     );
   };
-E.PRESENTED_IMAGE_403 = M[403];
-E.PRESENTED_IMAGE_404 = M[404];
-E.PRESENTED_IMAGE_500 = M[500];
-const J = E;
-export { J as R };
+E.PRESENTED_IMAGE_403 = h[403];
+E.PRESENTED_IMAGE_404 = h[404];
+E.PRESENTED_IMAGE_500 = h[500];
+const Q = E;
+export { Q as R };

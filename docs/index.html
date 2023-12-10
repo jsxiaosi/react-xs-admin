@@ -5,9 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/react-xs-admin/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
-    <script type="module" crossorigin src="/react-xs-admin/static/index-a97f8a94.js"></script>
-    <link rel="stylesheet" href="/react-xs-admin/static/index-1a72aace.css" />
+    <script type="module" crossorigin src="/react-xs-admin/static/index-76VpSOXG.js"></script>
+    <link rel="stylesheet" crossorigin href="/react-xs-admin/static/index-4KAH8OC5.css" />
   </head>
+
   <body>
     <div id="root">
       <style>
@@ -135,6 +136,7 @@
             opacity: 0;
           }
         }
+
         @media (prefers-color-scheme: dark) {
           html,
           body {
@@ -156,5 +158,18 @@
         <div></div>
       </div>
     </div>
+    <script>
+      const appConfigMode = localStorage.getItem('persist:react-xs');
+      if (appConfigMode) {
+        const { app } = JSON.parse(appConfigMode);
+        if (app) {
+          const { color } = JSON.parse(app);
+          if (color) {
+            const loading = document.getElementById('html_loding');
+            loading.style.color = color;
+          }
+        }
+      }
+    </script>
   </body>
 </html>
