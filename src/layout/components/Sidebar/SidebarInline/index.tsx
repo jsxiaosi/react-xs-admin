@@ -92,7 +92,10 @@ const Sidebar = memo(() => {
               theme="light"
               collapsed={collapsed}
               onBreakpoint={onBreakpoint}
-              style={{ borderRight: `1px solid ${thme.token.colorBorder}` }}
+              css={{
+                backgroundColor: thme.token.colorBgContainer,
+                borderRight: `1px solid ${thme.token.colorBorder}`,
+              }}
             >
               {MenuRender}
             </Sider>
@@ -101,7 +104,7 @@ const Sidebar = memo(() => {
               width={210}
               placement="left"
               destroyOnClose={false}
-              bodyStyle={{ padding: 0, height: '100%' }}
+              styles={{ body: { padding: 0, height: '100%' } }}
               closable={false}
               onClose={() => dispatch(setAppCollapsed(!collapsed))}
               open={!collapsed}

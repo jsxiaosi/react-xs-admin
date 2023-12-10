@@ -10,12 +10,10 @@ import { Suspense, useEffect, useMemo } from 'react';
 
 import { shallowEqual } from 'react-redux';
 import { localeConfig, setIntl } from './locales';
-import Pages from './Pages';
 import { useAppSelector } from './store/hooks';
-import { getStorage } from './utils/storage';
-import type { UseInfoType } from './server/useInfo';
 import { initAsyncRoute } from './router/utils';
 import LayoutSpin from './components/LayoutSpin';
+import RouteView from './router';
 
 function App() {
   const { locale, color, themeMode } = useAppSelector(
@@ -26,8 +24,8 @@ function App() {
     }),
     shallowEqual,
   );
+  const { userInfo } = useAppSelector((state) => state.user);
   const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
-  const userInfo = getStorage<UseInfoType>('userInfo');
 
   const getLocale = useMemo(() => {
     setIntl(locale);
@@ -65,11 +63,11 @@ function App() {
     >
       <IntlProvider locale={locale} messages={localeConfig[locale]}>
         {loading ? (
-          <LayoutSpin />
+          <LayoutSpin position="fixed" />
         ) : (
           // <BrowserRouter>
           <Suspense fallback={<LayoutSpin />}>
-            <Pages />
+            <RouteView />
           </Suspense>
           // </BrowserRouter>
         )}

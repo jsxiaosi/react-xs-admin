@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "lokalise.i18n-ally",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "naumovs.color-highlight",
+    "donjayamanne.githistory"
+  ]
+}

@@ -1,109 +1,106 @@
-import { Button, theme } from 'antd';
-import { memo, useState } from 'react';
+import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
+import { memo, useEffect, useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import SvgIcon from '@/components/SvgIcon';
-import './index.less';
+import type { LoginForm } from './type';
 import AppTheme from '@/components/AppTheme';
 import AppLocale from '@/components/AppLocale';
-import { addClass, removeClass } from '@/utils/operate';
-import type { UseInfoType } from '@/server/useInfo';
 import { getUserInfo } from '@/server/useInfo';
-import { setStorage } from '@/utils/storage';
 import { initAsyncRoute } from '@/router/utils';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setUserInfo } from '@/store/modules/user';
+import logo from '@/assets/logo.png';
+import { useLocale } from '@/locales';
 
 const Login = memo(() => {
+  const intl = useLocale();
+
   const thme = theme.useToken();
 
-  const [user, setUser] = useState<string>('');
-  const [pwd, setPwd] = useState<string>('');
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  const onLogin = async (): Promise<void> => {
-    const res = await getUserInfo(user, pwd);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onFinish = async (values: LoginForm) => {
+    setLoading(true);
+    const res = await getUserInfo(values.username, values.password);
     if (res.code === 1) {
       await initAsyncRoute(res.data.power);
-      setStorage<UseInfoType>('userInfo', res.data);
-      navigate('/home');
+      dispatch(setUserInfo(res.data));
     }
+
+    setLoading(false);
   };
 
-  function onUserFocus() {
-    addClass(document.querySelector('.user'), 'focus');
-  }
+  const userStore = useAppSelector((state) => state.user);
 
-  function onUserBlur() {
-    if (user.length === 0) removeClass(document.querySelector('.user'), 'focus');
-  }
-
-  function onPwdFocus() {
-    addClass(document.querySelector('.pwd'), 'focus');
-  }
-
-  function onPwdBlur() {
-    if (pwd.length === 0) removeClass(document.querySelector('.pwd'), 'focus');
-  }
+  useEffect(() => {
+    if (userStore.power) {
+      navigate('/home');
+    }
+  }, [userStore]);
 
   return (
     <div
-      className="page-login"
+      className="w-full h-full flex flex-col items-center justify-center relative"
       style={{ backgroundColor: thme.token.colorBgContainer, color: thme.token.colorText }}
     >
-      <div className="container mx-auto">
-        {/* <img src="@/assets/login/bg.png" class="wave" /> */}
-        <div className="wave">
-          <div className="bg" style={{ backgroundColor: thme.token.colorBgContainer }} />
-          <div className="prospect" style={{ backgroundColor: thme.token.colorPrimary }} />
-          <div className="prospect-bg" style={{ backgroundColor: thme.token.colorPrimary }} />
+      <div className="flex flex-row justify-center items-center absolute top-3 right-3 gap-3">
+        <AppLocale />
+        <AppTheme />
+      </div>
+      <div className="p-10" style={{ boxShadow: '0 15px 25px #0009' }}>
+        <div className="mb-10 flex flex-row items-center justify-center ">
+          <Image src={logo} width={44} height={44} preview={false} />
+          <h2 className="m-0 ml-4">React Xs Admin</h2>
         </div>
-        <div className="img -enter-x" style={{ color: thme.token.colorPrimary }}>
-          <SvgIcon name="login_Illustration" />
-        </div>
-        <div className="application">
-          <AppLocale />
-          <AppTheme />
-        </div>
-        <div className="login-box">
-          <div className="login-form">
-            <h2 className="enter-x p-4">react-xs-admin</h2>
-            <div className="enter-x">用户名：admin 密码：admin123</div>
-            <div className="input-group user enter-x">
-              <UserOutlined className="icon" />
-              <div>
-                <h5>用户名</h5>
-                <input
-                  value={user}
-                  type="text"
-                  className="input"
-                  style={{ color: thme.token.colorText }}
-                  onFocus={onUserFocus}
-                  onBlur={onUserBlur}
-                  onChange={(e) => setUser(e.target.value)}
-                />
-              </div>
+        <Form
+          className="w-[360px]"
+          name="normal_login"
+          size="large"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+        >
+          <Form.Item<LoginForm>
+            name="username"
+            rules={[{ required: true, message: intl.formatMessage({ id: 'login.userNameRules' }) }]}
+          >
+            <Input
+              prefix={<UserOutlined />}
+              placeholder={intl.formatMessage({ id: 'login.username' })}
+              allowClear
+            />
+          </Form.Item>
+          <Form.Item<LoginForm>
+            name="password"
+            rules={[{ required: true, message: intl.formatMessage({ id: 'login.passwordRules' }) }]}
+          >
+            <Input.Password
+              prefix={<LockOutlined />}
+              placeholder={intl.formatMessage({ id: 'login.password' })}
+              allowClear
+            />
+          </Form.Item>
+          <Form.Item<LoginForm>>
+            <div className="flex flex-row justify-between items-center">
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>{intl.formatMessage({ id: 'login.rememberPassword' })}</Checkbox>
+              </Form.Item>
+
+              <Button type="link" className="p-0" style={{ color: thme.token.colorPrimary }}>
+                {intl.formatMessage({ id: 'login.forgotPassword' })}
+              </Button>
             </div>
-            <div className="input-group pwd enter-x">
-              <LockOutlined className="icon" />
-              <div>
-                <h5>密码</h5>
-                <input
-                  type="password"
-                  value={pwd}
-                  className="input"
-                  style={{ color: thme.token.colorText }}
-                  autoComplete="on"
-                  onFocus={onPwdFocus}
-                  onBlur={onPwdBlur}
-                  onChange={(e) => setPwd(e.target.value)}
-                />
-              </div>
-            </div>
-            <Button className="btn enter-x" type="primary" onClick={() => onLogin()}>
-              登陆
+          </Form.Item>
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit" className="w-full" loading={loading}>
+              {intl.formatMessage({ id: 'login.button' })}
             </Button>
-          </div>
-        </div>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );

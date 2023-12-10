@@ -41,7 +41,7 @@ const Setting = memo(() => {
         width={300}
         title={intl.formatMessage({ id: 'layout.setting.title' })}
         placement="right"
-        bodyStyle={{ padding: 0, height: '100%' }}
+        styles={{ body: { padding: 0, height: '100%' } }}
         closable={false}
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
@@ -57,10 +57,7 @@ const Setting = memo(() => {
                       'sidebar_mode-select': sidebarMode === i.value,
                     })}
                     onClick={() => {
-                      console.time('time');
                       dispatch(setAppSidebarMode(i.value));
-                      console.log(i.value, sidebarMode);
-                      console.timeEnd('time');
                     }}
                   >
                     <div />

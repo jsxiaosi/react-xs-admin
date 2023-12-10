@@ -9,7 +9,6 @@ import Comment from './components/Comment';
 import WordCloudChart from './components/WordCloudChart';
 
 const Home = memo(() => {
-  console.log('home');
   const thme = theme.useToken();
 
   const speedList = [

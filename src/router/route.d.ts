@@ -11,6 +11,8 @@ export type MenuItem = {
   type?: 'group';
   whiteList?: boolean;
   hideSidebar?: boolean;
+  // 是否隐藏标签
+  hideTabs?: boolean;
 };
 
 export type RouteList = Omit<RouteObject, 'children'> & {

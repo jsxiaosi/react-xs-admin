@@ -1,15 +1,14 @@
 import { Navigate } from 'react-router-dom';
-import type { UseInfoType } from '@/server/useInfo';
-import { getStorage } from '@/utils/storage';
+import { useAppSelector } from '@/store/hooks';
 
 interface AuthorityType {
   children: React.ReactNode;
 }
 
 const Authority = ({ children }: AuthorityType) => {
-  const userInfo = getStorage<UseInfoType>('userInfo');
+  const user = useAppSelector((state) => state.user);
 
-  if (!userInfo) return <Navigate to="/login" />;
+  if (!user?.power) return <Navigate to="/login" />;
 
   return <>{children}</>;
 };

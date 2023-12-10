@@ -5,18 +5,23 @@ import {
   UserSwitchOutlined,
 } from '@ant-design/icons';
 import { lazy } from 'react';
+import type { RouteObject } from 'react-router-dom';
 import type { RouteList } from '@/router/route';
 import { FormattedMessage } from '@/locales';
+import Layout from '@/layout';
+import Authority from '@/layout/Authority';
 
 const Home = lazy(() => import('@/views/Home'));
 const Menu1_1 = lazy(() => import('@/views/Nested/Menu1/Menu1-1'));
 const Menu1_2 = lazy(() => import('@/views/Nested/Menu1/Menu1-2'));
-const UseList = lazy(() => import('@/views/Power/UseList'));
+const Permissions = lazy(() => import('@/views/Power/Permissions'));
+const TestPermissionsA = lazy(() => import('@/views/Power/test-permissions-a'));
+const TestPermissionsB = lazy(() => import('@/views/Power/test-permissions-b'));
 const DetailsPage = lazy(() => import('@/views/DetailsPage'));
 const DetailsInfo = lazy(() => import('@/views/DetailsPage/DetailsInfo'));
 const DetailsParams = lazy(() => import('@/views/DetailsPage/DetailsParams'));
 
-const defaultRoute: RouteList[] = [
+export const defaultRoute: RouteList[] = [
   {
     path: '/home',
     id: 'Home',
@@ -54,14 +59,29 @@ const defaultRoute: RouteList[] = [
   {
     path: '/power',
     id: 'Power',
-    redirect: '/power/use_list',
-    meta: { label: '系统管理', icon: <UserSwitchOutlined /> },
+    redirect: '/power/permissions',
+    meta: {
+      label: FormattedMessage({ id: 'layout.memu.permissions' }),
+      icon: <UserSwitchOutlined />,
+    },
     children: [
       {
-        path: 'use_list',
-        id: 'UseList',
-        element: <UseList />,
-        meta: { label: '权限切换' },
+        path: 'permissions',
+        id: 'Permissions',
+        element: <Permissions />,
+        meta: { label: FormattedMessage({ id: 'layout.memu.permissionsPage' }) },
+      },
+      {
+        path: 'test-permissions-a',
+        id: 'TestPermissionsA',
+        element: <TestPermissionsA />,
+        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage1' }) },
+      },
+      {
+        path: 'test-permissions-b',
+        id: 'TestPermissionsB',
+        element: <TestPermissionsB />,
+        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage2' }) },
       },
     ],
   },
@@ -70,13 +90,16 @@ const defaultRoute: RouteList[] = [
     id: 'DetailsPage',
     redirect: '/details-page/index',
     alwaysShow: false,
-    meta: { label: '详情页', whiteList: true },
+    meta: { label: FormattedMessage({ id: 'layout.memu.detailsPage' }), whiteList: true },
     children: [
       {
         path: 'index',
         id: 'INDEX',
         element: <DetailsPage />,
-        meta: { label: '详情页', icon: <DatabaseOutlined /> },
+        meta: {
+          label: FormattedMessage({ id: 'layout.memu.detailsPage' }),
+          icon: <DatabaseOutlined />,
+        },
       },
       {
         path: 'details-info',
@@ -94,4 +117,37 @@ const defaultRoute: RouteList[] = [
   },
 ];
 
-export default defaultRoute;
+const ErrorPage403 = lazy(() => import('@/views/core/error/403'));
+const ErrorElement = lazy(() => import('@/views/core/error/ErrorElement'));
+const Refresh = lazy(() => import('@/views/core/Refresh'));
+
+const Login = lazy(() => import('@/views/Login'));
+
+export const whiteList = [
+  {
+    path: '*',
+    element: <ErrorPage403 />,
+  },
+  {
+    path: '/refresh/*',
+    element: <Refresh />,
+    meta: { label: '', hideSidebar: true, whiteList: true },
+  },
+];
+
+export const baseRouter: RouteObject[] = [
+  {
+    path: '/',
+    element: (
+      <Authority>
+        <Layout />
+      </Authority>
+    ),
+    errorElement: <ErrorElement pageType="Layout" />,
+    children: [...whiteList],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+];

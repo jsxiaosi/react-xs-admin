@@ -10,7 +10,7 @@ export const localeConfig = {
 
 export type LocaleType = keyof typeof localeConfig;
 
-export type LocaleId = keyof typeof zh_CN;
+export type LocaleId = keyof typeof en_US;
 
 interface Props extends MessageDescriptor {
   id: LocaleId;

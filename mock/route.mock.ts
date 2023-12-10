@@ -1,4 +1,4 @@
-import type { MockMethod, Recordable } from 'vite-plugin-mock';
+import { defineFakeRoute } from 'vite-plugin-fake-server/client';
 
 const power = [
   {
@@ -33,17 +33,38 @@ const adminRoute = [
     id: 'Power',
     children: [
       {
-        path: 'use_list',
-        id: 'UseList',
+        path: 'permissions',
+        id: 'Permissions',
+      },
+      {
+        path: 'test-permissions-a',
+        id: 'TestPermissionsA',
       },
     ],
   },
 ];
 
-export default [
+const testRoute = [
+  {
+    path: '/power',
+    id: 'Power',
+    children: [
+      {
+        path: 'permissions',
+        id: 'Permissions',
+      },
+      {
+        path: 'test-permissions-b',
+        id: 'TestPermissionsB',
+      },
+    ],
+  },
+];
+
+export default defineFakeRoute([
   {
     url: '/mock_api/getRoute',
-    timeout: 0,
+    timeout: 500,
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
       const { name } = body;
@@ -55,7 +76,7 @@ export default [
         };
       } else if (name == 'test') {
         return {
-          data: [...power],
+          data: [...power, ...testRoute],
           code: 1,
           message: 'ok',
         };
@@ -68,4 +89,4 @@ export default [
       }
     },
   },
-] as MockMethod[];
+]);

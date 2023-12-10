@@ -8,7 +8,7 @@ export interface UseInfoType {
   introduction: string;
   title: string;
   token: string;
-  power: string;
+  power: 'test' | 'admin';
 }
 
 export const getUserInfo = (user: string, pwd: string) =>

@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import type { LocaleId } from '@/locales';
 // import { formatFlatteningRoutes, setUpRoutePath } from '@/router/utils';
 
 export interface AsyncRouteType {
@@ -10,6 +11,7 @@ export interface AsyncRouteType {
 
 export interface MultiTabsType {
   label?: string;
+  localeLabel?: LocaleId;
   key: string;
 }
 
