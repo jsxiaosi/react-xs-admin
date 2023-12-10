@@ -1,4 +1,4 @@
-import { X as s } from './index-76VpSOXG.js';
+import { X as s } from './index-kemiTooa.js';
 function r() {
   return s('div', { children: ' Test 可见' });
 }

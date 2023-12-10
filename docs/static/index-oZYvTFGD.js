@@ -1,5 +1,5 @@
-import { a6 as m, a7 as g, Z as s, X as n, a3 as l } from './index-76VpSOXG.js';
-import { u } from './useInfoPageTabs-7AG4vJAS.js';
+import { a6 as m, a7 as g, Z as s, X as n, a3 as l } from './index-kemiTooa.js';
+import { u } from './useInfoPageTabs-KAeN4hpU.js';
 const p = () => {
   const d = m(),
     t = g(),
