@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router-dom';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { RouterProvider, Navigate, createHashRouter } from 'react-router-dom';
 import { useState, useEffect, memo } from 'react';
 import { baseRouter, whiteList } from './modules';
 import { handlePowerRoute } from './utils';
@@ -40,7 +40,7 @@ const RouteView = memo(() => {
     setRoute(mapBaseRouter(baseRouter, asyncRouter));
   }, [asyncRouter]);
 
-  const routeElemt = createBrowserRouter(route, { basename: '/react-xs-admin' });
+  const routeElemt = createHashRouter(route);
 
   return <RouterProvider router={routeElemt} />;
 });
