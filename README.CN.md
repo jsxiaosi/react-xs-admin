@@ -4,7 +4,7 @@
 </a>
 </div>
 
-**中文** | [English](./README.EN.md)
+**中文** | [English](./README.md)
 
 ## 简介
 
@@ -18,6 +18,9 @@
 - **权限**：权限路由
 
 ## 预览
+
+- [github 站点](https://jsxiaosi.github.io/react-xs-admin/)
+- [gitee 站点](https://jsxiaosi.gitee.io/react-xs-admin/)
 
 <img src="https://www.jsxiaosi.com/image/react-xs-admin1.png?max=xiaosi" width="100%">
 
