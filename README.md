@@ -20,7 +20,10 @@ The out of the box background template developed based on mainstream technologie
 
 - **Permission**: Permission Routing
 
-## 预览
+## Preview
+
+- [github site](https://jsxiaosi.github.io/react-xs-admin/)
+- [gitee site](http://jsxiaosi.gitee.io/react-xs-admin/)
 
 <img src="https://www.jsxiaosi.com/image/react-xs-admin1.png?max=xiaosi" width="100%">
 
