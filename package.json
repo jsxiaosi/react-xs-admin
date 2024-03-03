@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "staging": "tsc && vite build --mode staging",
     "preview": "vite preview",
-    "lint:eslint": "eslint . --fix",
+    "lint:eslint": "eslint \"{src,mock,build}/**/*.{ts,js,tsx,jsx}\" package.json --fix",
     "lint:prettier": "prettier --write .",
     "lint:staged": "lint-staged",
     "log": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
