@@ -5,7 +5,6 @@ import {
   UserSwitchOutlined,
 } from '@ant-design/icons';
 import { lazy } from 'react';
-import type { RouteObject } from 'react-router-dom';
 import type { RouteList } from '@/router/route';
 import { FormattedMessage } from '@/locales';
 import Layout from '@/layout';
@@ -26,31 +25,31 @@ export const defaultRoute: RouteList[] = [
     path: '/home',
     id: 'Home',
     element: <Home />,
-    meta: { label: FormattedMessage({ id: 'layout.memu.home' }), icon: <HomeOutlined /> },
+    handle: { label: FormattedMessage({ id: 'layout.memu.home' }), icon: <HomeOutlined /> },
   },
   {
     path: '/nested',
     id: 'Nested',
     redirect: '/nested/menu1',
-    meta: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <AppstoreOutlined /> },
+    handle: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <AppstoreOutlined /> },
     children: [
       {
         path: 'menu1',
         id: 'Menu1',
         redirect: '/nested/menu1/menu1-1',
-        meta: { label: 'menu-1' },
+        handle: { label: 'menu-1' },
         children: [
           {
             path: 'menu1-1',
             id: 'Menu1-1',
             element: <Menu1_1 />,
-            meta: { label: 'menu-1-1' },
+            handle: { label: 'menu-1-1' },
           },
           {
             path: 'menu1-2',
             id: 'Menu1-2',
             element: <Menu1_2 />,
-            meta: { label: 'menu-1-2' },
+            handle: { label: 'menu-1-2' },
           },
         ],
       },
@@ -60,7 +59,7 @@ export const defaultRoute: RouteList[] = [
     path: '/power',
     id: 'Power',
     redirect: '/power/permissions',
-    meta: {
+    handle: {
       label: FormattedMessage({ id: 'layout.memu.permissions' }),
       icon: <UserSwitchOutlined />,
     },
@@ -69,34 +68,33 @@ export const defaultRoute: RouteList[] = [
         path: 'permissions',
         id: 'Permissions',
         element: <Permissions />,
-        meta: { label: FormattedMessage({ id: 'layout.memu.permissionsPage' }) },
+        handle: { label: FormattedMessage({ id: 'layout.memu.permissionsPage' }) },
       },
       {
         path: 'test-permissions-a',
         id: 'TestPermissionsA',
         element: <TestPermissionsA />,
-        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage1' }) },
+        handle: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage1' }) },
       },
       {
         path: 'test-permissions-b',
         id: 'TestPermissionsB',
         element: <TestPermissionsB />,
-        meta: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage2' }) },
+        handle: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage2' }) },
       },
     ],
   },
   {
     path: '/details-page',
     id: 'DetailsPage',
-    redirect: '/details-page/index',
     alwaysShow: false,
-    meta: { label: FormattedMessage({ id: 'layout.memu.detailsPage' }), whiteList: true },
+    handle: { label: FormattedMessage({ id: 'layout.memu.detailsPage' }), whiteList: true },
     children: [
       {
-        path: 'index',
-        id: 'INDEX',
+        path: '',
+        id: 'DetailsList',
         element: <DetailsPage />,
-        meta: {
+        handle: {
           label: FormattedMessage({ id: 'layout.memu.detailsPage' }),
           icon: <DatabaseOutlined />,
         },
@@ -105,13 +103,13 @@ export const defaultRoute: RouteList[] = [
         path: 'details-info',
         id: 'DetailsInfo',
         element: <DetailsInfo />,
-        meta: { label: '详情页', hideSidebar: true },
+        handle: { label: '详情页', hideSidebar: true },
       },
       {
         path: 'details-params/:id',
         id: 'DetailsParams',
         element: <DetailsParams />,
-        meta: { label: '详情页', hideSidebar: true },
+        handle: { label: '详情页', hideSidebar: true },
       },
     ],
   },
@@ -123,7 +121,7 @@ const Refresh = lazy(() => import('@/views/core/Refresh'));
 
 const Login = lazy(() => import('@/views/Login'));
 
-export const whiteList = [
+export const whiteList: RouteList[] = [
   {
     path: '*',
     element: <ErrorPage403 />,
@@ -131,11 +129,11 @@ export const whiteList = [
   {
     path: '/refresh/*',
     element: <Refresh />,
-    meta: { label: '', hideSidebar: true, whiteList: true },
+    handle: { label: '', hideSidebar: true, whiteList: true },
   },
 ];
 
-export const baseRouter: RouteObject[] = [
+export const baseRouter: RouteList[] = [
   {
     path: '/',
     element: (

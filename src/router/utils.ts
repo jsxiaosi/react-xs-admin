@@ -28,10 +28,10 @@ export function handlePowerRoute(
   const newRouteList: RouteList[] = [];
   routerList.forEach((i) => {
     const item = cloneDeep(i);
-    if (!item.meta.whiteList) {
+    if (!item.handle.whiteList) {
       const rItem = dataRouter.find((r) => r.id === item.id);
       if (rItem) {
-        if (rItem.children && rItem.children.length && item.children && item.children.length) {
+        if (rItem.children && item.children && item.children.length) {
           const children = handlePowerRoute(rItem.children, item.children);
           item.children = children;
           if (children) newRouteList.push(item);

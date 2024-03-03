@@ -3,6 +3,7 @@ import { RouterProvider, Navigate, createHashRouter } from 'react-router-dom';
 import { useState, useEffect, memo } from 'react';
 import { baseRouter, whiteList } from './modules';
 import { handlePowerRoute } from './utils';
+import type { RouteList } from './route';
 import type { AsyncRouteType } from '@/store/modules/route';
 import { useAppSelector } from '@/store/hooks';
 import { useRouteList } from '@/hooks/useRouteList';
@@ -23,7 +24,7 @@ const RouteView = memo(() => {
     return [...routerList, ...whiteList];
   };
 
-  const mapBaseRouter = (baseRouter: RouteObject[], asyncRouter: AsyncRouteType[]) => {
+  const mapBaseRouter = (baseRouter: RouteList[], asyncRouter: AsyncRouteType[]) => {
     return baseRouter.map((i) => {
       const routeItem = i;
       if (routeItem.path === '/') {
@@ -33,14 +34,14 @@ const RouteView = memo(() => {
     });
   };
 
-  const [route, setRoute] = useState<RouteObject[]>(mapBaseRouter(baseRouter, asyncRouter));
+  const [route, setRoute] = useState<RouteList[]>(mapBaseRouter(baseRouter, asyncRouter));
 
   // 更新路由列表
   useEffect(() => {
     setRoute(mapBaseRouter(baseRouter, asyncRouter));
   }, [asyncRouter]);
 
-  const routeElemt = createHashRouter(route);
+  const routeElemt = createHashRouter(route as RouteObject[]);
 
   return <RouterProvider router={routeElemt} />;
 });

@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
-import { Navigate, redirect } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { Typography } from 'antd';
 import type { MenuItem, RouteList } from '@/router/route';
 
@@ -26,7 +26,6 @@ export const useRouteList = () => {
         if (i.redirect && item.children.length) {
           item.children.push({
             index: true,
-            element: <Navigate to={i.redirect} />,
             loader() {
               return redirect(i.redirect || '');
             },
@@ -42,7 +41,7 @@ export const useRouteList = () => {
     const menuList: MenuItem[] = [];
     rtList.forEach((i: RouteList) => {
       const item = i;
-      if (item.meta.hideSidebar) return;
+      if (item.handle.hideSidebar) return;
 
       if (!item.alwaysShow && item.alwaysShow !== undefined && !item.element) {
         if (item.children && item.children[0]) {
@@ -55,16 +54,19 @@ export const useRouteList = () => {
         key: item.path,
         label: '',
       };
-      if (path) rtItem.key = `${path}/${item.path}`;
+
+      if (path) {
+        rtItem.key = item.path ? `${path}/${item.path}` : path;
+      }
 
       rtItem = {
         ...rtItem,
         label: (
-          <Text style={{ color: 'currentcolor' }} ellipsis={{ tooltip: item.meta.label }}>
-            {item.meta.label}
+          <Text style={{ color: 'currentcolor' }} ellipsis={{ tooltip: item.handle.label }}>
+            {item.handle.label}
           </Text>
         ),
-        icon: item.meta.icon,
+        icon: item.handle.icon,
       };
 
       if (item.children && !item.element) {

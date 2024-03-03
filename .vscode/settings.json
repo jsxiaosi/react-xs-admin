@@ -2,6 +2,9 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "eslint.validate": ["json", "javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
   "i18n-ally.localesPaths": ["src/locales"],
   "i18n-ally.namespace": false,
   "i18n-ally.sortKeys": true,
