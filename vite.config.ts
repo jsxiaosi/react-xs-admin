@@ -11,7 +11,7 @@ export default (configEnv: ConfigEnv): UserConfig => {
   const isBuild = command === 'build';
 
   return {
-    base: 'react-xs-admin',
+    base: '/react-xs-admin',
     // 解析配置
     resolve: createViteResolve(__dirname),
     // 插件配置
