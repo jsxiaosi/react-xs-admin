@@ -1,0 +1,1 @@
+import{r as s,ab as r,aa as o,a0 as a,a7 as i}from"./index-SLutyPC-.js";import{R as m}from"./index-4Ovp_60e.js";const c=s.memo(()=>{const t=r(),e=o();return a(m,{status:"403",title:"403",subTitle:t.formatMessage({id:"layout.error.403"}),extra:a(i,{type:"primary",onClick:()=>{e("/")},children:"Back Home"})})});export{c as default};

@@ -1,0 +1,1 @@
+import{r as a,ac as m,ab as u,a2 as c,ad as n}from"./index-SLutyPC-.js";import{u as d}from"./useInfoPageTabs-HigP_ibv.js";const l=a.memo(()=>{const[s,t]=a.useState(),[e]=m(),{handleTabs:r}=d(),o=u();return a.useEffect(()=>{t(e.get("id")||""),r("qurey","update",Number(e.get("id")))},[]),c(n,{children:[o.formatMessage({id:"layout.memu.detailsPage"}),"-",s]})});export{l as default};

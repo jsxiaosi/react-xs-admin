@@ -1,0 +1,1 @@
+import{r as a,ae as o,ab as u,a2 as d,ad as n}from"./index-SLutyPC-.js";import{u as i}from"./useInfoPageTabs-HigP_ibv.js";const f=a.memo(()=>{const[e,t]=a.useState(),s=o(),{handleTabs:r}=i(),m=u();return a.useEffect(()=>{t(s.id),r("params","update",Number(s.id))},[]),d(n,{children:[m.formatMessage({id:"layout.memu.detailsPage"}),"Params-",e]})});export{f as default};
