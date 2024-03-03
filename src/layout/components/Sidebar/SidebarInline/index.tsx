@@ -25,6 +25,7 @@ const Sidebar = memo(() => {
   );
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const thme = theme.useToken();
+  console.log(thme);
   const responsive = useResponsive();
   const navigate = useNavigate();
   const { menuList } = useMenuList();
@@ -87,7 +88,7 @@ const Sidebar = memo(() => {
             <Sider
               className="sidebar"
               breakpoint="lg"
-              collapsedWidth="55"
+              collapsedWidth={55}
               width={210}
               theme="light"
               collapsed={collapsed}
@@ -95,6 +96,7 @@ const Sidebar = memo(() => {
               css={{
                 backgroundColor: thme.token.colorBgContainer,
                 borderRight: `1px solid ${thme.token.colorBorder}`,
+                transition: `all ${thme.token.motionDurationSlow} ${thme.token.motionEaseOut}`,
               }}
             >
               {MenuRender}
