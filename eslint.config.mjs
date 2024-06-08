@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   env: {
     browser: true,
@@ -19,4 +19,21 @@ module.exports = {
     // 禁止使用未知的dom属性
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
+  ignorePatterns: [
+    '.vscode/',
+    '.idea/',
+    '.husky/',
+    '*.html',
+    '*.md',
+    '*.woff',
+    '*.ttf',
+    '*.sh',
+    'bin/',
+    'dist/',
+    'docs/',
+    'public/',
+    'discard/',
+    'Dockerfile',
+    'node_modules/',
+  ],
 };
