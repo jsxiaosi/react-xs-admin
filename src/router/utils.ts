@@ -75,7 +75,7 @@ export function getParentPaths(routePath: string, routes: MenuItem[]): string[] 
 
 // 查找对应path的路由信息
 export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null {
-  const res = routes.find((item) => item.key == path) || null;
+  const res = routes.find((item) => item.key === path) || null;
   if (res) {
     return res;
   } else {
@@ -85,7 +85,7 @@ export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null 
         if (miRes) {
           return miRes;
         } else {
-          if (routes[i].key == path) return routes[i];
+          if (routes[i].key === path) return routes[i];
         }
       }
     }

@@ -29,14 +29,14 @@ export default defineFakeRoute([
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
       const { username, password } = body;
-      if (username == 'admin' && password == 'admin123') {
+      if (username === 'admin' && password === 'admin123') {
         userInfo.token = genID(16);
         return {
           data: userInfo,
           code: 1,
           message: 'ok',
         };
-      } else if (username == 'test' && password == 'test123') {
+      } else if (username === 'test' && password === 'test123') {
         userInfo2.token = genID(16);
         return {
           data: userInfo2,
