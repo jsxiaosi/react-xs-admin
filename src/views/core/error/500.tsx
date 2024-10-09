@@ -1,9 +1,10 @@
+import { useLocale } from '@/locales';
 import { Button, Result } from 'antd';
 import { memo } from 'react';
-import { useLocale } from '@/locales';
 
-export default memo(() => {
+function Error500() {
   const init = useLocale();
+
   return (
     <Result
       status="500"
@@ -12,4 +13,6 @@ export default memo(() => {
       extra={<Button type="primary">Back Home</Button>}
     />
   );
-});
+}
+
+export default memo(Error500);

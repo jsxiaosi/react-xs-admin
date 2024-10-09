@@ -15,7 +15,6 @@
     "staging": "tsc && vite build --mode staging",
     "preview": "vite preview",
     "lint:eslint": "eslint \"{src,mock,build}/**/*.{ts,js,tsx,jsx}\" package.json --fix",
-    "lint:prettier": "prettier --write .",
     "lint:staged": "lint-staged",
     "log": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "tsc": "tsc --noEmit --skipLibCheck",
@@ -48,9 +47,8 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.12.0",
+    "@eslint-react/eslint-plugin": "^1.14.3",
     "@jsxiaosi/commitlint-config": "^0.1.0",
-    "@jsxiaosi/eslint-config-prettier": "^0.1.0",
-    "@jsxiaosi/eslint-config-react": "^0.1.0",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.3",
@@ -62,9 +60,9 @@
     "conventional-changelog-cli": "^5.0.0",
     "crypto-js": "^4.2.0",
     "czg": "^1.9.4",
-    "eslint": "^9.7.0",
-    "eslint-plugin-react": "^7.35.0",
+    "eslint": "^9.10.0",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.12",
     "husky": "^9.1.1",
     "less": "^4.2.0",
     "lint-staged": "^15.2.7",
@@ -92,14 +90,7 @@
   },
   "lint-staged": {
     "{src,mock,build}/**/*.{ts,js,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-      "prettier --write--parser json"
-    ],
-    "package.json": [
-      "prettier --write"
+      "eslint --fix"
     ]
   }
 }

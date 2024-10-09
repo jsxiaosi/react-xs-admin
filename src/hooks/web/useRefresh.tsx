@@ -5,7 +5,7 @@ export const useRefresh = () => {
   const navigate = useNavigate();
 
   const refresh = (path?: string) => {
-    const refreshUrl = path ? path : location.pathname + location.search;
+    const refreshUrl = path || location.pathname + location.search;
     navigate(`/refresh${refreshUrl}`, { replace: true });
   };
 

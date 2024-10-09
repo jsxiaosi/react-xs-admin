@@ -1,11 +1,11 @@
-import type { CSSObject } from '@emotion/react';
 import styled from '@emotion/styled';
+import type { CSSObject } from '@emotion/react';
 
 const getAccountDivStyle = (): CSSObject => {
   return {
     display: 'flex',
     alignItems: 'center',
-    ['.wave']: {
+    '.wave': {
       width: 30,
       height: 30,
       borderRadius: '50%',

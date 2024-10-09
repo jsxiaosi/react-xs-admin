@@ -1,9 +1,9 @@
+import { useLocale } from '@/locales';
 import { Button, Result } from 'antd';
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLocale } from '@/locales';
 
-export default memo(() => {
+function Error403() {
   const init = useLocale();
 
   const navigate = useNavigate();
@@ -25,4 +25,6 @@ export default memo(() => {
       }
     />
   );
-});
+}
+
+export default memo(Error403);

@@ -1,6 +1,6 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { LocaleId } from '@/locales';
+import type { PayloadAction } from '@reduxjs/toolkit';
 // import { formatFlatteningRoutes, setUpRoutePath } from '@/router/utils';
 
 export interface AsyncRouteType {
@@ -35,12 +35,9 @@ export const routeSlice = createSlice({
       state.asyncRouter = action.payload;
       // state.levelAsyncRouter = formatFlatteningRoutes(setUpRoutePath(action.payload));
     },
-    setStoreMultiTabs: (
-      state,
-      action: PayloadAction<{ type: 'add' | 'delete' | 'update'; tabs: MultiTabsType }>,
-    ) => {
+    setStoreMultiTabs: (state, action: PayloadAction<{ type: 'add' | 'delete' | 'update'; tabs: MultiTabsType }>) => {
       const { type, tabs } = action.payload;
-      const tabIndex = state.multiTabs.findIndex((i) => i.key === tabs.key);
+      const tabIndex = state.multiTabs.findIndex(i => i.key === tabs.key);
       switch (type) {
         case 'add':
           if (tabIndex === -1) state.multiTabs.push(tabs);

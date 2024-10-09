@@ -1,8 +1,8 @@
+import { useLocale } from '@/locales';
 import { Button, Result } from 'antd';
 import { memo } from 'react';
-import { useLocale } from '@/locales';
 
-export default memo(() => {
+function Error404() {
   const init = useLocale();
 
   return (
@@ -13,4 +13,6 @@ export default memo(() => {
       extra={<Button type="primary">Back Home</Button>}
     />
   );
-});
+}
+
+export default memo(Error404);

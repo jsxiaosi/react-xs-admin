@@ -7,10 +7,10 @@ const Redirect = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate('/' + params['*'] + location.search, { replace: true });
+    navigate(`/${params['*']}${location.search}`, { replace: true });
   }, []);
 
-  return <></>;
+  return null;
 };
 
 export default Redirect;

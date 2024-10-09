@@ -1,16 +1,16 @@
-import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
-import { memo, useEffect, useState } from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import type { LoginForm } from './type';
-import AppTheme from '@/components/AppTheme';
+import logo from '@/assets/logo.png';
 import AppLocale from '@/components/AppLocale';
-import { getUserInfo } from '@/server/useInfo';
+import AppTheme from '@/components/AppTheme';
+import { useLocale } from '@/locales';
 import { initAsyncRoute } from '@/router/utils';
+import { getUserInfo } from '@/server/useInfo';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setUserInfo } from '@/store/modules/user';
-import logo from '@/assets/logo.png';
-import { useLocale } from '@/locales';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
+import { memo, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { LoginForm } from './type';
 
 const Login = memo(() => {
   const intl = useLocale();
@@ -34,7 +34,7 @@ const Login = memo(() => {
     setLoading(false);
   };
 
-  const userStore = useAppSelector((state) => state.user);
+  const userStore = useAppSelector(state => state.user);
 
   useEffect(() => {
     if (userStore.power) {
@@ -67,11 +67,7 @@ const Login = memo(() => {
             name="username"
             rules={[{ required: true, message: intl.formatMessage({ id: 'login.userNameRules' }) }]}
           >
-            <Input
-              prefix={<UserOutlined />}
-              placeholder={intl.formatMessage({ id: 'login.username' })}
-              allowClear
-            />
+            <Input prefix={<UserOutlined />} placeholder={intl.formatMessage({ id: 'login.username' })} allowClear />
           </Form.Item>
           <Form.Item<LoginForm>
             name="password"

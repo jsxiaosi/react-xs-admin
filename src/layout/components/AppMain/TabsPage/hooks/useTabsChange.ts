@@ -1,11 +1,11 @@
+import { useRefresh } from '@/hooks/web/useRefresh';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { RightClickTags } from './useTabsState';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setStoreMultiTabs, type MultiTabsType } from '@/store/modules/route';
-import { useRefresh } from '@/hooks/web/useRefresh';
 
 export const useTabsChange = () => {
-  const multiTabs = useAppSelector((state) => state.route.multiTabs);
+  const multiTabs = useAppSelector(state => state.route.multiTabs);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ export const useTabsChange = () => {
 
   // 关闭当前导航
   const removeTab = (pathKey: string) => {
-    const item = multiTabs.findIndex((i) => i.key === pathKey);
+    const item = multiTabs.findIndex(i => i.key === pathKey);
     const tabsLength = multiTabs.length;
 
     let value: MultiTabsType;
@@ -50,18 +50,18 @@ export const useTabsChange = () => {
   };
 
   const closeTabsRoute = (pathKey: string, type: 'other' | 'left' | 'right') => {
-    const selectItemIndex = multiTabs.findIndex((i) => i.key === pathKey);
+    const selectItemIndex = multiTabs.findIndex(i => i.key === pathKey);
     const mapList = multiTabs.filter((i, index) => {
       if (i.key !== pathKey && type === 'other') return true;
       else if (index < selectItemIndex && type === 'left') return true;
       else if (index > selectItemIndex && type === 'right') return true;
       return false;
     });
-    if (mapList.find((i) => i.key === getCurrentPathname())) {
+    if (mapList.find(i => i.key === getCurrentPathname())) {
       const { key } = multiTabs[selectItemIndex];
       navigate(key);
     }
-    mapList.forEach((i) => i.key && handleTabsList(i.key, 'delete'));
+    mapList.forEach(i => i.key && handleTabsList(i.key, 'delete'));
   };
 
   const onTabsDropdownChange = (code: RightClickTags['code'], pathKey: string) => {

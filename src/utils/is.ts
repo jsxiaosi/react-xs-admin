@@ -60,7 +60,7 @@ export function isString(val: unknown): val is string {
   return is(val, 'String');
 }
 
-export function isFunction(val: unknown): val is Function {
+export function isFunction<T extends (...args: any[]) => any>(val: unknown): val is T {
   return typeof val === 'function';
 }
 

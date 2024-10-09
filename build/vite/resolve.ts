@@ -1,5 +1,5 @@
 import path from 'path';
-import type { ResolveOptions, AliasOptions } from 'vite';
+import type { AliasOptions, ResolveOptions } from 'vite';
 
 type myResolveOptions = ResolveOptions & { alias?: AliasOptions };
 

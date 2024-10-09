@@ -1,11 +1,11 @@
-import type { MenuProps } from 'antd';
+import avatar from '@/assets/avatar.png';
+import { useAppDispatch } from '@/store/hooks';
+import { setSignOut } from '@/store/modules/user';
+import { removeStorage } from '@/utils/storage';
 import { Dropdown, Image } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import type { MenuProps } from 'antd';
 import { getAccountStyle } from './style';
-import avatar from '@/assets/avatar.png';
-import { removeStorage } from '@/utils/storage';
-import { setSignOut } from '@/store/modules/user';
-import { useAppDispatch } from '@/store/hooks';
 
 const AppAccount = () => {
   const { AccountDiv } = getAccountStyle();
@@ -21,7 +21,7 @@ const AppAccount = () => {
     },
   ];
 
-  const memuChange: MenuProps['onClick'] = (_e) => {
+  const memuChange: MenuProps['onClick'] = _e => {
     removeStorage('userInfo');
     dispatch(setSignOut());
 

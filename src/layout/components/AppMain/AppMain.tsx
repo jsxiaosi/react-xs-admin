@@ -1,10 +1,10 @@
+import LayoutSpin from '@/components/LayoutSpin';
 import { Layout } from 'antd';
 import { memo, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { KeepAlive } from './KeepAlive';
 import { getAppMainStyle } from './style';
 import TabsPage from './TabsPage';
-import LayoutSpin from '@/components/LayoutSpin';
 
 const { Content } = Layout;
 

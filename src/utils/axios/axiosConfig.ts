@@ -1,8 +1,8 @@
+import type { RequestOptions, Result } from '#/axios';
 /**
  * axios 数据处理类
  */
 import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import type { RequestOptions, Result } from '#/axios';
 
 export interface CreateAxiosOptions extends AxiosRequestConfig {
   requestOptions?: RequestOptions;

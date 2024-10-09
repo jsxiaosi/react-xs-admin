@@ -1,28 +1,28 @@
-import { memo } from 'react';
-import { Avatar, Divider, theme } from 'antd';
+import avatar from '@/assets/avatar.png';
 import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Divider, theme } from 'antd';
+import { memo } from 'react';
 import type { CSSObject } from '@emotion/react';
 import type { GlobalToken } from 'antd/es/theme/interface';
-import avatar from '@/assets/avatar.png';
 
 const getCommentItem = (token: GlobalToken): CSSObject => {
   return {
     height: 450,
     overflowY: 'auto',
-    ['.item']: {
+    '.item': {
       display: 'flex',
-      ['.item-content']: {
+      '.item-content': {
         marginLeft: 14,
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        ['.title']: {
+        '.title': {
           fontSize: token.fontSize,
         },
-        ['time']: {
+        time: {
           fontSize: token.fontSizeSM,
         },
-        ['.text']: {
+        '.text': {
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           display: '-webkit-box',
@@ -40,7 +40,7 @@ const Comment = memo(() => {
   return (
     <div css={getCommentItem(thme.token)}>
       <ul>
-        {[1, 2, 3, 4].map((i) => {
+        {[1, 2, 3, 4].map(i => {
           return (
             <li key={i}>
               <div className="item">

@@ -1,13 +1,13 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { UseInfoType } from '@/server/useInfo';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface UserSlice {
+interface UserSliceType {
   userInfo?: UseInfoType;
   power?: UseInfoType['power'];
 }
 
-const initialState: UserSlice = {};
+const initialState: UserSliceType = {};
 
 export const UserSlice = createSlice({
   name: 'userInfo',
@@ -23,7 +23,7 @@ export const UserSlice = createSlice({
         state.userInfo.power = action.payload;
       }
     },
-    setSignOut: (state) => {
+    setSignOut: state => {
       delete state.userInfo;
       delete state.power;
     },
