@@ -1,4 +1,4 @@
-import jsxiaosi from "@jsxiaosi/eslint-config";
+import jsxiaosi from '@jsxiaosi/eslint-config';
 
 export default jsxiaosi({
   typescript: true,
