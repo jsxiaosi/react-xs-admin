@@ -38,7 +38,9 @@ const AppAccount = () => {
         placement="bottom"
         arrow
       >
-        <Image src={avatar} className="wave" preview={false} />
+        <div className="wave">
+          <Image src={avatar} width={30} preview={false} />
+        </div>
       </Dropdown>
     </AccountDiv>
   );
