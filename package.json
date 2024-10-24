@@ -20,7 +20,7 @@
     "log": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "tsc": "tsc --noEmit --skipLibCheck",
     "cz": "czg",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.3",
