@@ -9,6 +9,11 @@ const getAccountDivStyle = (): CSSObject => {
       width: 30,
       height: 30,
       borderRadius: '50%',
+      overflow: 'hidden',
+
+      '.ant-image': {
+        display: 'flex',
+      },
     },
   };
 };
