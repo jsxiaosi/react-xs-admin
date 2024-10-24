@@ -1,6 +1,6 @@
+import { FormattedMessage } from '@/components/FormattedMessage';
 import { useRouteList } from '@/hooks/useRouteList';
 import { useRefresh } from '@/hooks/web/useRefresh';
-import { FormattedMessage } from '@/locales';
 import { defaultRoute } from '@/router/modules';
 import { findRouteByPath } from '@/router/utils';
 import { useAppSelector } from '@/store/hooks';

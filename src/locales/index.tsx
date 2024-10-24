@@ -16,7 +16,7 @@ export interface Props extends MessageDescriptor {
   id: LocaleId;
 }
 
-type FormatMessageProps = (descriptor: Props) => string;
+export type FormatMessageProps = (descriptor: Props) => string;
 
 export const useLocale = () => {
   const { formatMessage: intlFormatMessage, ...rest } = useIntl();
