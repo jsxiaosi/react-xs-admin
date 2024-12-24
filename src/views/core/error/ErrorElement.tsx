@@ -1,7 +1,7 @@
 import { useLocale } from '@/locales';
 import { Result, Typography } from 'antd';
 import { memo } from 'react';
-import { useRouteError } from 'react-router-dom';
+import { useRouteError } from 'react-router';
 
 const { Paragraph, Text } = Typography;
 

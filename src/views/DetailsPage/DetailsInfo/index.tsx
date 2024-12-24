@@ -1,6 +1,6 @@
 import { useLocale } from '@/locales';
 import { memo, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { useInfoPageTabs } from '../hooks/useInfoPageTabs';
 
 const DatailsInfo = memo(() => {

@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/store/hooks';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 interface AuthorityType {
   children: React.ReactNode;

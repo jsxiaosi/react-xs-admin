@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/store/hooks';
 import { setSignOut } from '@/store/modules/user';
 import { removeStorage } from '@/utils/storage';
 import { Dropdown, Image } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import type { MenuProps } from 'antd';
 import { getAccountStyle } from './style';
 

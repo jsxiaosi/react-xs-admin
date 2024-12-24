@@ -2,7 +2,7 @@ import LayoutSpin from '@/components/LayoutSpin';
 import { useAppSelector } from '@/store/hooks';
 import React, { memo, Suspense, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useLocation, useOutlet, useParams } from 'react-router-dom';
+import { useLocation, useOutlet, useParams } from 'react-router';
 import type { ReactNode, RefObject } from 'react';
 
 export interface ComponentReactElement {

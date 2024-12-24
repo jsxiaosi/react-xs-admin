@@ -5,7 +5,7 @@ import { useResponsive } from 'ahooks';
 import { Drawer, Layout, Menu, theme } from 'antd';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { shallowEqual } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import type { MenuProps, SiderProps } from 'antd';
 import AppLogo from '../../AppLogo';
 import { useMenuList } from '../hooks/useMenuList';

@@ -1,4 +1,4 @@
-import type { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router';
 
 export interface MenuItem {
   label: React.ReactNode;

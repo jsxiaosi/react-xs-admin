@@ -9,7 +9,7 @@ import { setUserInfo } from '@/store/modules/user';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
 import { memo, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import type { LoginForm } from './type';
 
 const Login = memo(() => {

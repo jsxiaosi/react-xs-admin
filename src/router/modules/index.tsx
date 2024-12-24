@@ -21,13 +21,13 @@ export const defaultRoute: RouteList[] = [
     path: '/home',
     id: 'Home',
     element: <Home />,
-    handle: { label: FormattedMessage({ id: 'layout.memu.home' }), icon: <HomeOutlined /> },
+    handle: { label: <FormattedMessage id="layout.memu.home" />, icon: <HomeOutlined /> },
   },
   {
     path: '/nested',
     id: 'Nested',
     redirect: '/nested/menu1',
-    handle: { label: FormattedMessage({ id: 'layout.memu.nesting' }), icon: <AppstoreOutlined /> },
+    handle: { label: <FormattedMessage id="layout.memu.nesting" />, icon: <AppstoreOutlined /> },
     children: [
       {
         path: 'menu1',
@@ -56,7 +56,7 @@ export const defaultRoute: RouteList[] = [
     id: 'Power',
     redirect: '/power/permissions',
     handle: {
-      label: FormattedMessage({ id: 'layout.memu.permissions' }),
+      label: <FormattedMessage id="layout.memu.permissions" />,
       icon: <UserSwitchOutlined />,
     },
     children: [
@@ -64,19 +64,19 @@ export const defaultRoute: RouteList[] = [
         path: 'permissions',
         id: 'Permissions',
         element: <Permissions />,
-        handle: { label: FormattedMessage({ id: 'layout.memu.permissionsPage' }) },
+        handle: { label: <FormattedMessage id="layout.memu.permissionsPage" /> },
       },
       {
         path: 'test-permissions-a',
         id: 'TestPermissionsA',
         element: <TestPermissionsA />,
-        handle: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage1' }) },
+        handle: { label: <FormattedMessage id="layout.memu.testPermissionsPage1" /> },
       },
       {
         path: 'test-permissions-b',
         id: 'TestPermissionsB',
         element: <TestPermissionsB />,
-        handle: { label: FormattedMessage({ id: 'layout.memu.testPermissionsPage2' }) },
+        handle: { label: <FormattedMessage id="layout.memu.testPermissionsPage2" /> },
       },
     ],
   },
@@ -84,14 +84,14 @@ export const defaultRoute: RouteList[] = [
     path: '/details-page',
     id: 'DetailsPage',
     alwaysShow: false,
-    handle: { label: FormattedMessage({ id: 'layout.memu.detailsPage' }), whiteList: true },
+    handle: { label: <FormattedMessage id="layout.memu.detailsPage" />, whiteList: true },
     children: [
       {
         path: '',
         id: 'DetailsList',
         element: <DetailsPage />,
         handle: {
-          label: FormattedMessage({ id: 'layout.memu.detailsPage' }),
+          label: <FormattedMessage id="layout.memu.detailsPage" />,
           icon: <DatabaseOutlined />,
         },
       },

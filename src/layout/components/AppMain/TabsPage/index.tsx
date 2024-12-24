@@ -7,7 +7,7 @@ import { useAppSelector } from '@/store/hooks';
 import { CaretDownFilled, ReloadOutlined } from '@ant-design/icons';
 import { Tabs, theme } from 'antd';
 import { memo, useEffect, useMemo } from 'react';
-import { useLocation, useMatch, useNavigate } from 'react-router-dom';
+import { useLocation, useMatch, useNavigate } from 'react-router';
 import type { TabsProps } from 'antd';
 import TabsItemLabel from './components/TabsItemLabel';
 import { useTabsChange } from './hooks/useTabsChange';
@@ -39,7 +39,7 @@ const TabsPage = memo((_props: Props) => {
         label: (
           <TabsItemLabel pathKey={i.key}>
             <div className="tabs-tab-label">
-              {i.localeLabel ? FormattedMessage({ id: i.localeLabel }) : ''}
+              {i.localeLabel ? <FormattedMessage id={i.localeLabel} /> : ''}
               {i.label || routeBy?.label}
             </div>
           </TabsItemLabel>

@@ -2,11 +2,11 @@ import { getRouteApi } from '@/server/route';
 import store from '@/store';
 import { setStoreAsyncRouter } from '@/store/modules/route';
 import { cloneDeep } from 'lodash-es';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router';
 import type { MenuItem, RouteList } from '@/router/route';
 import type { AsyncRouteType } from '@/store/modules/route';
 import type { Key } from 'react';
-import type { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router';
 import { defaultRoute } from './modules';
 
 // import { HomeOutlined } from '@ant-design/icons';

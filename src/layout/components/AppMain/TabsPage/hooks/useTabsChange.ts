@@ -1,7 +1,7 @@
 import { useRefresh } from '@/hooks/web/useRefresh';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import type { RightClickTags } from './useTabsState';
 
 export const useTabsChange = () => {

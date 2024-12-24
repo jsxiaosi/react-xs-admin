@@ -2,7 +2,7 @@ import { getParentPaths } from '@/router/utils';
 import { useAppSelector } from '@/store/hooks';
 import { Menu } from 'antd';
 import { memo, useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import type { MenuProps } from 'antd';
 import { useMenuList } from '../hooks/useMenuList';
 
