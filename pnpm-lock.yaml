@@ -41,6 +41,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      keepalive-for-react:
+        specifier: ^3.0.7
+        version: 3.0.7(react-dom@19.0.0(react@19.0.0))(react-router-dom@7.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       localforage:
         specifier: ^1.10.0
         version: 1.10.0
@@ -4603,6 +4606,13 @@ packages:
 
   kdbush@4.0.2:
     resolution: {integrity: sha512-WbCVYJ27Sz8zi9Q7Q0xHC+05iwkm3Znipc2XTlrnJbsHMYktW4hPhXUE8Ys1engBrvffoSCqbil1JQAa7clRpA==}
+
+  keepalive-for-react@3.0.7:
+    resolution: {integrity: sha512-7LOxaObWkX/Nwzmo7P80KeHd59812sxfpiz4bmsdxAZubhlK1r0vXJf//SMo3Pdb8RC8YLsGOaEElE8yGULa6g==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      react-router-dom: '>=6.0.0'
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -12321,6 +12331,12 @@ snapshots:
   kdbush@3.0.0: {}
 
   kdbush@4.0.2: {}
+
+  keepalive-for-react@3.0.7(react-dom@19.0.0(react@19.0.0))(react-router-dom@7.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-router-dom: 7.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   keyv@4.5.4:
     dependencies:

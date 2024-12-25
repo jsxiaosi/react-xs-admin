@@ -1,6 +1,6 @@
-import { useRefresh } from '@/hooks/web/useRefresh';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
+import { useKeepAliveContext } from 'keepalive-for-react';
 import { useLocation, useNavigate } from 'react-router';
 import type { RightClickTags } from './useTabsState';
 
@@ -9,7 +9,8 @@ export const useTabsChange = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { refresh } = useRefresh();
+  // const { refresh } = useRefresh();
+  const { refresh, destroy } = useKeepAliveContext();
 
   const handleTabsList = (pathName: string, type: 'add' | 'delete') => {
     dispatch(
@@ -46,6 +47,7 @@ export const useTabsChange = () => {
       navigate(value.key);
     }
 
+    destroy(pathKey);
     handleTabsList(pathKey, 'delete');
   };
 
@@ -61,7 +63,11 @@ export const useTabsChange = () => {
       const { key } = multiTabs[selectItemIndex];
       navigate(key);
     }
-    mapList.forEach(i => i.key && handleTabsList(i.key, 'delete'));
+
+    mapList.forEach(i => {
+      destroy(i.key);
+      i.key && handleTabsList(i.key, 'delete');
+    });
   };
 
   const onTabsDropdownChange = (code: RightClickTags['code'], pathKey: string) => {
@@ -86,5 +92,5 @@ export const useTabsChange = () => {
     }
   };
 
-  return { onTabsDropdownChange, addRouteTabs, removeTab };
+  return { onTabsDropdownChange, addRouteTabs, removeTab, refresh };
 };

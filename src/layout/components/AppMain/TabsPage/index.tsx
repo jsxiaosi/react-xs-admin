@@ -1,6 +1,5 @@
 import { FormattedMessage } from '@/components/FormattedMessage';
 import { useRouteList } from '@/hooks/useRouteList';
-import { useRefresh } from '@/hooks/web/useRefresh';
 import { defaultRoute } from '@/router/modules';
 import { findRouteByPath } from '@/router/utils';
 import { useAppSelector } from '@/store/hooks';
@@ -25,8 +24,7 @@ const TabsPage = memo((_props: Props) => {
   const menuList = routeListToMenu(defaultRoute);
   const asyncRouter = useAppSelector(state => state.route.asyncRouter);
   const multiTabs = useAppSelector(state => state.route.multiTabs);
-  const { addRouteTabs, removeTab } = useTabsChange();
-  const { refresh } = useRefresh();
+  const { addRouteTabs, removeTab, refresh } = useTabsChange();
 
   const thme = theme.useToken();
 

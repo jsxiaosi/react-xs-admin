@@ -12,7 +12,7 @@ export interface ComponentReactElement {
 interface ComponentProps extends ComponentReactElement {
   active: boolean;
   name: string;
-  renderDiv: RefObject<HTMLDivElement>;
+  renderDiv: RefObject<HTMLDivElement | null>;
 }
 
 export const Component: React.FC<ComponentProps> = ({ active, children, name, renderDiv }) => {
