@@ -1,0 +1,49 @@
+name: Auto merge main into git-pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add git-pages remote
+        run: |
+          git remote add git-pages https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Fetch git-pages branch
+        run: git fetch origin git-pages:git-pages
+
+      - name: Checkout git-page branch
+        run: git checkout git-pages
+
+      - name: Merge main into git-pages
+        run: |
+         git merge main --no-ff -m "feat: ✨ Auto-merge main into git-pages"
+          
+      - name: Push changes to git-pages
+        run: git push origin git-pages
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          event-type: git-pages-deploy

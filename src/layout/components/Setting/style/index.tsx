@@ -5,11 +5,11 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
   return {
     padding: `0 ${token.paddingSM}px`,
     color: token.colorText,
-    ['.sidebar_seting']: {
+    '.sidebar_seting': {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      ['.sidebar_mode']: {
+      '.sidebar_mode': {
         position: 'relative',
         width: '80px',
         height: '60px',
@@ -17,15 +17,15 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
         borderRadius: 5,
         boxShadow: '0 1px 2.5px 0 rgb(0 0 0 / 18%)',
         overflow: 'hidden',
-        ['&:nth-of-type(1)']: {
-          ['div']: {
-            ['&:nth-of-type(1)']: {
+        '&:nth-of-type(1)': {
+          div: {
+            '&:nth-of-type(1)': {
               width: '30%',
               height: '100%',
               background: token.colorPrimary,
             },
 
-            ['&:nth-of-type(2)']: {
+            '&:nth-of-type(2)': {
               position: 'absolute',
               top: 0,
               right: 0,
@@ -36,9 +36,9 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
             },
           },
         },
-        ['&:nth-of-type(2)']: {
-          ['div']: {
-            ['&:nth-of-type(1)']: {
+        '&:nth-of-type(2)': {
+          div: {
+            '&:nth-of-type(1)': {
               width: '100%',
               height: '30%',
               boxShadow: '0 0 1px #888',
@@ -46,15 +46,15 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
             },
           },
         },
-        ['&:nth-of-type(3)']: {
-          ['div']: {
-            ['&:nth-of-type(1)']: {
+        '&:nth-of-type(3)': {
+          div: {
+            '&:nth-of-type(1)': {
               width: '30%',
               height: '100%',
               background: '#fff',
             },
 
-            ['&:nth-of-type(2)']: {
+            '&:nth-of-type(2)': {
               position: 'absolute',
               top: 0,
               right: 0,
@@ -66,7 +66,7 @@ export const getSidebarMode = (token: GlobalToken): CSSObject => {
           },
         },
       },
-      ['.sidebar_mode-select']: {
+      '.sidebar_mode-select': {
         border: `2px solid ${token.colorPrimary}`,
       },
     },

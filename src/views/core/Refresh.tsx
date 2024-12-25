@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router';
 
 const Redirect = () => {
   const params = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    navigate('/' + params['*'] + location.search, { replace: true });
-  }, []);
-
-  return <></>;
+  return <Navigate to={`/${params['*']}${location.search}`} replace />;
 };
 
 export default Redirect;

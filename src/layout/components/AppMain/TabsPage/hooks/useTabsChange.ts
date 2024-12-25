@@ -1,15 +1,16 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import type { RightClickTags } from './useTabsState';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setStoreMultiTabs, type MultiTabsType } from '@/store/modules/route';
-import { useRefresh } from '@/hooks/web/useRefresh';
+import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
+import { useKeepAliveContext } from 'keepalive-for-react';
+import { useLocation, useNavigate } from 'react-router';
+import type { RightClickTags } from './useTabsState';
 
 export const useTabsChange = () => {
-  const multiTabs = useAppSelector((state) => state.route.multiTabs);
+  const multiTabs = useAppSelector(state => state.route.multiTabs);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { refresh } = useRefresh();
+  // const { refresh } = useRefresh();
+  const { refresh, destroy } = useKeepAliveContext();
 
   const handleTabsList = (pathName: string, type: 'add' | 'delete') => {
     dispatch(
@@ -33,7 +34,7 @@ export const useTabsChange = () => {
 
   // 关闭当前导航
   const removeTab = (pathKey: string) => {
-    const item = multiTabs.findIndex((i) => i.key === pathKey);
+    const item = multiTabs.findIndex(i => i.key === pathKey);
     const tabsLength = multiTabs.length;
 
     let value: MultiTabsType;
@@ -46,22 +47,27 @@ export const useTabsChange = () => {
       navigate(value.key);
     }
 
+    destroy(pathKey);
     handleTabsList(pathKey, 'delete');
   };
 
   const closeTabsRoute = (pathKey: string, type: 'other' | 'left' | 'right') => {
-    const selectItemIndex = multiTabs.findIndex((i) => i.key === pathKey);
+    const selectItemIndex = multiTabs.findIndex(i => i.key === pathKey);
     const mapList = multiTabs.filter((i, index) => {
       if (i.key !== pathKey && type === 'other') return true;
       else if (index < selectItemIndex && type === 'left') return true;
       else if (index > selectItemIndex && type === 'right') return true;
       return false;
     });
-    if (mapList.find((i) => i.key === getCurrentPathname())) {
+    if (mapList.find(i => i.key === getCurrentPathname())) {
       const { key } = multiTabs[selectItemIndex];
       navigate(key);
     }
-    mapList.forEach((i) => i.key && handleTabsList(i.key, 'delete'));
+
+    mapList.forEach(i => {
+      destroy(i.key);
+      i.key && handleTabsList(i.key, 'delete');
+    });
   };
 
   const onTabsDropdownChange = (code: RightClickTags['code'], pathKey: string) => {
@@ -86,5 +92,5 @@ export const useTabsChange = () => {
     }
   };
 
-  return { onTabsDropdownChange, addRouteTabs, removeTab };
+  return { onTabsDropdownChange, addRouteTabs, removeTab, refresh };
 };

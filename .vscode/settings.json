@@ -9,8 +9,8 @@
   "i18n-ally.namespace": false,
   "i18n-ally.sortKeys": true,
   "i18n-ally.pathMatcher": "{locale}/modules/{namespaces}.json",
-  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.displayLanguage": "zh_CN",
   "i18n-ally.enabledFrameworks": ["react"],
-  "i18n-ally.sourceLanguage": "zh-CN",
+  "i18n-ally.sourceLanguage": "zh_CN",
   "i18n-ally.keystyle": "flat"
 }

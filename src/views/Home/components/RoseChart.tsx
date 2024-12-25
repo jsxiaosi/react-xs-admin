@@ -1,7 +1,7 @@
+import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
+import { Pie } from '@ant-design/charts';
 import { memo } from 'react';
 import type { PieConfig } from '@ant-design/charts';
-import { Pie } from '@ant-design/charts';
-import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
 
 const data = [
   {
@@ -33,7 +33,7 @@ const RoseChart = memo(() => {
     innerRadius: 0.64,
     meta: {
       value: {
-        formatter: (v: Number) => `${v}`,
+        formatter: (v: number) => `${v}`,
       },
     },
     legend: {

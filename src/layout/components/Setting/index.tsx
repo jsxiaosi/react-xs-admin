@@ -1,19 +1,19 @@
-import { SettingOutlined } from '@ant-design/icons';
-import { Divider, Drawer, theme, Tooltip } from 'antd';
-import { memo, useState } from 'react';
-import classNames from 'classnames';
-
-import ThemeSettings from './ThemeSettings';
-import { getSidebarMode } from './style';
 import { useLocale } from '@/locales';
-import type { AppConfigMode } from '@/store/modules/app';
-import { setAppSidebarMode } from '@/store/modules/app';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppSidebarMode } from '@/store/modules/app';
+import { SettingOutlined } from '@ant-design/icons';
+
+import { Divider, Drawer, theme, Tooltip } from 'antd';
+import classNames from 'classnames';
+import { memo, useState } from 'react';
+import type { AppConfigMode } from '@/store/modules/app';
+import { getSidebarMode } from './style';
+import ThemeSettings from './ThemeSettings';
 
 const Setting = memo(() => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const sidebarMode = useAppSelector((state) => state.app.sidebarMode);
+  const sidebarMode = useAppSelector(state => state.app.sidebarMode);
 
   const thme = theme.useToken();
 
@@ -49,7 +49,7 @@ const Setting = memo(() => {
         <div className="setting" css={getSidebarMode(thme.token)}>
           <Divider>{intl.formatMessage({ id: 'layout.setting.layoutSettings' })}</Divider>
           <div className="sidebar_seting">
-            {sidebarSeting.map((i) => {
+            {sidebarSeting.map(i => {
               return (
                 <Tooltip placement="bottom" title={i.label} key={i.value}>
                   <div

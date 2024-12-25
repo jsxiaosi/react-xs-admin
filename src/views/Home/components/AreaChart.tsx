@@ -1,7 +1,7 @@
+import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
+import { Area } from '@ant-design/charts';
 import { memo } from 'react';
 import type { AreaConfig } from '@ant-design/charts';
-import { Area } from '@ant-design/charts';
-import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
 
 const data = [
   {

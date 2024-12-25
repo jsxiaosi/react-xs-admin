@@ -1,6 +1,6 @@
-import { memo, useState } from 'react';
-import { Button } from 'antd';
 import reactLogo from '@/assets/react.svg';
+import { Button } from 'antd';
+import { memo, useState } from 'react';
 import './index.less';
 
 const Home = memo(() => {
@@ -19,7 +19,7 @@ const Home = memo(() => {
         </div>
         <h1>Vite + React</h1>
         <div className="card">
-          <Button type="primary" onClick={() => setCount((count) => count + 1)}>
+          <Button type="primary" onClick={() => setCount(count => count + 1)}>
             count is {count}
           </Button>
           <p>

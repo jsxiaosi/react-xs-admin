@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
 import { useAppSelector } from '@/store/hooks';
+import { useMemo, useState } from 'react';
 
 export interface RightClickTags {
   text: string;
@@ -8,7 +8,7 @@ export interface RightClickTags {
 }
 
 export const useTabsState = (pathKey: string, openDropdown: boolean) => {
-  const multiTabs = useAppSelector((state) => state.route.multiTabs);
+  const multiTabs = useAppSelector(state => state.route.multiTabs);
 
   const [rightClickTags] = useState<RightClickTags[]>([
     {
@@ -53,17 +53,17 @@ export const useTabsState = (pathKey: string, openDropdown: boolean) => {
   };
 
   const rightClickTagsList = useMemo(() => {
-    const multFindIndex = multiTabs.findIndex((i) => i.key === pathKey);
+    const multFindIndex = multiTabs.findIndex(i => i.key === pathKey);
     const multlength = multiTabs.length;
 
-    return rightClickTags.map((item) => ({
+    return rightClickTags.map(item => ({
       ...item,
       disabled: getDisabledStatus(item.code, multFindIndex, multlength),
     }));
   }, [openDropdown]);
 
   const menuItems = useMemo(() => {
-    return rightClickTagsList.map((i) => {
+    return rightClickTagsList.map(i => {
       return {
         label: i.text,
         key: i.code,

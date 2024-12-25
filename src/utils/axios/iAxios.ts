@@ -1,14 +1,14 @@
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import { isFunction } from '@/utils/is';
 import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
-import type { CreateAxiosOptions } from './axiosConfig';
-import { isFunction } from '@/utils/is';
 import type { RequestOptions, Result } from '#/axios';
+import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { CreateAxiosOptions } from './axiosConfig';
 
 /**
  * @description: axios 模块
  */
-export class iAxios {
+export class IAxios {
   private axiosInstance: AxiosInstance;
   private readonly options: CreateAxiosOptions;
 
@@ -51,12 +51,8 @@ export class iAxios {
     if (!interceptor) {
       return;
     }
-    const {
-      requestInterceptors,
-      requestInterceptorsCatch,
-      responseInterceptors,
-      responseInterceptorsCatch,
-    } = interceptor;
+    const { requestInterceptors, requestInterceptorsCatch, responseInterceptors, responseInterceptorsCatch } =
+      interceptor;
 
     // 此方法为了过滤不挂载interceptor没配置的拦截器
 

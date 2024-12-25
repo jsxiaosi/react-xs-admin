@@ -1,7 +1,7 @@
-import { memo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useInfoPageTabs } from '../hooks/useInfoPageTabs';
 import { useLocale } from '@/locales';
+import { memo, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { useInfoPageTabs } from '../hooks/useInfoPageTabs';
 
 const DetailsParams = memo(() => {
   const [id, setId] = useState<string>();

@@ -1,13 +1,13 @@
-import type { RouteObject } from 'react-router-dom';
-import { createBrowserRouter } from 'react-router-dom';
-import type { Key } from 'react';
-import { cloneDeep } from 'lodash-es';
-import { defaultRoute } from './modules';
-import type { MenuItem, RouteList } from '@/router/route';
 import { getRouteApi } from '@/server/route';
-import type { AsyncRouteType } from '@/store/modules/route';
-import { setStoreAsyncRouter } from '@/store/modules/route';
 import store from '@/store';
+import { setStoreAsyncRouter } from '@/store/modules/route';
+import { cloneDeep } from 'lodash-es';
+import { createBrowserRouter } from 'react-router';
+import type { MenuItem, RouteList } from '@/router/route';
+import type { AsyncRouteType } from '@/store/modules/route';
+import type { Key } from 'react';
+import type { RouteObject } from 'react-router';
+import { defaultRoute } from './modules';
 
 // import { HomeOutlined } from '@ant-design/icons';
 
@@ -21,15 +21,12 @@ export async function initAsyncRoute(power: string) {
   return '';
 }
 
-export function handlePowerRoute(
-  dataRouter: AsyncRouteType[],
-  routerList: RouteList[] = defaultRoute,
-) {
+export function handlePowerRoute(dataRouter: AsyncRouteType[], routerList: RouteList[] = defaultRoute) {
   const newRouteList: RouteList[] = [];
-  routerList.forEach((i) => {
+  routerList.forEach(i => {
     const item = cloneDeep(i);
     if (!item.handle.whiteList) {
-      const rItem = dataRouter.find((r) => r.id === item.id);
+      const rItem = dataRouter.find(r => r.id === item.id);
       if (rItem) {
         if (rItem.children && item.children && item.children.length) {
           const children = handlePowerRoute(rItem.children, item.children);
@@ -75,7 +72,7 @@ export function getParentPaths(routePath: string, routes: MenuItem[]): string[] 
 
 // 查找对应path的路由信息
 export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null {
-  const res = routes.find((item) => item.key == path) || null;
+  const res = routes.find(item => item.key === path) || null;
   if (res) {
     return res;
   } else {
@@ -85,7 +82,7 @@ export function findRouteByPath(path: Key, routes: MenuItem[]): MenuItem | null 
         if (miRes) {
           return miRes;
         } else {
-          if (routes[i].key == path) return routes[i];
+          if (routes[i].key === path) return routes[i];
         }
       }
     }
@@ -105,7 +102,7 @@ function pathResolve(...paths: string[]) {
     if (!path) {
       continue;
     }
-    resolvePath = path + '/' + resolvePath;
+    resolvePath = `${path}/${resolvePath}`;
     isAbsolutePath = path.charCodeAt(0) === 47;
   }
   if (/^\/+$/.test(resolvePath)) {
@@ -138,9 +135,7 @@ export function formatFlatteningRoutes(routesList: AsyncRouteType[]) {
   let hierarchyList = routesList;
   for (let i = 0; i < hierarchyList.length; i++) {
     if (hierarchyList[i].children) {
-      hierarchyList = hierarchyList
-        .slice(0, i + 1)
-        .concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
+      hierarchyList = hierarchyList.slice(0, i + 1).concat(hierarchyList[i].children || [], hierarchyList.slice(i + 1));
     }
   }
   return hierarchyList;

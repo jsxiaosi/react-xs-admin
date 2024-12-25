@@ -1,15 +1,15 @@
-import type { RouteObject } from 'react-router-dom';
-import { RouterProvider, Navigate, createHashRouter } from 'react-router-dom';
-import { useState, useEffect, memo } from 'react';
+import { useRouteList } from '@/hooks/useRouteList';
+import { useAppSelector } from '@/store/hooks';
+import { memo, useEffect, useState } from 'react';
+import { createHashRouter, Navigate, RouterProvider } from 'react-router';
+import type { AsyncRouteType } from '@/store/modules/route';
+import type { RouteObject } from 'react-router';
 import { baseRouter, whiteList } from './modules';
 import { handlePowerRoute } from './utils';
 import type { RouteList } from './route';
-import type { AsyncRouteType } from '@/store/modules/route';
-import { useAppSelector } from '@/store/hooks';
-import { useRouteList } from '@/hooks/useRouteList';
 
 const RouteView = memo(() => {
-  const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
+  const asyncRouter = useAppSelector(state => state.route.asyncRouter);
   const { handleRouteList } = useRouteList();
 
   // 为“/”根路由添加重定向
@@ -25,7 +25,7 @@ const RouteView = memo(() => {
   };
 
   const mapBaseRouter = (baseRouter: RouteList[], asyncRouter: AsyncRouteType[]) => {
-    return baseRouter.map((i) => {
+    return baseRouter.map(i => {
       const routeItem = i;
       if (routeItem.path === '/') {
         routeItem.children = handleRedirect(asyncRouter);

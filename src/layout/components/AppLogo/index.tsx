@@ -1,6 +1,6 @@
-import { memo } from 'react';
-import { Image, theme } from 'antd';
 import logo from '@/assets/logo.png';
+import { Image, theme } from 'antd';
+import { memo } from 'react';
 import './index.less';
 
 const AppLogo = memo(() => {

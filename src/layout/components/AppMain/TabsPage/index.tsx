@@ -1,17 +1,16 @@
-import type { TabsProps } from 'antd';
+import { FormattedMessage } from '@/components/FormattedMessage';
+import { useRouteList } from '@/hooks/useRouteList';
+import { defaultRoute } from '@/router/modules';
+import { findRouteByPath } from '@/router/utils';
+import { useAppSelector } from '@/store/hooks';
+import { CaretDownFilled, ReloadOutlined } from '@ant-design/icons';
 import { Tabs, theme } from 'antd';
 import { memo, useEffect, useMemo } from 'react';
-import { useNavigate, useLocation, useMatch } from 'react-router-dom';
-import { CaretDownFilled, ReloadOutlined } from '@ant-design/icons';
-import { getTabsStyle } from './style';
+import { useLocation, useMatch, useNavigate } from 'react-router';
+import type { TabsProps } from 'antd';
 import TabsItemLabel from './components/TabsItemLabel';
 import { useTabsChange } from './hooks/useTabsChange';
-import { useAppSelector } from '@/store/hooks';
-import { findRouteByPath } from '@/router/utils';
-import { defaultRoute } from '@/router/modules';
-import { useRefresh } from '@/hooks/web/useRefresh';
-import { FormattedMessage } from '@/locales';
-import { useRouteList } from '@/hooks/useRouteList';
+import { getTabsStyle } from './style';
 
 interface Props {
   maxLen?: number;
@@ -23,15 +22,14 @@ const TabsPage = memo((_props: Props) => {
   const mark = useMatch(location.pathname);
   const { routeListToMenu } = useRouteList();
   const menuList = routeListToMenu(defaultRoute);
-  const asyncRouter = useAppSelector((state) => state.route.asyncRouter);
-  const multiTabs = useAppSelector((state) => state.route.multiTabs);
-  const { addRouteTabs, removeTab } = useTabsChange();
-  const { refresh } = useRefresh();
+  const asyncRouter = useAppSelector(state => state.route.asyncRouter);
+  const multiTabs = useAppSelector(state => state.route.multiTabs);
+  const { addRouteTabs, removeTab, refresh } = useTabsChange();
 
   const thme = theme.useToken();
 
   const tabsItem = useMemo(() => {
-    return multiTabs.map((i) => {
+    return multiTabs.map(i => {
       let routeBy = null;
       if (!i.label) routeBy = findRouteByPath(i.key, menuList);
       return {
@@ -39,7 +37,7 @@ const TabsPage = memo((_props: Props) => {
         label: (
           <TabsItemLabel pathKey={i.key}>
             <div className="tabs-tab-label">
-              {i.localeLabel ? FormattedMessage({ id: i.localeLabel }) : ''}
+              {i.localeLabel ? <FormattedMessage id={i.localeLabel} /> : ''}
               {i.label || routeBy?.label}
             </div>
           </TabsItemLabel>
@@ -73,7 +71,7 @@ const TabsPage = memo((_props: Props) => {
       size="small"
       activeKey={location.pathname + location.search}
       type={tabsItem.length > 1 ? 'editable-card' : 'card'}
-      onChange={(key) => navigate(key)}
+      onChange={key => navigate(key)}
       onEdit={onEdit}
       tabBarExtraContent={{
         right: (

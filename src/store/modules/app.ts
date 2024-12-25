@@ -1,6 +1,6 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { LocaleType } from '@/locales';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export type ThemeMode = 'dark' | 'light';
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';
@@ -43,7 +43,6 @@ export const appSlice = createSlice({
   },
 });
 // 每个 case reducer 函数会生成对应的 Action creators
-export const { setAppCollapsed, setAppColor, setAppLocale, setAppSidebarMode, setAppThemeMode } =
-  appSlice.actions;
+export const { setAppCollapsed, setAppColor, setAppLocale, setAppSidebarMode, setAppThemeMode } = appSlice.actions;
 
 export default appSlice.reducer;

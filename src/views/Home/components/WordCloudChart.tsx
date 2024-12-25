@@ -1,7 +1,7 @@
-import type { WordCloudConfig } from '@ant-design/charts';
+import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
 import { WordCloud } from '@ant-design/charts';
 import { memo } from 'react';
-import { useChartsConfig } from '@/hooks/web/antCharts/useChartsConfig';
+import type { WordCloudConfig } from '@ant-design/charts';
 
 let data = [
   { name: 'Vue', value: 0 },
@@ -22,7 +22,7 @@ let data = [
 const WordCloudChart = memo(() => {
   const { theme } = useChartsConfig();
 
-  data = data.map((i) => {
+  data = data.map(i => {
     i.value = Math.random() * 30 + 8;
     return i;
   });

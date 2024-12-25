@@ -9,7 +9,7 @@ import 'virtual:svg-icons-register';
 
 const routeDOM = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-const RootRender = (
+export const RootRender = (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <App />

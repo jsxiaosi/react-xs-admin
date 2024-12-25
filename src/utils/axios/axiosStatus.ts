@@ -1,12 +1,8 @@
-import type { ErrorMessageMode } from '#/axios';
-import { getIntlText } from '@/locales';
 import { createErrorModal, createErrorMsg } from '@/hooks/web/useMessage';
+import { getIntlText } from '@/locales';
+import type { ErrorMessageMode } from '#/axios';
 
-export function checkStatus(
-  status: number,
-  msg: string,
-  errorMessageMode: ErrorMessageMode = 'message',
-): void {
+export function checkStatus(status: number, msg: string, errorMessageMode: ErrorMessageMode = 'message'): void {
   let errMessage = '';
 
   switch (status) {

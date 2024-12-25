@@ -1,15 +1,15 @@
-import type { MenuProps, SiderProps } from 'antd';
-import { theme, Drawer, Layout, Menu } from 'antd';
-import { memo, useEffect, useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useResponsive } from 'ahooks';
-import { shallowEqual } from 'react-redux';
-import AppLogo from '../../AppLogo';
-import './index.less';
-import { useMenuList } from '../hooks/useMenuList';
 import { findRouteByPath, getParentPaths } from '@/router/utils';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setAppCollapsed } from '@/store/modules/app';
+import { useResponsive } from 'ahooks';
+import { Drawer, Layout, Menu, theme } from 'antd';
+import { memo, useEffect, useMemo, useState } from 'react';
+import { shallowEqual } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router';
+import type { MenuProps, SiderProps } from 'antd';
+import AppLogo from '../../AppLogo';
+import { useMenuList } from '../hooks/useMenuList';
+import './index.less';
 
 const { Sider } = Layout;
 
@@ -17,7 +17,7 @@ const Sidebar = memo(() => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
   const { collapsed, sidebarMode } = useAppSelector(
-    (state) => ({
+    state => ({
       collapsed: state.app.collapsed,
       sidebarMode: state.app.sidebarMode,
     }),
@@ -25,7 +25,6 @@ const Sidebar = memo(() => {
   );
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const thme = theme.useToken();
-  console.log(thme);
   const responsive = useResponsive();
   const navigate = useNavigate();
   const { menuList } = useMenuList();
@@ -38,11 +37,11 @@ const Sidebar = memo(() => {
     }
   }, [collapsed, pathname]);
 
-  const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
+  const onOpenChange: MenuProps['onOpenChange'] = keys => {
     setOpenKeys(keys);
   };
 
-  const onBreakpoint: SiderProps['onBreakpoint'] = (broken) => {
+  const onBreakpoint: SiderProps['onBreakpoint'] = broken => {
     let collapsedValue = collapsed;
     if (broken) collapsedValue = true;
     else collapsedValue = false;
@@ -74,7 +73,7 @@ const Sidebar = memo(() => {
         onOpenChange={onOpenChange}
         selectedKeys={[pathname]}
         items={menuItems as MenuProps['items']}
-        onClick={(e) => navigate(e.key)}
+        onClick={e => navigate(e.key)}
         style={{ border: 'none' }}
       />
     </>

@@ -1,24 +1,25 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// CommonJS
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const scopes = fs.readdirSync(path.resolve(__dirname, 'src')).map((i) => i.toLowerCase());
+const scopes = fs
+  .readdirSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src'))
+  .map(i => i.toLowerCase());
 
 const gitStatus = execSync('git status --porcelain || true').toString().trim().split('\n');
 
 const scopeComplete = gitStatus
-  .find((r) => ~r.indexOf('M  src'))
+  .find(r => ~r.indexOf('M  src'))
   ?.replace(/(\/)/g, '%%')
   ?.match(/src%%((\w|-)*)/)?.[1];
 
 const subjectComplete = gitStatus
-  .find((r) => ~r.indexOf('M  src'))
+  .find(r => ~r.indexOf('M  src'))
   ?.replace(/\//g, '%%')
   ?.match(/src%%((\w|-)*)/)?.[1];
 
-module.exports = {
+const Configuration = {
   extends: ['@jsxiaosi/commitlint-config'],
   prompt: {
     // 范围设置
@@ -35,3 +36,5 @@ module.exports = {
     defaultSubject: subjectComplete && `[${subjectComplete}] `,
   },
 };
+
+export default Configuration;

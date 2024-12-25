@@ -68,13 +68,13 @@ export default defineFakeRoute([
     method: 'post',
     response: ({ body }: { body: Recordable }) => {
       const { name } = body;
-      if (name == 'admin') {
+      if (name === 'admin') {
         return {
           data: [...power, ...adminRoute],
           code: 1,
           message: 'ok',
         };
-      } else if (name == 'test') {
+      } else if (name === 'test') {
         return {
           data: [...power, ...testRoute],
           code: 1,

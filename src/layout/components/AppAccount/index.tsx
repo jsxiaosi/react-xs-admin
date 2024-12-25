@@ -1,11 +1,11 @@
-import type { MenuProps } from 'antd';
-import { Dropdown, Image } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { getAccountStyle } from './style';
 import avatar from '@/assets/avatar.png';
-import { removeStorage } from '@/utils/storage';
-import { setSignOut } from '@/store/modules/user';
 import { useAppDispatch } from '@/store/hooks';
+import { setSignOut } from '@/store/modules/user';
+import { removeStorage } from '@/utils/storage';
+import { Dropdown, Image } from 'antd';
+import { useNavigate } from 'react-router';
+import type { MenuProps } from 'antd';
+import { getAccountStyle } from './style';
 
 const AppAccount = () => {
   const { AccountDiv } = getAccountStyle();
@@ -21,7 +21,7 @@ const AppAccount = () => {
     },
   ];
 
-  const memuChange: MenuProps['onClick'] = (_e) => {
+  const memuChange: MenuProps['onClick'] = _e => {
     removeStorage('userInfo');
     dispatch(setSignOut());
 
@@ -38,7 +38,9 @@ const AppAccount = () => {
         placement="bottom"
         arrow
       >
-        <Image src={avatar} className="wave" preview={false} />
+        <div className="wave">
+          <Image src={avatar} width={30} preview={false} />
+        </div>
       </Dropdown>
     </AccountDiv>
   );

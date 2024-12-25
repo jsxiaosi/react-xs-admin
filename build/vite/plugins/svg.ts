@@ -3,6 +3,7 @@
  * https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
  */
 import path from 'path';
+import process from 'process';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 export function configSvgPlugin() {

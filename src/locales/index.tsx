@@ -1,5 +1,5 @@
+import { createIntl, useIntl } from 'react-intl';
 import type { IntlShape, MessageDescriptor } from 'react-intl';
-import { createIntl, useIntl, FormattedMessage as IntFormattedMessage } from 'react-intl';
 import en_US from './en_US';
 import zh_CN from './zh_CN';
 
@@ -12,15 +12,11 @@ export type LocaleType = keyof typeof localeConfig;
 
 export type LocaleId = keyof typeof en_US;
 
-interface Props extends MessageDescriptor {
+export interface Props extends MessageDescriptor {
   id: LocaleId;
 }
 
-export const FormattedMessage: React.FC<Props> = (props) => {
-  return <IntFormattedMessage {...props} id={props.id} />;
-};
-
-type FormatMessageProps = (descriptor: Props) => string;
+export type FormatMessageProps = (descriptor: Props) => string;
 
 export const useLocale = () => {
   const { formatMessage: intlFormatMessage, ...rest } = useIntl();
