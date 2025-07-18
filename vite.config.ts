@@ -1,7 +1,7 @@
 import type { ConfigEnv, UserConfig } from 'vite';
-import { createViteResolve } from './build/vite/resolve';
-import { createVitePlugins } from './build/vite/plugins';
 import { createViteBuild } from './build/vite/build';
+import { createVitePlugins } from './build/vite/plugins';
+import { createViteResolve } from './build/vite/resolve';
 import { createViteServer } from './build/vite/server';
 
 // https://vitejs.dev/config/

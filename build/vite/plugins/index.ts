@@ -1,6 +1,7 @@
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-// import react from '@vitejs/plugin-react-swc';
 import type { ConfigEnv, PluginOption } from 'vite';
+
 import { configMockPlugin } from './mock';
 
 // svg配置
@@ -21,6 +22,8 @@ export function createVitePlugins(_isBuild = false, _configEnv: ConfigEnv) {
   vitePlugins.push(configSvgPlugin());
 
   vitePlugins.push(configMockPlugin());
+
+  vitePlugins.push(tailwindcss());
 
   return vitePlugins;
 }
