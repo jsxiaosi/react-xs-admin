@@ -1,5 +1,5 @@
 import prettierConfig from '@jsxiaosi/eslint-config-prettier';
 
-export default {
-  ...prettierConfig,
-};
+export default prettierConfig({
+  tailwindcss: true,
+});
