@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { UseInfoType } from '@/server/useInfo';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { UseInfoType } from '@/server/useInfo';
 
 interface UserSliceType {
   userInfo?: UseInfoType;

@@ -1,7 +1,7 @@
-import { useLocale } from '@/locales';
 import { Button, Result } from 'antd';
 import { memo } from 'react';
 import { useNavigate } from 'react-router';
+import { useLocale } from '@/locales';
 
 function Error403() {
   const init = useLocale();

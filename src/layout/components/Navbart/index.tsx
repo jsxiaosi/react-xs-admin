@@ -1,12 +1,12 @@
-import AppLocale from '@/components/AppLocale';
-import AppTheme from '@/components/AppTheme';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppCollapsed } from '@/store/modules/app';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useResponsive } from 'ahooks';
 import { Layout, theme } from 'antd';
 import { memo } from 'react';
 import { shallowEqual } from 'react-redux';
+import AppLocale from '@/components/AppLocale';
+import AppTheme from '@/components/AppTheme';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppCollapsed } from '@/store/modules/app';
 import AppAccount from '../AppAccount';
 import AppLogo from '../AppLogo';
 import Setting from '../Setting';

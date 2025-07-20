@@ -1,7 +1,7 @@
+import { AppstoreOutlined, DatabaseOutlined, HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import { FormattedMessage } from '@/components/FormattedMessage';
 import Layout from '@/layout';
 import Authority from '@/layout/Authority';
-import { AppstoreOutlined, DatabaseOutlined, HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import type { RouteList } from '@/router/route';
 import {
   DetailsInfo,

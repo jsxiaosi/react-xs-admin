@@ -1,13 +1,13 @@
-import { FormattedMessage } from '@/components/FormattedMessage';
-import { useRouteList } from '@/hooks/useRouteList';
-import { defaultRoute } from '@/router/modules';
-import { findRouteByPath } from '@/router/utils';
-import { useAppSelector } from '@/store/hooks';
 import { CaretDownFilled, ReloadOutlined } from '@ant-design/icons';
 import { Tabs, theme } from 'antd';
 import { memo, useEffect, useMemo } from 'react';
 import { useLocation, useMatch, useNavigate } from 'react-router';
 import type { TabsProps } from 'antd';
+import { FormattedMessage } from '@/components/FormattedMessage';
+import { useRouteList } from '@/hooks/useRouteList';
+import { defaultRoute } from '@/router/modules';
+import { findRouteByPath } from '@/router/utils';
+import { useAppSelector } from '@/store/hooks';
 import TabsItemLabel from './components/TabsItemLabel';
 import { useTabsChange } from './hooks/useTabsChange';
 import { getTabsStyle } from './style';

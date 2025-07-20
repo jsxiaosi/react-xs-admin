@@ -1,8 +1,8 @@
-import LayoutSpin from '@/components/LayoutSpin';
 import { Layout } from 'antd';
 import { KeepAlive, useKeepAliveRef } from 'keepalive-for-react';
 import { memo, Suspense, useMemo } from 'react';
 import { useLocation, useOutlet } from 'react-router';
+import LayoutSpin from '@/components/LayoutSpin';
 import { getAppMainStyle } from './style';
 import TabsPage from './TabsPage';
 

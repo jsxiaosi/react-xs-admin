@@ -1,8 +1,8 @@
-import { ErrorElement } from '@/router/lazy/whiteList';
 import { Typography } from 'antd';
 import { redirect } from 'react-router';
-import type { MenuItem, RouteList } from '@/router/route';
 import type { RouteObject } from 'react-router';
+import { ErrorElement } from '@/router/lazy/whiteList';
+import type { MenuItem, RouteList } from '@/router/route';
 
 const { Text } = Typography;
 

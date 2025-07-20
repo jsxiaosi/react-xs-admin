@@ -38,8 +38,8 @@ jobs:
 
       - name: Merge main into git-pages
         run: |
-         git merge main --no-ff -m "feat: ✨ Auto-merge main into git-pages"
-          
+          git merge main --no-ff -m "feat: ✨ Auto-merge main into git-pages"
+
       - name: Push changes to git-pages
         run: git push origin git-pages
 

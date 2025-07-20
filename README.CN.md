@@ -104,7 +104,6 @@ npm run build
 ## Git 贡献提交规范
 
 - 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范
-
   - `feat` 新增功能
   - `fix` 修复缺陷
   - `docs` 文档变更

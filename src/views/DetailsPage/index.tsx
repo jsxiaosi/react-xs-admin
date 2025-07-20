@@ -1,6 +1,6 @@
-import { useLocale } from '@/locales';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router';
+import { useLocale } from '@/locales';
 import { useInfoPageTabs } from './hooks/useInfoPageTabs';
 
 const DateilsPage = () => {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { LocaleId } from '@/locales';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { LocaleId } from '@/locales';
 // import { formatFlatteningRoutes, setUpRoutePath } from '@/router/utils';
 
 export interface AsyncRouteType {

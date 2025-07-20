@@ -102,7 +102,6 @@ npm run build
 ## Git Contribution submission specification
 
 - Refer to [Vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification
-
   - `feat` New Features
   - `fix` Repair defects
   - `docs` Document change

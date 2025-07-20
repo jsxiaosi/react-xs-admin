@@ -1,7 +1,7 @@
+import { useMemo } from 'react';
 import { useRouteList } from '@/hooks/useRouteList';
 import { handlePowerRoute } from '@/router/utils';
 import { useAppSelector } from '@/store/hooks';
-import { useMemo } from 'react';
 
 export const useMenuList = () => {
   const asyncRouter = useAppSelector(state => state.route.asyncRouter);

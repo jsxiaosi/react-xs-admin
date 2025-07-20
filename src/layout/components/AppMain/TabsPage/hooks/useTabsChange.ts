@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
 import { useKeepAliveContext } from 'keepalive-for-react';
 import { useLocation, useNavigate } from 'react-router';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { type MultiTabsType, setStoreMultiTabs } from '@/store/modules/route';
 import type { RightClickTags } from './useTabsState';
 
 export const useTabsChange = () => {

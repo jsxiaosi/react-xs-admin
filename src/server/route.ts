@@ -1,5 +1,5 @@
-import { deffHttp } from '@/utils/axios';
 import type { AsyncRouteType } from '@/store/modules/route';
+import { deffHttp } from '@/utils/axios';
 
 enum Api {
   ROUTE_LIST = '/mock_api/getRoute',
