@@ -1,9 +1,9 @@
-import { useTransformTheme } from '@/hooks/useTransformTheme';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppColor } from '@/store/modules/app';
 import { CheckOutlined } from '@ant-design/icons';
 import { Switch, theme } from 'antd';
 import { memo } from 'react';
+import { useTransformTheme } from '@/hooks/useTransformTheme';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppColor } from '@/store/modules/app';
 import { getThemeSettingsStyle } from './style';
 
 const ThemeSettings = memo(() => {

@@ -1,3 +1,7 @@
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
+import { memo, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import logo from '@/assets/logo.png';
 import AppLocale from '@/components/AppLocale';
 import AppTheme from '@/components/AppTheme';
@@ -6,10 +10,6 @@ import { initAsyncRoute } from '@/router/utils';
 import { getUserInfo } from '@/server/useInfo';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setUserInfo } from '@/store/modules/user';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Image, Input, theme } from 'antd';
-import { memo, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
 import type { LoginForm } from './type';
 
 const Login = memo(() => {
@@ -44,15 +44,15 @@ const Login = memo(() => {
 
   return (
     <div
-      className="w-full h-full flex flex-col items-center justify-center relative"
+      className="relative flex h-full w-full flex-col items-center justify-center"
       style={{ backgroundColor: thme.token.colorBgContainer, color: thme.token.colorText }}
     >
-      <div className="flex flex-row justify-center items-center absolute top-3 right-3 gap-3">
+      <div className="absolute top-3 right-3 flex flex-row items-center justify-center gap-3">
         <AppLocale />
         <AppTheme />
       </div>
       <div className="p-10" style={{ boxShadow: '0 15px 25px #0009' }}>
-        <div className="mb-10 flex flex-row items-center justify-center ">
+        <div className="mb-10 flex flex-row items-center justify-center">
           <Image src={logo} width={44} height={44} preview={false} />
           <h2 className="m-0 ml-4">React Xs Admin</h2>
         </div>
@@ -80,7 +80,7 @@ const Login = memo(() => {
             />
           </Form.Item>
           <Form.Item<LoginForm>>
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row items-center justify-between">
               <Form.Item name="remember" valuePropName="checked" noStyle>
                 <Checkbox>{intl.formatMessage({ id: 'login.rememberPassword' })}</Checkbox>
               </Form.Item>

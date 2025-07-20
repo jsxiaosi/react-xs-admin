@@ -1,6 +1,6 @@
 name: Automatic deployment to GitHub Pages
 
-on: 
+on:
   push:
     branches:
       - git-pages
@@ -16,7 +16,7 @@ jobs:
         with:
           ref: ${{ github.event_name == 'push' && github.ref || 'git-pages' }}
           fetch-depth: 0
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      
+
       - name: Install dependencies
         run: pnpm install
 
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-          
+
   deploy:
     environment:
       name: github-pages

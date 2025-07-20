@@ -1,6 +1,6 @@
-import reactLogo from '@/assets/react.svg';
 import { Button } from 'antd';
 import { memo, useState } from 'react';
+import reactLogo from '@/assets/react.svg';
 import './index.less';
 
 const Home = memo(() => {

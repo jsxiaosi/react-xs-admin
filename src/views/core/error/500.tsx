@@ -1,6 +1,6 @@
-import { useLocale } from '@/locales';
 import { Button, Result } from 'antd';
 import { memo } from 'react';
+import { useLocale } from '@/locales';
 
 function Error500() {
   const init = useLocale();

@@ -1,6 +1,6 @@
+import { theme } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setAppThemeMode } from '@/store/modules/app';
-import { theme } from 'antd';
 import SvgIcon from '../SvgIcon';
 import './index.less';
 

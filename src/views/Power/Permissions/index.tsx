@@ -1,7 +1,7 @@
+import { Button } from 'antd';
 import { initAsyncRoute } from '@/router/utils';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setPower } from '@/store/modules/user';
-import { Button } from 'antd';
 
 const Permissions = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { LocaleType } from '@/locales';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { LocaleType } from '@/locales';
 
 export type ThemeMode = 'dark' | 'light';
 export type SidebarMode = 'vertical' | 'horizontal' | 'blend';

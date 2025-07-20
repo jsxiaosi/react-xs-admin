@@ -1,9 +1,9 @@
-import { useRouteList } from '@/hooks/useRouteList';
-import { useAppSelector } from '@/store/hooks';
 import { memo, useEffect, useState } from 'react';
 import { createHashRouter, Navigate, RouterProvider } from 'react-router';
-import type { AsyncRouteType } from '@/store/modules/route';
 import type { RouteObject } from 'react-router';
+import { useRouteList } from '@/hooks/useRouteList';
+import { useAppSelector } from '@/store/hooks';
+import type { AsyncRouteType } from '@/store/modules/route';
 import { baseRouter, whiteList } from './modules';
 import { handlePowerRoute } from './utils';
 import type { RouteList } from './route';

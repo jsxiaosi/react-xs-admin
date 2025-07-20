@@ -1,5 +1,5 @@
-import { setStoreMultiTabs } from '@/store/modules/route';
 import { useDispatch } from 'react-redux';
+import { setStoreMultiTabs } from '@/store/modules/route';
 import type { MultiTabsType } from '@/store/modules/route';
 
 export const useInfoPageTabs = () => {

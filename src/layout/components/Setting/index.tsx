@@ -1,11 +1,11 @@
-import { useLocale } from '@/locales';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppSidebarMode } from '@/store/modules/app';
 import { SettingOutlined } from '@ant-design/icons';
-
 import { Divider, Drawer, theme, Tooltip } from 'antd';
 import classNames from 'classnames';
 import { memo, useState } from 'react';
+
+import { useLocale } from '@/locales';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppSidebarMode } from '@/store/modules/app';
 import type { AppConfigMode } from '@/store/modules/app';
 import { getSidebarMode } from './style';
 import ThemeSettings from './ThemeSettings';

@@ -1,8 +1,8 @@
-import { isFunction } from '@/utils/is';
 import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
 import type { RequestOptions, Result } from '#/axios';
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { isFunction } from '@/utils/is';
 import type { CreateAxiosOptions } from './axiosConfig';
 
 /**

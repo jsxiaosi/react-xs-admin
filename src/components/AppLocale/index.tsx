@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setAppLocale } from '@/store/modules/app';
 import { Dropdown } from 'antd';
 import { memo, useMemo } from 'react';
-import type { LocaleType } from '@/locales';
 import type { MenuProps } from 'antd';
+import type { LocaleType } from '@/locales';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setAppLocale } from '@/store/modules/app';
 import SvgIcon from '../SvgIcon';
 
 const Locale = memo(() => {
