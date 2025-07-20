@@ -1,12 +1,12 @@
 {
   "name": "react-xs-admin",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "packageManager": "pnpm@9.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=18",
+    "node": ">=20",
     "pnpm": ">=9"
   },
   "scripts": {
